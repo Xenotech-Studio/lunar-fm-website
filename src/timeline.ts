@@ -1,12 +1,12 @@
 import { useEffect, useRef } from 'react'
 
 export const chapters = [
-  { id: 'arrival', position: 0, label: '启程', code: '01 / OBSERVE' },
+  { id: 'arrival', position: 0, label: '遥望', code: '01 / OBSERVE' },
   { id: 'terrain', position: 0.345, label: '月面档案', code: '02 / TOPOGRAPHY' },
   { id: 'surface', position: 0.535, label: '立于月面', code: '03 / SURFACE CONTACT' },
-  { id: 'shadow', position: 0.68, label: '阴影之下', code: '04 / POLAR FRONTIER' },
-  { id: 'intelligence', position: 0.84, label: '连接线索', code: '05 / FOUNDATION MODEL' },
-  { id: 'horizon', position: 1, label: '新的地平线', code: '06 / DISCOVER' },
+  { id: 'shadow', position: 0.68, label: '永久阴影', code: '04 / POLAR FRONTIER' },
+  { id: 'intelligence', position: 0.84, label: '观测交汇', code: '05 / FOUNDATION MODEL' },
+  { id: 'horizon', position: 1, label: '回望月光', code: '06 / DISCOVER' },
 ] as const
 
 export const clamp = (x: number, lo = 0, hi = 1) => Math.max(lo, Math.min(hi, x))

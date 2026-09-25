@@ -22,7 +22,7 @@ test('WebGL、连续滚动、六幕导航与档案弹窗', async ({ page }, test
   // Verify a position between chapter anchors exists instead of snapping.
   await page.evaluate(p => scrollTo(0, (document.documentElement.scrollHeight - innerHeight) * p), storyToScroll(.37))
   await expect.poll(async () => page.evaluate(() => Number(getComputedStyle(document.documentElement).getPropertyValue('--journey')))).toBeCloseTo(0.37, 2)
-  await page.getByRole('button', { name: '任务档案' }).click()
+  await page.getByRole('button', { name: '观测档案' }).click()
   await expect(page.locator('dialog')).toBeVisible()
   await expect(page.locator('dialog a')).toHaveCount(6)
   await page.keyboard.press('Escape')
@@ -62,7 +62,7 @@ test('WebGL不可用时仍能阅读和导航', async ({ page }) => {
   await expect(page.locator('.universe')).toHaveClass(/is-fallback/)
   await page.locator('[data-nav]').nth(5).click()
   await expect(page.locator('html')).toHaveAttribute('data-chapter', '5')
-  await expect(page.getByRole('link', { name: '探索开放模型' })).toBeVisible()
+  await expect(page.getByRole('link', { name: '查看模型档案' })).toBeVisible()
 })
 
 
@@ -155,7 +155,7 @@ test('档案悬停可逆，扫描随滚动推进，直达月面不落在下降�
   await expect(canvas).toHaveAttribute('data-planet-count','1')
   if(p<=.365){
    await expect.poll(async()=>Number(await canvas.getAttribute('data-altitude'))).toBeCloseTo(20000,0)
-   await expect(page.locator('.terrain')).toContainText('先读懂这片地形')
+   await expect(page.locator('.terrain')).toContainText('一道坑缘，叠着另一道。')
    await expect.poll(async()=>Number(await canvas.getAttribute('data-survey-weight'))).toBeGreaterThan(.99)
   }
  }

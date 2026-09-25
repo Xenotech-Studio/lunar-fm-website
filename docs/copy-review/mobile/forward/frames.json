@@ -1,0 +1,1503 @@
+{
+  "frames": [
+    {
+      "storyProgress": 0,
+      "scrollProgress": 0,
+      "engine": "three.js r186",
+      "surveyWeight": "0",
+      "polarLayer": "LOLA-PSR-area-over-1km2",
+      "polarWeight": "0",
+      "gpuTextures": "20",
+      "altitude": "15118457.898",
+      "flightProgress": "4.656612873077393e-10",
+      "cameraPosition": "-8859019.21368,12256606.50028,3140763.64731",
+      "cameraQuaternion": "0.65156366,0.24117295,-0.12541567,-0.70821700",
+      "geographicSite": "20.317965903575143,30.373863256808953",
+      "planetCount": "1",
+      "sceneCameras": "1",
+      "aboveTerrain": "true",
+      "horizontalOverflow": false,
+      "text": [
+        {
+          "text": " NASA–IBM LUNAR FOUNDATION MODEL",
+          "rect": {
+            "x": 27.296875,
+            "y": 371.359375,
+            "width": 335.40625,
+            "height": 11.1875
+          },
+          "outside": false
+        },
+        {
+          "text": "STILLWITH US.",
+          "rect": {
+            "x": 27.296875,
+            "y": 397.546875,
+            "width": 335.40625,
+            "height": 99.28125
+          },
+          "outside": false
+        },
+        {
+          "text": "月光落在很老的山上。",
+          "rect": {
+            "x": 27.296875,
+            "y": 513.828125,
+            "width": 335.40625,
+            "height": 21
+          },
+          "outside": false
+        }
+      ]
+    },
+    {
+      "storyProgress": 4,
+      "scrollProgress": 0.024242424242424246,
+      "engine": "three.js r186",
+      "surveyWeight": "0",
+      "polarLayer": "LOLA-PSR-area-over-1km2",
+      "polarWeight": "0",
+      "gpuTextures": "20",
+      "altitude": "14848754.951",
+      "flightProgress": "0.039948439670700636",
+      "cameraPosition": "-9965950.50585,11324981.31273,2282439.57187",
+      "cameraQuaternion": "0.65668749,0.27832116,-0.14774362,-0.68517931",
+      "geographicSite": "20.317965903575143,30.373863256808953",
+      "planetCount": "1",
+      "sceneCameras": "1",
+      "aboveTerrain": "true",
+      "horizontalOverflow": false,
+      "text": [
+        {
+          "text": " NASA–IBM LUNAR FOUNDATION MODEL",
+          "rect": {
+            "x": 27.296875,
+            "y": 366.0329284667969,
+            "width": 335.40625,
+            "height": 11.1875
+          },
+          "outside": false
+        },
+        {
+          "text": "STILLWITH US.",
+          "rect": {
+            "x": 27.296875,
+            "y": 392.2204284667969,
+            "width": 335.40625,
+            "height": 99.28125
+          },
+          "outside": false
+        },
+        {
+          "text": "月光落在很老的山上。",
+          "rect": {
+            "x": 27.296875,
+            "y": 508.5016784667969,
+            "width": 335.40625,
+            "height": 20.999969482421875
+          },
+          "outside": false
+        }
+      ]
+    },
+    {
+      "storyProgress": 28,
+      "scrollProgress": 0.2424242424242425,
+      "engine": "three.js r186",
+      "surveyWeight": "0",
+      "polarLayer": "LOLA-PSR-area-over-1km2",
+      "polarWeight": "0",
+      "gpuTextures": "26",
+      "altitude": "331066.222",
+      "flightProgress": "0.2799490429021561",
+      "cameraPosition": "-268469.59647,312887.52509,-50826.76384",
+      "cameraQuaternion": "0.70226240,0.26287468,-0.23064327,-0.62010331",
+      "geographicSite": "20.317965903575143,30.373863256808953",
+      "planetCount": "1",
+      "sceneCameras": "1",
+      "aboveTerrain": "true",
+      "surface": "ready",
+      "surfaceBytes": "44272421",
+      "horizontalOverflow": false,
+      "text": []
+    },
+    {
+      "storyProgress": 30,
+      "scrollProgress": 0.275,
+      "engine": "three.js r186",
+      "surveyWeight": "0",
+      "polarLayer": "LOLA-PSR-area-over-1km2",
+      "polarWeight": "0",
+      "gpuTextures": "26",
+      "altitude": "90140.485",
+      "flightProgress": "0.2999721246698966",
+      "cameraPosition": "-0.53056,90107.14212,100.76193",
+      "cameraQuaternion": "-0.70708725,-0.00000216,0.00000216,0.70712631",
+      "geographicSite": "20.317965903575143,30.373863256808953",
+      "planetCount": "1",
+      "sceneCameras": "1",
+      "aboveTerrain": "true",
+      "surface": "ready",
+      "surfaceBytes": "44272421",
+      "horizontalOverflow": false,
+      "text": []
+    },
+    {
+      "storyProgress": 32,
+      "scrollProgress": 0.3272727272727273,
+      "engine": "three.js r186",
+      "surveyWeight": "0.7386760061261392",
+      "polarLayer": "LOLA-PSR-area-over-1km2",
+      "polarWeight": "0",
+      "gpuTextures": "26",
+      "altitude": "26144.286",
+      "flightProgress": "0.31995359713529137",
+      "cameraPosition": "0.00000,26110.94261,97.32649",
+      "cameraQuaternion": "-0.78115749,-0.00000030,0.00000024,0.62433403",
+      "geographicSite": "20.317965903575143,30.373863256808953",
+      "planetCount": "1",
+      "sceneCameras": "1",
+      "aboveTerrain": "true",
+      "surface": "ready",
+      "surfaceBytes": "44272421",
+      "horizontalOverflow": false,
+      "text": [
+        {
+          "text": "02 — THE LUNAR ARCHIVE",
+          "rect": {
+            "x": 27.296875,
+            "y": 383.1363830566406,
+            "width": 335.40625,
+            "height": 11.1875
+          },
+          "outside": false
+        },
+        {
+          "text": "THE LONGRECORD.",
+          "rect": {
+            "x": 27.296875,
+            "y": 406.3238830566406,
+            "width": 335.40625,
+            "height": 83.15625
+          },
+          "outside": false
+        },
+        {
+          "text": "一道坑缘，叠着另一道。",
+          "rect": {
+            "x": 27.296875,
+            "y": 501.4801330566406,
+            "width": 335.40625,
+            "height": 18.000030517578125
+          },
+          "outside": false
+        },
+        {
+          "text": "新痕落在旧痕上。漫长的年月，留在起伏之间。",
+          "rect": {
+            "x": 27.296875,
+            "y": 529.4801635742188,
+            "width": 335.40625,
+            "height": 38
+          },
+          "outside": false
+        },
+        {
+          "text": "20 km设计悬停高度 · 相对落点4.7 × 12 kmNAC 高程覆盖范围",
+          "rect": {
+            "x": 27.296875,
+            "y": 581.4801635742188,
+            "width": 335.40625,
+            "height": 41
+          },
+          "outside": false
+        },
+        {
+          "text": "地形据 LROC NAC / WAC 数据。金色范围框、公里网格与扫描为辅助示意，非实时遥测。",
+          "rect": {
+            "x": 27.296875,
+            "y": 632.4801635742188,
+            "width": 335.40625,
+            "height": 13.296875
+          },
+          "outside": false
+        }
+      ]
+    },
+    {
+      "storyProgress": 34.5,
+      "scrollProgress": 0.39545454545454545,
+      "engine": "three.js r186",
+      "surveyWeight": "1",
+      "polarLayer": "LOLA-PSR-area-over-1km2",
+      "polarWeight": "0",
+      "gpuTextures": "26",
+      "altitude": "20000.000",
+      "flightProgress": "0.3449702998571623",
+      "cameraPosition": "0.00000,19966.65699,96.98699",
+      "cameraQuaternion": "-0.82805267,-0.00000041,0.00000028,0.56065032",
+      "geographicSite": "20.317965903575143,30.373863256808953",
+      "planetCount": "1",
+      "sceneCameras": "1",
+      "aboveTerrain": "true",
+      "surface": "ready",
+      "surfaceBytes": "44272421",
+      "horizontalOverflow": false,
+      "text": [
+        {
+          "text": "02 — THE LUNAR ARCHIVE",
+          "rect": {
+            "x": 27.296875,
+            "y": 379.80084228515625,
+            "width": 335.40625,
+            "height": 11.1875
+          },
+          "outside": false
+        },
+        {
+          "text": "THE LONGRECORD.",
+          "rect": {
+            "x": 27.296875,
+            "y": 402.98834228515625,
+            "width": 335.40625,
+            "height": 83.15625
+          },
+          "outside": false
+        },
+        {
+          "text": "一道坑缘，叠着另一道。",
+          "rect": {
+            "x": 27.296875,
+            "y": 498.14459228515625,
+            "width": 335.40625,
+            "height": 18
+          },
+          "outside": false
+        },
+        {
+          "text": "新痕落在旧痕上。漫长的年月，留在起伏之间。",
+          "rect": {
+            "x": 27.296875,
+            "y": 526.1445922851562,
+            "width": 335.40625,
+            "height": 38
+          },
+          "outside": false
+        },
+        {
+          "text": "20 km设计悬停高度 · 相对落点4.7 × 12 kmNAC 高程覆盖范围",
+          "rect": {
+            "x": 27.296875,
+            "y": 578.1445922851562,
+            "width": 335.40625,
+            "height": 41
+          },
+          "outside": false
+        },
+        {
+          "text": "地形据 LROC NAC / WAC 数据。金色范围框、公里网格与扫描为辅助示意，非实时遥测。",
+          "rect": {
+            "x": 27.296875,
+            "y": 629.1445922851562,
+            "width": 335.40625,
+            "height": 13.296875
+          },
+          "outside": false
+        }
+      ]
+    },
+    {
+      "storyProgress": 38,
+      "scrollProgress": 0.49090909090909096,
+      "engine": "three.js r186",
+      "surveyWeight": "0.8033284544621754",
+      "polarLayer": "LOLA-PSR-area-over-1km2",
+      "polarWeight": "0",
+      "gpuTextures": "26",
+      "altitude": "10931.168",
+      "flightProgress": "0.37995480026301104",
+      "cameraPosition": "0.00000,10897.82475,96.48589",
+      "cameraQuaternion": "0.86797912,0.00000079,-0.00000045,-0.49660070",
+      "geographicSite": "20.317965903575143,30.373863256808953",
+      "planetCount": "1",
+      "sceneCameras": "1",
+      "aboveTerrain": "true",
+      "surface": "ready",
+      "surfaceBytes": "44272421",
+      "horizontalOverflow": false,
+      "text": [
+        {
+          "text": "02 — THE LUNAR ARCHIVE",
+          "rect": {
+            "x": 27.296875,
+            "y": 371.3341369628906,
+            "width": 335.40625,
+            "height": 11.1875
+          },
+          "outside": false
+        },
+        {
+          "text": "THE LONGRECORD.",
+          "rect": {
+            "x": 27.296875,
+            "y": 394.5216369628906,
+            "width": 335.40625,
+            "height": 83.15625
+          },
+          "outside": false
+        },
+        {
+          "text": "一道坑缘，叠着另一道。",
+          "rect": {
+            "x": 27.296875,
+            "y": 489.6778869628906,
+            "width": 335.40625,
+            "height": 18
+          },
+          "outside": false
+        },
+        {
+          "text": "新痕落在旧痕上。漫长的年月，留在起伏之间。",
+          "rect": {
+            "x": 27.296875,
+            "y": 517.6778564453125,
+            "width": 335.40625,
+            "height": 38
+          },
+          "outside": false
+        },
+        {
+          "text": "20 km设计悬停高度 · 相对落点4.7 × 12 kmNAC 高程覆盖范围",
+          "rect": {
+            "x": 27.296875,
+            "y": 569.6778564453125,
+            "width": 335.40625,
+            "height": 41
+          },
+          "outside": false
+        },
+        {
+          "text": "地形据 LROC NAC / WAC 数据。金色范围框、公里网格与扫描为辅助示意，非实时遥测。",
+          "rect": {
+            "x": 27.296875,
+            "y": 620.6778564453125,
+            "width": 335.40625,
+            "height": 13.296875
+          },
+          "outside": false
+        }
+      ]
+    },
+    {
+      "storyProgress": 40,
+      "scrollProgress": 0.5431818181818183,
+      "engine": "three.js r186",
+      "surveyWeight": "0.056707007016862154",
+      "polarLayer": "LOLA-PSR-area-over-1km2",
+      "polarWeight": "0",
+      "gpuTextures": "26",
+      "altitude": "2403.564",
+      "flightProgress": "0.399937752442934",
+      "cameraPosition": "0.00000,2370.22117,96.01469",
+      "cameraQuaternion": "-0.76986249,-0.00000320,0.00000266,0.63820980",
+      "geographicSite": "20.317965903575143,30.373863256808953",
+      "planetCount": "1",
+      "sceneCameras": "1",
+      "aboveTerrain": "true",
+      "surface": "ready",
+      "surfaceBytes": "44272421",
+      "horizontalOverflow": false,
+      "text": []
+    },
+    {
+      "storyProgress": 48,
+      "scrollProgress": 0.6666666666666667,
+      "engine": "three.js r186",
+      "surveyWeight": "0",
+      "polarLayer": "LOLA-PSR-area-over-1km2",
+      "polarWeight": "0",
+      "gpuTextures": "28",
+      "altitude": "5.230",
+      "flightProgress": "0.47998884421209564",
+      "cameraPosition": "0.00000,-28.11262,95.88217",
+      "cameraQuaternion": "-0.19247877,-0.07161701,0.00672686,0.97866117",
+      "geographicSite": "20.317965903575143,30.373863256808953",
+      "planetCount": "1",
+      "sceneCameras": "1",
+      "aboveTerrain": "true",
+      "surface": "ready",
+      "surfaceBytes": "44272421",
+      "horizontalOverflow": false,
+      "text": [
+        {
+          "text": "03 — TAURUS–LITTROW / 2.1 M",
+          "rect": {
+            "x": 27.296875,
+            "y": 165.22474670410156,
+            "width": 335.40625,
+            "height": 11.1875
+          },
+          "outside": false
+        },
+        {
+          "text": "A SMALLBLUE LIGHT.",
+          "rect": {
+            "x": 27.296875,
+            "y": 196.41224670410156,
+            "width": 335.40625,
+            "height": 91.06248474121094
+          },
+          "outside": false
+        },
+        {
+          "text": "地平线那边，地球只有这么大。",
+          "rect": {
+            "x": 27.296875,
+            "y": 307.4747314453125,
+            "width": 240,
+            "height": 19.796875
+          },
+          "outside": false
+        },
+        {
+          "text": "0.6 m / pxNAC 正射影像 · 源分辨率2 m / postNAC 立体高程 · 源采样间距",
+          "rect": {
+            "x": 27.296875,
+            "y": 606.7716064453125,
+            "width": 224.4375,
+            "height": 48
+          },
+          "outside": false
+        },
+        {
+          "text": "TAURUS–LITTROW / WEST月面以上 2.1 米 · 设计眼高",
+          "rect": {
+            "x": 255.78125,
+            "y": 671.4122314453125,
+            "width": 106.921875,
+            "height": 28
+          },
+          "outside": false
+        },
+        {
+          "text": "地球方位为艺术构图 · 近景碎石为程序生成",
+          "rect": {
+            "x": 250.3125,
+            "y": 716.7247314453125,
+            "width": 112.390625,
+            "height": 8
+          },
+          "outside": false
+        }
+      ]
+    },
+    {
+      "storyProgress": 52,
+      "scrollProgress": 0.7090909090909091,
+      "engine": "three.js r186",
+      "surveyWeight": "0",
+      "polarLayer": "LOLA-PSR-area-over-1km2",
+      "polarWeight": "0",
+      "gpuTextures": "29",
+      "altitude": "2.100",
+      "flightProgress": "0.5199542718547452",
+      "cameraPosition": "0.00000,-31.24298,95.88200",
+      "cameraQuaternion": "0.08681645,-0.09816187,0.00859657,0.99133912",
+      "geographicSite": "20.317965903575143,30.373863256808953",
+      "planetCount": "1",
+      "sceneCameras": "1",
+      "aboveTerrain": "true",
+      "surface": "ready",
+      "surfaceBytes": "44272421",
+      "horizontalOverflow": false,
+      "text": [
+        {
+          "text": "03 — TAURUS–LITTROW / 2.1 M",
+          "rect": {
+            "x": 27.296875,
+            "y": 155.5489044189453,
+            "width": 335.40625,
+            "height": 11.1875
+          },
+          "outside": false
+        },
+        {
+          "text": "A SMALLBLUE LIGHT.",
+          "rect": {
+            "x": 27.296875,
+            "y": 186.7364044189453,
+            "width": 335.40625,
+            "height": 91.06248474121094
+          },
+          "outside": false
+        },
+        {
+          "text": "地平线那边，地球只有这么大。",
+          "rect": {
+            "x": 27.296875,
+            "y": 297.79888916015625,
+            "width": 240,
+            "height": 19.796875
+          },
+          "outside": false
+        },
+        {
+          "text": "0.6 m / pxNAC 正射影像 · 源分辨率2 m / postNAC 立体高程 · 源采样间距",
+          "rect": {
+            "x": 27.296875,
+            "y": 597.0957641601562,
+            "width": 224.4375,
+            "height": 48
+          },
+          "outside": false
+        },
+        {
+          "text": "TAURUS–LITTROW / WEST月面以上 2.1 米 · 设计眼高",
+          "rect": {
+            "x": 255.78125,
+            "y": 661.7363891601562,
+            "width": 106.921875,
+            "height": 28
+          },
+          "outside": false
+        },
+        {
+          "text": "地球方位为艺术构图 · 近景碎石为程序生成",
+          "rect": {
+            "x": 250.3125,
+            "y": 707.0488891601562,
+            "width": 112.390625,
+            "height": 8
+          },
+          "outside": false
+        }
+      ]
+    },
+    {
+      "storyProgress": 53.5,
+      "scrollProgress": 0.7181818181818183,
+      "engine": "three.js r186",
+      "surveyWeight": "0",
+      "polarLayer": "LOLA-PSR-area-over-1km2",
+      "polarWeight": "0",
+      "gpuTextures": "29",
+      "altitude": "2.100",
+      "flightProgress": "0.5349329842150227",
+      "cameraPosition": "0.00000,-31.24298,95.88200",
+      "cameraQuaternion": "0.08681693,-0.09816191,0.00859657,0.99133907",
+      "geographicSite": "20.317965903575143,30.373863256808953",
+      "planetCount": "1",
+      "sceneCameras": "1",
+      "aboveTerrain": "true",
+      "surface": "ready",
+      "surfaceBytes": "44272421",
+      "horizontalOverflow": false,
+      "text": [
+        {
+          "text": "03 — TAURUS–LITTROW / 2.1 M",
+          "rect": {
+            "x": 27.296875,
+            "y": 151.92247009277344,
+            "width": 335.40625,
+            "height": 11.1875
+          },
+          "outside": false
+        },
+        {
+          "text": "A SMALLBLUE LIGHT.",
+          "rect": {
+            "x": 27.296875,
+            "y": 183.10997009277344,
+            "width": 335.40625,
+            "height": 91.06251525878906
+          },
+          "outside": false
+        },
+        {
+          "text": "地平线那边，地球只有这么大。",
+          "rect": {
+            "x": 27.296875,
+            "y": 294.1724853515625,
+            "width": 240,
+            "height": 19.796875
+          },
+          "outside": false
+        },
+        {
+          "text": "0.6 m / pxNAC 正射影像 · 源分辨率2 m / postNAC 立体高程 · 源采样间距",
+          "rect": {
+            "x": 27.296875,
+            "y": 593.4693603515625,
+            "width": 224.4375,
+            "height": 48
+          },
+          "outside": false
+        },
+        {
+          "text": "TAURUS–LITTROW / WEST月面以上 2.1 米 · 设计眼高",
+          "rect": {
+            "x": 255.78125,
+            "y": 658.1099853515625,
+            "width": 106.921875,
+            "height": 28
+          },
+          "outside": false
+        },
+        {
+          "text": "地球方位为艺术构图 · 近景碎石为程序生成",
+          "rect": {
+            "x": 250.3125,
+            "y": 703.4224853515625,
+            "width": 112.390625,
+            "height": 8
+          },
+          "outside": false
+        }
+      ]
+    },
+    {
+      "storyProgress": 56,
+      "scrollProgress": 0.7333333333333334,
+      "engine": "three.js r186",
+      "surveyWeight": "0",
+      "polarLayer": "LOLA-PSR-area-over-1km2",
+      "polarWeight": "0",
+      "gpuTextures": "29",
+      "altitude": "2.100",
+      "flightProgress": "0.5599563309764415",
+      "cameraPosition": "0.00000,-31.24298,95.88200",
+      "cameraQuaternion": "0.08681693,-0.09816191,0.00859657,0.99133907",
+      "geographicSite": "20.317965903575143,30.373863256808953",
+      "planetCount": "1",
+      "sceneCameras": "1",
+      "aboveTerrain": "true",
+      "surface": "ready",
+      "surfaceBytes": "44272421",
+      "horizontalOverflow": false,
+      "text": [
+        {
+          "text": "03 — TAURUS–LITTROW / 2.1 M",
+          "rect": {
+            "x": 27.296875,
+            "y": 143.98907470703125,
+            "width": 335.40625,
+            "height": 11.1875
+          },
+          "outside": false
+        },
+        {
+          "text": "A SMALLBLUE LIGHT.",
+          "rect": {
+            "x": 27.296875,
+            "y": 175.17657470703125,
+            "width": 335.40625,
+            "height": 91.0625
+          },
+          "outside": false
+        },
+        {
+          "text": "地平线那边，地球只有这么大。",
+          "rect": {
+            "x": 27.296875,
+            "y": 286.23907470703125,
+            "width": 240,
+            "height": 19.796875
+          },
+          "outside": false
+        },
+        {
+          "text": "0.6 m / pxNAC 正射影像 · 源分辨率2 m / postNAC 立体高程 · 源采样间距",
+          "rect": {
+            "x": 27.296875,
+            "y": 585.5359497070312,
+            "width": 224.4375,
+            "height": 48
+          },
+          "outside": false
+        },
+        {
+          "text": "TAURUS–LITTROW / WEST月面以上 2.1 米 · 设计眼高",
+          "rect": {
+            "x": 255.78125,
+            "y": 650.1765747070312,
+            "width": 106.921875,
+            "height": 28
+          },
+          "outside": false
+        },
+        {
+          "text": "地球方位为艺术构图 · 近景碎石为程序生成",
+          "rect": {
+            "x": 250.3125,
+            "y": 695.4890747070312,
+            "width": 112.390625,
+            "height": 8
+          },
+          "outside": false
+        }
+      ]
+    },
+    {
+      "storyProgress": 60,
+      "scrollProgress": 0.7575757575757575,
+      "engine": "three.js r186",
+      "surveyWeight": "0",
+      "polarLayer": "LOLA-PSR-area-over-1km2",
+      "polarWeight": "0",
+      "gpuTextures": "29",
+      "altitude": "459.956",
+      "flightProgress": "0.5999291274252888",
+      "cameraPosition": "0.00000,426.61288,95.90730",
+      "cameraQuaternion": "-0.68501259,-0.00395909,0.00036038,0.72852038",
+      "geographicSite": "20.317965903575143,30.373863256808953",
+      "planetCount": "1",
+      "sceneCameras": "1",
+      "aboveTerrain": "true",
+      "surface": "ready",
+      "surfaceBytes": "44272421",
+      "horizontalOverflow": false,
+      "text": []
+    },
+    {
+      "storyProgress": 66,
+      "scrollProgress": 0.7939393939393938,
+      "engine": "three.js r186",
+      "surveyWeight": "0",
+      "polarLayer": "LOLA-PSR-area-over-1km2",
+      "polarWeight": "0.6454526327350165",
+      "gpuTextures": "29",
+      "altitude": "1820990.866",
+      "flightProgress": "0.6599116144641748",
+      "cameraPosition": "-1084655.93145,-1505902.49317,3379029.06307",
+      "cameraQuaternion": "0.02429546,-0.35932701,0.80288808,0.47504165",
+      "geographicSite": "20.317965903575143,30.373863256808953",
+      "planetCount": "1",
+      "sceneCameras": "1",
+      "aboveTerrain": "true",
+      "surface": "ready",
+      "surfaceBytes": "44272421",
+      "horizontalOverflow": false,
+      "text": [
+        {
+          "text": "04 — THE SOUTH POLE",
+          "rect": {
+            "x": 27.296875,
+            "y": 377.73223876953125,
+            "width": 335.40625,
+            "height": 11.1875
+          },
+          "outside": false
+        },
+        {
+          "text": "SUNLESSGROUND.",
+          "rect": {
+            "x": 27.296875,
+            "y": 402.91973876953125,
+            "width": 335.40625,
+            "height": 89.5625
+          },
+          "outside": false
+        },
+        {
+          "text": "坑底，日光长久缺席。",
+          "rect": {
+            "x": 27.296875,
+            "y": 508.48223876953125,
+            "width": 335.40625,
+            "height": 21
+          },
+          "outside": false
+        },
+        {
+          "text": "低斜的太阳，越不过坑壁。有些寒冷，或能留住水冰。",
+          "rect": {
+            "x": 27.296875,
+            "y": 539.4822387695312,
+            "width": 335.40625,
+            "height": 41.78125
+          },
+          "outside": false
+        },
+        {
+          "text": "边界据 NASA LOLA 推导，仅含面积大于 1 km² 的永久阴影区。底图为模拟晕渲；青蓝配色与边界强调为艺术处理。永久阴影不等于实测水冰；此图非模型预测。",
+          "rect": {
+            "x": 27.296875,
+            "y": 639.2634887695312,
+            "width": 335.40625,
+            "height": 40.78125
+          },
+          "outside": false
+        }
+      ]
+    },
+    {
+      "storyProgress": 68,
+      "scrollProgress": 0.806060606060606,
+      "engine": "three.js r186",
+      "surveyWeight": "0",
+      "polarLayer": "LOLA-PSR-area-over-1km2",
+      "polarWeight": "1",
+      "gpuTextures": "29",
+      "altitude": "14142736.469",
+      "flightProgress": "0.6800537561120009",
+      "cameraPosition": "-3508820.74689,-12707686.92823,10930395.34581",
+      "cameraQuaternion": "0.09645560,-0.43278499,0.68060838,0.58323726",
+      "geographicSite": "20.317965903575143,30.373863256808953",
+      "planetCount": "1",
+      "sceneCameras": "1",
+      "aboveTerrain": "true",
+      "surface": "ready",
+      "surfaceBytes": "44272421",
+      "horizontalOverflow": false,
+      "text": [
+        {
+          "text": "04 — THE SOUTH POLE",
+          "rect": {
+            "x": 27.296875,
+            "y": 371.34393310546875,
+            "width": 335.40625,
+            "height": 11.1875
+          },
+          "outside": false
+        },
+        {
+          "text": "SUNLESSGROUND.",
+          "rect": {
+            "x": 27.296875,
+            "y": 396.53143310546875,
+            "width": 335.40625,
+            "height": 89.5625
+          },
+          "outside": false
+        },
+        {
+          "text": "坑底，日光长久缺席。",
+          "rect": {
+            "x": 27.296875,
+            "y": 502.09393310546875,
+            "width": 335.40625,
+            "height": 21
+          },
+          "outside": false
+        },
+        {
+          "text": "低斜的太阳，越不过坑壁。有些寒冷，或能留住水冰。",
+          "rect": {
+            "x": 27.296875,
+            "y": 533.0939331054688,
+            "width": 335.40625,
+            "height": 41.78125
+          },
+          "outside": false
+        },
+        {
+          "text": "边界据 NASA LOLA 推导，仅含面积大于 1 km² 的永久阴影区。底图为模拟晕渲；青蓝配色与边界强调为艺术处理。永久阴影不等于实测水冰；此图非模型预测。",
+          "rect": {
+            "x": 27.296875,
+            "y": 632.8751831054688,
+            "width": 335.40625,
+            "height": 40.78125
+          },
+          "outside": false
+        }
+      ]
+    },
+    {
+      "storyProgress": 72.5,
+      "scrollProgress": 0.8333333333333333,
+      "engine": "three.js r186",
+      "surveyWeight": "0",
+      "polarLayer": "LOLA-PSR-area-over-1km2",
+      "polarWeight": "1",
+      "gpuTextures": "20",
+      "altitude": "1666782.257",
+      "flightProgress": "0.7249360673793954",
+      "cameraPosition": "-365965.35635,-3421389.12104,2934555.37342",
+      "cameraQuaternion": "0.20177487,-0.21776833,0.22062178,0.92908013",
+      "geographicSite": "20.317965903575143,30.373863256808953",
+      "planetCount": "1",
+      "sceneCameras": "1",
+      "aboveTerrain": "true",
+      "surface": "unloaded",
+      "surfaceBytes": "0",
+      "horizontalOverflow": false,
+      "text": [
+        {
+          "text": "04 — THE SOUTH POLE",
+          "rect": {
+            "x": 27.296875,
+            "y": 358.44024658203125,
+            "width": 335.40625,
+            "height": 11.1875
+          },
+          "outside": false
+        },
+        {
+          "text": "SUNLESSGROUND.",
+          "rect": {
+            "x": 27.296875,
+            "y": 383.62774658203125,
+            "width": 335.40625,
+            "height": 89.5625
+          },
+          "outside": false
+        },
+        {
+          "text": "坑底，日光长久缺席。",
+          "rect": {
+            "x": 27.296875,
+            "y": 489.19024658203125,
+            "width": 335.40625,
+            "height": 21
+          },
+          "outside": false
+        },
+        {
+          "text": "低斜的太阳，越不过坑壁。有些寒冷，或能留住水冰。",
+          "rect": {
+            "x": 27.296875,
+            "y": 520.1902465820312,
+            "width": 335.40625,
+            "height": 41.78125
+          },
+          "outside": false
+        },
+        {
+          "text": "边界据 NASA LOLA 推导，仅含面积大于 1 km² 的永久阴影区。底图为模拟晕渲；青蓝配色与边界强调为艺术处理。永久阴影不等于实测水冰；此图非模型预测。",
+          "rect": {
+            "x": 27.296875,
+            "y": 619.9714965820312,
+            "width": 335.40625,
+            "height": 40.78125
+          },
+          "outside": false
+        }
+      ]
+    },
+    {
+      "storyProgress": 74,
+      "scrollProgress": 0.8424242424242424,
+      "engine": "three.js r186",
+      "surveyWeight": "0",
+      "polarLayer": "LOLA-PSR-area-over-1km2",
+      "polarWeight": "1",
+      "gpuTextures": "20",
+      "altitude": "1666750.226",
+      "flightProgress": "0.7399084606819151",
+      "cameraPosition": "-365954.57379,-3421367.18495,2934532.16485",
+      "cameraQuaternion": "0.20177332,-0.21776390,0.22061844,0.92908230",
+      "geographicSite": "20.317965903575143,30.373863256808953",
+      "planetCount": "1",
+      "sceneCameras": "1",
+      "aboveTerrain": "true",
+      "surface": "unloaded",
+      "surfaceBytes": "0",
+      "horizontalOverflow": false,
+      "text": [
+        {
+          "text": "04 — THE SOUTH POLE",
+          "rect": {
+            "x": 27.296875,
+            "y": 354.13568115234375,
+            "width": 335.40625,
+            "height": 11.1875
+          },
+          "outside": false
+        },
+        {
+          "text": "SUNLESSGROUND.",
+          "rect": {
+            "x": 27.296875,
+            "y": 379.32318115234375,
+            "width": 335.40625,
+            "height": 89.5625
+          },
+          "outside": false
+        },
+        {
+          "text": "坑底，日光长久缺席。",
+          "rect": {
+            "x": 27.296875,
+            "y": 484.88568115234375,
+            "width": 335.40625,
+            "height": 21
+          },
+          "outside": false
+        },
+        {
+          "text": "低斜的太阳，越不过坑壁。有些寒冷，或能留住水冰。",
+          "rect": {
+            "x": 27.296875,
+            "y": 515.8856811523438,
+            "width": 335.40625,
+            "height": 41.78125
+          },
+          "outside": false
+        },
+        {
+          "text": "边界据 NASA LOLA 推导，仅含面积大于 1 km² 的永久阴影区。底图为模拟晕渲；青蓝配色与边界强调为艺术处理。永久阴影不等于实测水冰；此图非模型预测。",
+          "rect": {
+            "x": 27.296875,
+            "y": 615.6669311523438,
+            "width": 335.40625,
+            "height": 40.78125
+          },
+          "outside": false
+        }
+      ]
+    },
+    {
+      "storyProgress": 76,
+      "scrollProgress": 0.8545454545454545,
+      "engine": "three.js r186",
+      "surveyWeight": "0",
+      "polarLayer": "LOLA-PSR-area-over-1km2",
+      "polarWeight": "0.9871926708045861",
+      "gpuTextures": "20",
+      "altitude": "1721085.996",
+      "flightProgress": "0.7600133605717305",
+      "cameraPosition": "-392159.17641,-3467632.74415,2967548.65181",
+      "cameraQuaternion": "0.20662253,-0.22605982,0.22726952,0.92442017",
+      "geographicSite": "20.317965903575143,30.373863256808953",
+      "planetCount": "1",
+      "sceneCameras": "1",
+      "aboveTerrain": "true",
+      "surface": "unloaded",
+      "surfaceBytes": "0",
+      "horizontalOverflow": false,
+      "text": []
+    },
+    {
+      "storyProgress": 80,
+      "scrollProgress": 0.8787878787878788,
+      "engine": "three.js r186",
+      "surveyWeight": "0",
+      "polarLayer": "LOLA-PSR-area-over-1km2",
+      "polarWeight": "0.3543084642931099",
+      "gpuTextures": "20",
+      "altitude": "6390589.544",
+      "flightProgress": "0.7998798472602185",
+      "cameraPosition": "-2822855.90219,-8820918.93951,2808850.68546",
+      "cameraQuaternion": "-0.17422880,0.64179833,-0.56896003,-0.48375998",
+      "geographicSite": "20.317965903575143,30.373863256808953",
+      "planetCount": "1",
+      "sceneCameras": "1",
+      "aboveTerrain": "true",
+      "surface": "unloaded",
+      "surfaceBytes": "0",
+      "horizontalOverflow": false,
+      "text": [
+        {
+          "text": "05 — NASA–IBM / LUNAR FM",
+          "rect": {
+            "x": 27.296875,
+            "y": 382.8939208984375,
+            "width": 335.40625,
+            "height": 11.1875
+          },
+          "outside": false
+        },
+        {
+          "text": "IN THESAME FRAME.",
+          "rect": {
+            "x": 27.296875,
+            "y": 408.0814208984375,
+            "width": 335.40625,
+            "height": 89.5625
+          },
+          "outside": false
+        },
+        {
+          "text": "同一处月面，留下不同的读数。",
+          "rect": {
+            "x": 27.296875,
+            "y": 513.6439208984375,
+            "width": 335.40625,
+            "height": 21
+          },
+          "outside": false
+        },
+        {
+          "text": "影像、高程、温度与重力。不同任务的记录，汇入同一个模型。",
+          "rect": {
+            "x": 27.296875,
+            "y": 544.6439208984375,
+            "width": 335.40625,
+            "height": 38
+          },
+          "outside": false
+        },
+        {
+          "text": "1.96M预训练切片包（约）SOMBENCH PRETRAINING CORPUS",
+          "rect": {
+            "x": 27.296875,
+            "y": 595.6439208984375,
+            "width": 335.40625,
+            "height": 44
+          },
+          "outside": false
+        },
+        {
+          "text": "影像 / OPTICAL高程 / TERRAIN热红外 / THERMAL重力 / GRAVITY",
+          "rect": {
+            "x": 27.296875,
+            "y": 649.6439208984375,
+            "width": 335.40625,
+            "height": 20
+          },
+          "outside": false
+        }
+      ]
+    },
+    {
+      "storyProgress": 84,
+      "scrollProgress": 0.9030303030303031,
+      "engine": "three.js r186",
+      "surveyWeight": "0",
+      "polarLayer": "LOLA-PSR-area-over-1km2",
+      "polarWeight": "0",
+      "gpuTextures": "20",
+      "altitude": "15426881.348",
+      "flightProgress": "0.8400016454064269",
+      "cameraPosition": "-4768260.00298,-16826062.95859,-6644169.99385",
+      "cameraQuaternion": "0.12888985,0.86476489,-0.47815229,-0.08330352",
+      "geographicSite": "20.317965903575143,30.373863256808953",
+      "planetCount": "1",
+      "sceneCameras": "1",
+      "aboveTerrain": "true",
+      "surface": "unloaded",
+      "surfaceBytes": "0",
+      "horizontalOverflow": false,
+      "text": [
+        {
+          "text": "05 — NASA–IBM / LUNAR FM",
+          "rect": {
+            "x": 27.296875,
+            "y": 371.3589172363281,
+            "width": 335.40625,
+            "height": 11.1875
+          },
+          "outside": false
+        },
+        {
+          "text": "IN THESAME FRAME.",
+          "rect": {
+            "x": 27.296875,
+            "y": 396.5464172363281,
+            "width": 335.40625,
+            "height": 89.5625
+          },
+          "outside": false
+        },
+        {
+          "text": "同一处月面，留下不同的读数。",
+          "rect": {
+            "x": 27.296875,
+            "y": 502.1089172363281,
+            "width": 335.40625,
+            "height": 20.999969482421875
+          },
+          "outside": false
+        },
+        {
+          "text": "影像、高程、温度与重力。不同任务的记录，汇入同一个模型。",
+          "rect": {
+            "x": 27.296875,
+            "y": 533.10888671875,
+            "width": 335.40625,
+            "height": 38
+          },
+          "outside": false
+        },
+        {
+          "text": "1.96M预训练切片包（约）SOMBENCH PRETRAINING CORPUS",
+          "rect": {
+            "x": 27.296875,
+            "y": 584.10888671875,
+            "width": 335.40625,
+            "height": 44
+          },
+          "outside": false
+        },
+        {
+          "text": "影像 / OPTICAL高程 / TERRAIN热红外 / THERMAL重力 / GRAVITY",
+          "rect": {
+            "x": 27.296875,
+            "y": 638.10888671875,
+            "width": 335.40625,
+            "height": 20
+          },
+          "outside": false
+        }
+      ]
+    },
+    {
+      "storyProgress": 88,
+      "scrollProgress": 0.9272727272727274,
+      "engine": "three.js r186",
+      "surveyWeight": "0",
+      "polarLayer": "LOLA-PSR-area-over-1km2",
+      "polarWeight": "0",
+      "gpuTextures": "20",
+      "altitude": "15737125.256",
+      "flightProgress": "0.8799942411208503",
+      "cameraPosition": "-2105206.52110,-17879238.89135,-6348246.79121",
+      "cameraQuaternion": "0.07185802,0.85880497,-0.50661315,-0.02517087",
+      "geographicSite": "20.317965903575143,30.373863256808953",
+      "planetCount": "1",
+      "sceneCameras": "1",
+      "aboveTerrain": "true",
+      "surface": "unloaded",
+      "surfaceBytes": "0",
+      "horizontalOverflow": false,
+      "text": [
+        {
+          "text": "05 — NASA–IBM / LUNAR FM",
+          "rect": {
+            "x": 27.296875,
+            "y": 359.86102294921875,
+            "width": 335.40625,
+            "height": 11.1875
+          },
+          "outside": false
+        },
+        {
+          "text": "IN THESAME FRAME.",
+          "rect": {
+            "x": 27.296875,
+            "y": 385.04852294921875,
+            "width": 335.40625,
+            "height": 89.5625
+          },
+          "outside": false
+        },
+        {
+          "text": "同一处月面，留下不同的读数。",
+          "rect": {
+            "x": 27.296875,
+            "y": 490.61102294921875,
+            "width": 335.40625,
+            "height": 21
+          },
+          "outside": false
+        },
+        {
+          "text": "影像、高程、温度与重力。不同任务的记录，汇入同一个模型。",
+          "rect": {
+            "x": 27.296875,
+            "y": 521.6110229492188,
+            "width": 335.40625,
+            "height": 38
+          },
+          "outside": false
+        },
+        {
+          "text": "1.96M预训练切片包（约）SOMBENCH PRETRAINING CORPUS",
+          "rect": {
+            "x": 27.296875,
+            "y": 572.6110229492188,
+            "width": 335.40625,
+            "height": 44
+          },
+          "outside": false
+        },
+        {
+          "text": "影像 / OPTICAL高程 / TERRAIN热红外 / THERMAL重力 / GRAVITY",
+          "rect": {
+            "x": 27.296875,
+            "y": 626.6110229492188,
+            "width": 335.40625,
+            "height": 20
+          },
+          "outside": false
+        }
+      ]
+    },
+    {
+      "storyProgress": 92,
+      "scrollProgress": 0.9515151515151516,
+      "engine": "three.js r186",
+      "surveyWeight": "0",
+      "polarLayer": "LOLA-PSR-area-over-1km2",
+      "polarWeight": "0",
+      "gpuTextures": "20",
+      "altitude": "16453548.929",
+      "flightProgress": "0.9199816769376611",
+      "cameraPosition": "4222639.55647,-18694648.75856,-5045818.33201",
+      "cameraQuaternion": "-0.04859958,0.82185989,-0.55720810,0.10818284",
+      "geographicSite": "20.317965903575143,30.373863256808953",
+      "planetCount": "1",
+      "sceneCameras": "1",
+      "aboveTerrain": "true",
+      "surface": "unloaded",
+      "surfaceBytes": "0",
+      "horizontalOverflow": false,
+      "text": []
+    },
+    {
+      "storyProgress": 96,
+      "scrollProgress": 0.9757575757575757,
+      "engine": "three.js r186",
+      "surveyWeight": "0",
+      "polarLayer": "LOLA-PSR-area-over-1km2",
+      "polarWeight": "0",
+      "gpuTextures": "20",
+      "altitude": "17212502.628",
+      "flightProgress": "0.9599691106402561",
+      "cameraPosition": "10530575.82441,-17208496.77018,-2964090.36272",
+      "cameraQuaternion": "-0.15912938,0.75479246,-0.58737556,0.24485941",
+      "geographicSite": "20.317965903575143,30.373863256808953",
+      "planetCount": "1",
+      "sceneCameras": "1",
+      "aboveTerrain": "true",
+      "surface": "unloaded",
+      "surfaceBytes": "0",
+      "horizontalOverflow": false,
+      "text": [
+        {
+          "text": "06 — BACK TO THE NIGHT",
+          "rect": {
+            "x": 27.296875,
+            "y": 171.86825561523438,
+            "width": 335.40625,
+            "height": 11.1875
+          },
+          "outside": false
+        },
+        {
+          "text": "UNDERTHIS MOON.",
+          "rect": {
+            "x": 27.296875,
+            "y": 201.05575561523438,
+            "width": 335.40625,
+            "height": 83.4375
+          },
+          "outside": false
+        },
+        {
+          "text": "再抬头时，记得那些山谷。",
+          "rect": {
+            "x": 27.296875,
+            "y": 537.6807861328125,
+            "width": 335.40625,
+            "height": 21
+          },
+          "outside": false
+        },
+        {
+          "text": "它们仍在今晚的月光里。",
+          "rect": {
+            "x": 27.296875,
+            "y": 568.6807861328125,
+            "width": 335.40625,
+            "height": 20.890625
+          },
+          "outside": false
+        },
+        {
+          "text": "查看模型档案 回到开场 ↺",
+          "rect": {
+            "x": 27.296875,
+            "y": 608.5714111328125,
+            "width": 335.40625,
+            "height": 40
+          },
+          "outside": false
+        },
+        {
+          "text": "观测来自远方，数据留在这里。",
+          "rect": {
+            "x": 27.296875,
+            "y": 665.5714111328125,
+            "width": 335.40625,
+            "height": 11
+          },
+          "outside": false
+        }
+      ]
+    },
+    {
+      "storyProgress": 100,
+      "scrollProgress": 1,
+      "engine": "three.js r186",
+      "surveyWeight": "0",
+      "polarLayer": "LOLA-PSR-area-over-1km2",
+      "polarWeight": "0",
+      "gpuTextures": "20",
+      "altitude": "17570693.207",
+      "flightProgress": "0.9999686019692418",
+      "cameraPosition": "13155968.69785,-15749441.67273,-1823914.50486",
+      "cameraQuaternion": "-0.20525539,0.71545449,-0.59322799,0.30671753",
+      "geographicSite": "20.317965903575143,30.373863256808953",
+      "planetCount": "1",
+      "sceneCameras": "1",
+      "aboveTerrain": "true",
+      "surface": "unloaded",
+      "surfaceBytes": "0",
+      "horizontalOverflow": false,
+      "text": [
+        {
+          "text": "06 — BACK TO THE NIGHT",
+          "rect": {
+            "x": 27.296875,
+            "y": 160.368408203125,
+            "width": 335.40625,
+            "height": 11.1875
+          },
+          "outside": false
+        },
+        {
+          "text": "UNDERTHIS MOON.",
+          "rect": {
+            "x": 27.296875,
+            "y": 189.555908203125,
+            "width": 335.40625,
+            "height": 83.4375
+          },
+          "outside": false
+        },
+        {
+          "text": "再抬头时，记得那些山谷。",
+          "rect": {
+            "x": 27.296875,
+            "y": 526.180908203125,
+            "width": 335.40625,
+            "height": 21
+          },
+          "outside": false
+        },
+        {
+          "text": "它们仍在今晚的月光里。",
+          "rect": {
+            "x": 27.296875,
+            "y": 557.180908203125,
+            "width": 335.40625,
+            "height": 20.890625
+          },
+          "outside": false
+        },
+        {
+          "text": "查看模型档案 回到开场 ↺",
+          "rect": {
+            "x": 27.296875,
+            "y": 597.071533203125,
+            "width": 335.40625,
+            "height": 40
+          },
+          "outside": false
+        },
+        {
+          "text": "观测来自远方，数据留在这里。",
+          "rect": {
+            "x": 27.296875,
+            "y": 654.071533203125,
+            "width": 335.40625,
+            "height": 11
+          },
+          "outside": false
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

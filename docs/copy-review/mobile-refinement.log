@@ -1,0 +1,24 @@
+(node:95081) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+mobile forward 28
+mobile forward 30
+mobile forward 32
+mobile forward 34.5
+mobile forward 38
+mobile forward 40
+mobile forward 76
+mobile forward 80
+mobile forward 84
+mobile forward 88
+mobile forward 92
+mobile reverse 92
+mobile reverse 88
+mobile reverse 84
+mobile reverse 80
+mobile reverse 76
+mobile reverse 40
+mobile reverse 38
+mobile reverse 34.5
+mobile reverse 32
+mobile reverse 30
+mobile reverse 28

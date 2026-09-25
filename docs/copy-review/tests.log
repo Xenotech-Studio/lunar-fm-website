@@ -1,0 +1,27 @@
+
+> lunar-fm-website@1.0.0 test
+> playwright test
+
+(node:95883) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:95913) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 10 tests using 1 worker
+
+(node:95914) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests/flight.spec.ts:6:1 › 同一地理坐标下，连续轨迹没有位置/视线跳变或穿地 (42.4s)
+  ✓   2 tests/journey.spec.ts:4:1 › WebGL、连续滚动、六幕导航与档案弹窗 (1.6m)
+  ✓   3 tests/journey.spec.ts:34:1 › 手机构图与减少动态效果 (34.5s)
+  ✓   4 tests/journey.spec.ts:53:1 › WebGL不可用时仍能阅读和导航 (2.6s)
+  ✓   5 tests/journey.spec.ts:69:1 › 地表按需加载、连续高度、释放与重访 (1.4m)
+  ✓   6 tests/journey.spec.ts:120:1 › 极区科学图层随滚动进入退出，仍为单一月面 (56.8s)
+  ✓   7 tests/journey.spec.ts:144:1 › 档案悬停可逆，扫描随滚动推进，直达月面不落在下降途中 (52.0s)
+  ✓   8 tests/scroll-budget.spec.ts:5:1 › 下降增加滚动距离；其他幕原有像素预算不变；正反映射可逆 (110ms)
+  ✓   9 tests/scroll-budget.spec.ts:12:1 › 触地前缓冲单调减速且无停顿反冲 (3ms)
+  ✓  10 tests/scroll-budget.spec.ts:23:1 › 六幕保持顺序，档案锚点悬停，立于月面锚点已触地 (72ms)
+
+  Slow test file: tests/journey.spec.ts (5.5m)
+  Consider running tests from slow files in parallel. See: https://playwright.dev/docs/test-parallel
+  10 passed (6.2m)

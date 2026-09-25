@@ -1,0 +1,30 @@
+[
+  {
+    "sequence": "docs/copy-review/desktop/forward",
+    "frames": 70,
+    "errors": [],
+    "horizontalOverflowFrames": 0,
+    "outsideTextRects": 0
+  },
+  {
+    "sequence": "docs/copy-review/desktop/reverse",
+    "frames": 70,
+    "errors": [],
+    "horizontalOverflowFrames": 0,
+    "outsideTextRects": 0
+  },
+  {
+    "sequence": "docs/copy-review/mobile/forward",
+    "frames": 24,
+    "errors": [],
+    "horizontalOverflowFrames": 0,
+    "outsideTextRects": 0
+  },
+  {
+    "sequence": "docs/copy-review/mobile/reverse",
+    "frames": 24,
+    "errors": [],
+    "horizontalOverflowFrames": 0,
+    "outsideTextRects": 0
+  }
+]
