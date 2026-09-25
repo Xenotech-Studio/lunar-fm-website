@@ -42,12 +42,19 @@ function orbit(progress:number,mobile:boolean){
 }
 // Monotone Hermite interpolation in log altitude. No overshoot below the terrain,
 // and no repeated stop/start at every keyframe as with independent smoothsteps.
-function curve(xs:number[],ys:number[],p:number){
+function curve(xs:number[],ys:number[],p:number,flatEnds=false){
  let i=0;while(i<xs.length-2&&p>xs[i+1])i++
  const slopes=xs.slice(1).map((x,j)=>(ys[j+1]-ys[j])/(x-xs[j]))
- const tangent=(j:number)=>j===0?slopes[0]:j===ys.length-1?slopes.at(-1)!:slopes[j-1]*slopes[j]<=0?0:2/(1/slopes[j-1]+1/slopes[j])
+ const tangent=(j:number)=>flatEnds&&(j===0||j===ys.length-1)?0:j===0?slopes[0]:j===ys.length-1?slopes.at(-1)!:slopes[j-1]*slopes[j]<=0?0:2/(1/slopes[j-1]+1/slopes[j])
  const h=xs[i+1]-xs[i],t=Math.max(0,Math.min(1,(p-xs[i])/h)),t2=t*t,t3=t2*t
  return (2*t3-3*t2+1)*ys[i]+(t3-2*t2+t)*h*tangent(i)+(-2*t3+3*t2)*ys[i+1]+(t3-t2)*h*tangent(i+1)
+}
+// Raise the gaze as the survey releases, not in the last few metres. This
+// monotone C1 curve keeps the same world-space down / ground orientations.
+export function descentGaze(p:number) {
+ if(p<=.365)return 0
+ if(p>=.455)return 1
+ return curve([.365,.385,.405,.425,.455],[0,.30,.85,.98,1],p,true)
 }
 export function flight(progress:number,mobile:boolean,height:Elevation){
  if(progress<=.20||progress>=.68)return orbit(progress,mobile)
@@ -67,8 +74,18 @@ export function flight(progress:number,mobile:boolean,height:Elevation){
  view.lookAt(landing.clone().add(new T.Vector3((mobile?0:-4500)*surveyWeight(progress)+.02,0,(mobile?8000:0)*surveyWeight(progress)-.1)))
  const down=view.quaternion.clone()
  view.up.set(0,1,0);view.lookAt(position.clone().add(new T.Vector3(.20,.18,-1).normalize()))
- const onGround=smooth((progress-.415)/.105)*(1-smooth((progress-.56)/.045))
- const quaternion=down.clone().slerp(view.quaternion,onGround)
+ const onGround=descentGaze(progress)*(1-smooth((progress-.56)/.045))
+ // Hold one departure bearing while lifting the gaze. Re-evaluating nadir's
+ // offset at every lower altitude would swing the target under the camera.
+ const departure=down.clone()
+ if(progress>=.365&&progress<=.56){
+  const surveyView=new T.PerspectiveCamera()
+  surveyView.position.copy(landing).addScaledVector(radial,20000)
+  surveyView.up.set(0,0,-1)
+  surveyView.lookAt(landing.clone().add(new T.Vector3((mobile?0:-4500)+.02,0,(mobile?8000:0)-.1)))
+  departure.copy(surveyView.quaternion)
+ }
+ const quaternion=departure.slerp(view.quaternion,onGround)
  if(progress<.285)quaternion.copy(start.quaternion).slerp(down,smooth((progress-.20)/.085))
  if(progress>.635)quaternion.slerp(end.quaternion,smooth((progress-.635)/.045))
  const sun=SUN.clone().lerp(new T.Vector3(-.75,.62,.6).normalize(),surveyWeight(progress))

@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { navigationPlan, navigationSample } from './navigation.ts'
 
 export const chapters = [
   { id: 'arrival', position: 0, label: '遥望', code: '01 / OBSERVE' },
@@ -45,8 +46,8 @@ export function scrollToStory(p:number) {
  return (lo+hi)/2
 }
 export function goToChapter(index: number, reduced: boolean) {
-  const range = document.documentElement.scrollHeight - innerHeight
-  window.scrollTo({ top: range * storyToScroll(chapters[index].position), behavior: reduced ? 'instant' : 'smooth' })
+  if (!chapters[index]) return
+  window.dispatchEvent(new CustomEvent('lunar:navigate', { detail: { index, reduced } }))
 }
 
 // Native page scrolling stays accessible. Only the visual playhead is damped.
@@ -55,6 +56,42 @@ export function useScrollDirector(reduced: boolean) {
   const progress = useRef(0)
   useEffect(() => {
     let target = 0, frame = 0, previous = performance.now()
+    let navigation: { plan: ReturnType<typeof navigationPlan>; elapsed: number } | null = null
+    const root = document.documentElement
+    root.dataset.navigation = 'idle'
+    const place = (p:number) => window.scrollTo({top: storyToScroll(p) * Math.max(1, root.scrollHeight-innerHeight), behavior:'instant'})
+    const cancelNavigation = () => {
+      if (!navigation) return
+      navigation = null
+      target = progress.current
+      place(target)
+      root.dataset.navigation = 'idle'
+    }
+    const navigate = (event:Event) => {
+      const {index, reduced: instant} = (event as CustomEvent<{index:number;reduced:boolean}>).detail
+      if (!chapters[index]) return
+      const plan = navigationPlan(progress.current, chapters[index].position)
+      navigation = null
+      root.dataset.navigationDuration = String(plan.duration)
+      root.dataset.navigationFrom = String(plan.from)
+      root.dataset.navigationTo = String(plan.to)
+      root.dataset.navigationElapsed = '0'
+      if (instant || reduced || !plan.duration) {
+        target = plan.to; progress.current = target; place(target)
+        root.dataset.navigation = 'idle'
+      } else {
+        // Start at the visible playhead, including when another click retargets.
+        target = plan.from; place(target)
+        navigation = {plan, elapsed:0}
+        previous = performance.now()
+        root.dataset.navigation = 'running'
+      }
+    }
+    const keyControl = (event:KeyboardEvent) => {
+      if (['ArrowUp','ArrowDown','PageUp','PageDown','Home','End',' ','Escape'].includes(event.key)) cancelNavigation()
+    }
+    const resize = () => { cancelNavigation(); read() }
+    const visibility = () => { previous = performance.now() }
     const read = () => {
       target = scrollToStory(clamp(scrollY / Math.max(1, document.documentElement.scrollHeight - innerHeight)))
     }
@@ -65,8 +102,20 @@ export function useScrollDirector(reduced: boolean) {
     const bar = document.querySelector<HTMLElement>('.progress-fill')
     const counter = document.querySelector<HTMLElement>('[data-counter]')
     const tick = (now: number) => {
-      const dt = Math.min((now - previous) / 1000, 0.05)
+      const elapsed = Math.max(0, now - previous)
+      const dt = Math.min(elapsed / 1000, 0.05)
       previous = now
+      if (navigation) {
+        // Never skip seconds of flight after a hidden tab or a long main-thread stall.
+        navigation.elapsed += Math.min(elapsed, 250)
+        target = navigationSample(navigation.plan, navigation.elapsed)
+        place(target)
+        root.dataset.navigationElapsed = String(Math.min(navigation.elapsed, navigation.plan.duration))
+        if (navigation.elapsed >= navigation.plan.duration) {
+          navigation = null
+          root.dataset.navigation = 'idle'
+        }
+      }
       progress.current += (target - progress.current) * (reduced ? 1 : 1 - Math.exp(-dt * 6.5))
       const p = progress.current
       const nearest = chapters.reduce((best, chapter, i) => Math.abs(p - chapter.position) < Math.abs(p - chapters[best].position) ? i : best, 0)
@@ -94,8 +143,21 @@ export function useScrollDirector(reduced: boolean) {
     }
     frame = requestAnimationFrame(tick)
     addEventListener('scroll', read, { passive: true })
-    addEventListener('resize', read)
-    return () => { cancelAnimationFrame(frame); removeEventListener('scroll', read); removeEventListener('resize', read) }
+    addEventListener('resize', resize)
+    addEventListener('lunar:navigate', navigate)
+    addEventListener('wheel', cancelNavigation, {passive:true})
+    addEventListener('touchstart', cancelNavigation, {passive:true})
+    addEventListener('pointerdown', cancelNavigation, {passive:true})
+    addEventListener('keydown', keyControl)
+    document.addEventListener('visibilitychange', visibility)
+    return () => {
+      cancelAnimationFrame(frame)
+      removeEventListener('scroll', read); removeEventListener('resize', resize)
+      removeEventListener('lunar:navigate', navigate)
+      removeEventListener('wheel', cancelNavigation); removeEventListener('touchstart', cancelNavigation)
+      removeEventListener('pointerdown', cancelNavigation); removeEventListener('keydown', keyControl)
+      document.removeEventListener('visibilitychange', visibility)
+    }
   }, [reduced])
   return progress
 }

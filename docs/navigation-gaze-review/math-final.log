@@ -1,0 +1,17 @@
+(node:98193) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:98228) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:98254) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 2 tests using 1 worker
+
+(node:98256) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/navigation.spec.ts:7:1 › 点击行程单调可逆、长途更慢、端点速度与加速度归零 (308ms)
+{"mobile":false,"rows":[{"p":0.365,"altitude":19999.999999999985,"pitch":-77.3196710434999,"earthY":-5.085339518668193},{"p":0.38,"altitude":10900.27774062118,"pitch":-68.26404169002988,"earthY":-39.723100625230636},{"p":0.39,"altitude":5677.85802880522,"pitch":-46.74140515905303,"earthY":5.827101187002946},{"p":0.4,"altitude":2389.913695491464,"pitch":-14.810756270685289,"earthY":1.564640868789675},{"p":0.41,"altitude":999.9999999999998,"pitch":-0.16205460953754433,"earthY":0.7974524708072415},{"p":0.42,"altitude":474.48975851088045,"pitch":6.606087244350832,"earthY":0.5096262387232289},{"p":0.44,"altitude":110.00000000000004,"pitch":9.45782153541241,"earthY":0.3973094778927376},{"p":0.455,"altitude":29.738875603126957,"pitch":10.006760913335171,"earthY":0.37618688809322876},{"p":0.47,"altitude":9.000000000000002,"pitch":10.006760913335274,"earthY":0.37618699564149016},{"p":0.52,"altitude":2.1,"pitch":10.00676091333527,"earthY":0.3761870314237107},{"p":0.535,"altitude":2.1,"pitch":10.00676091333527,"earthY":0.3761870314237107}]}
+{"mobile":true,"rows":[{"p":0.365,"altitude":19999.999999999985,"pitch":-68.19840083713076,"earthY":-1.15318865304429},{"p":0.38,"altitude":10900.27774062118,"pitch":-86.90726164002146,"earthY":-3.683414681556765},{"p":0.39,"altitude":5677.85802880522,"pitch":-59.20835728865862,"earthY":8.788016873182631},{"p":0.4,"altitude":2389.913695491464,"pitch":-20.04194512185225,"earthY":1.7672442569513853},{"p":0.41,"altitude":999.9999999999998,"pitch":-2.2870318690919205,"earthY":0.8813355862521318},{"p":0.42,"altitude":474.48975851088045,"pitch":5.897592099279287,"earthY":0.5350739316036748},{"p":0.44,"altitude":110.00000000000004,"pitch":9.343586028517286,"earthY":0.4012958607601934},{"p":0.455,"altitude":29.738875603126957,"pitch":10.006760913335174,"earthY":0.37618688809322876},{"p":0.47,"altitude":9.000000000000002,"pitch":10.006760913335276,"earthY":0.37618699564149016},{"p":0.52,"altitude":2.1,"pitch":10.00676091333528,"earthY":0.3761870314237107},{"p":0.535,"altitude":2.1,"pitch":10.00676091333528,"earthY":0.3761870314237107}]}
+  ✓  2 tests/navigation.spec.ts:23:1 › 悬停后提前抬升视线，千米高度地球入画，最后几十米姿态稳定 (6ms)
+
+  2 passed (1.1s)

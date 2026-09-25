@@ -1,0 +1,113 @@
+{
+  "results": [
+    {
+      "name": "01-1-to-2",
+      "from": 0,
+      "to": 1,
+      "plannedMs": 10499.99999301508,
+      "wallMs": 21634,
+      "screenshots": 9,
+      "telemetryFrames": 58
+    },
+    {
+      "name": "02-2-to-3",
+      "from": 1,
+      "to": 2,
+      "plannedMs": 12587.10720789322,
+      "wallMs": 24591,
+      "screenshots": 11,
+      "telemetryFrames": 69
+    },
+    {
+      "name": "03-3-to-4",
+      "from": 2,
+      "to": 3,
+      "plannedMs": 8377.763957314277,
+      "wallMs": 22507,
+      "screenshots": 8,
+      "telemetryFrames": 53
+    },
+    {
+      "name": "04-4-to-5",
+      "from": 3,
+      "to": 4,
+      "plannedMs": 4800.468234191965,
+      "wallMs": 14720,
+      "screenshots": 5,
+      "telemetryFrames": 39
+    },
+    {
+      "name": "05-5-to-6",
+      "from": 4,
+      "to": 5,
+      "plannedMs": 4200.548558873577,
+      "wallMs": 15307,
+      "screenshots": 4,
+      "telemetryFrames": 35
+    },
+    {
+      "name": "06-6-to-5",
+      "from": 5,
+      "to": 4,
+      "plannedMs": 4199.402357227182,
+      "wallMs": 15641,
+      "screenshots": 5,
+      "telemetryFrames": 35
+    },
+    {
+      "name": "07-5-to-4",
+      "from": 4,
+      "to": 3,
+      "plannedMs": 4800.59675339315,
+      "wallMs": 13958,
+      "screenshots": 5,
+      "telemetryFrames": 39
+    },
+    {
+      "name": "08-4-to-3",
+      "from": 3,
+      "to": 2,
+      "plannedMs": 8376.886845979461,
+      "wallMs": 21025,
+      "screenshots": 8,
+      "telemetryFrames": 51
+    },
+    {
+      "name": "09-3-to-2",
+      "from": 2,
+      "to": 1,
+      "plannedMs": 12587.926584436967,
+      "wallMs": 22597,
+      "screenshots": 10,
+      "telemetryFrames": 65
+    },
+    {
+      "name": "10-2-to-1",
+      "from": 1,
+      "to": 0,
+      "plannedMs": 10500.94868257229,
+      "wallMs": 20764,
+      "screenshots": 9,
+      "telemetryFrames": 59
+    },
+    {
+      "name": "11-1-to-3",
+      "from": 0,
+      "to": 2,
+      "plannedMs": 21285.632214132416,
+      "wallMs": 41285,
+      "screenshots": 17,
+      "telemetryFrames": 104
+    },
+    {
+      "name": "12-3-to-1",
+      "from": 2,
+      "to": 0,
+      "plannedMs": 21285.049419227675,
+      "wallMs": 38812,
+      "screenshots": 16,
+      "telemetryFrames": 99
+    }
+  ],
+  "errors": []
+}

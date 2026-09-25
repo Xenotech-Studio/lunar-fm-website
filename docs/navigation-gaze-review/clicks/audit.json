@@ -1,0 +1,110 @@
+[
+  {
+    "name": "01-1-to-2",
+    "frames": 58,
+    "preClickIdleFrames": 2,
+    "screenshots": 9,
+    "reversalsAfterClick": 0,
+    "invalidSceneFrames": 0,
+    "errors": []
+  },
+  {
+    "name": "02-2-to-3",
+    "frames": 69,
+    "preClickIdleFrames": 2,
+    "screenshots": 11,
+    "reversalsAfterClick": 0,
+    "invalidSceneFrames": 0,
+    "errors": []
+  },
+  {
+    "name": "03-3-to-4",
+    "frames": 53,
+    "preClickIdleFrames": 2,
+    "screenshots": 8,
+    "reversalsAfterClick": 0,
+    "invalidSceneFrames": 0,
+    "errors": []
+  },
+  {
+    "name": "04-4-to-5",
+    "frames": 39,
+    "preClickIdleFrames": 2,
+    "screenshots": 5,
+    "reversalsAfterClick": 0,
+    "invalidSceneFrames": 0,
+    "errors": []
+  },
+  {
+    "name": "05-5-to-6",
+    "frames": 35,
+    "preClickIdleFrames": 2,
+    "screenshots": 4,
+    "reversalsAfterClick": 0,
+    "invalidSceneFrames": 0,
+    "errors": []
+  },
+  {
+    "name": "06-6-to-5",
+    "frames": 35,
+    "preClickIdleFrames": 2,
+    "screenshots": 5,
+    "reversalsAfterClick": 0,
+    "invalidSceneFrames": 0,
+    "errors": []
+  },
+  {
+    "name": "07-5-to-4",
+    "frames": 39,
+    "preClickIdleFrames": 2,
+    "screenshots": 5,
+    "reversalsAfterClick": 0,
+    "invalidSceneFrames": 0,
+    "errors": []
+  },
+  {
+    "name": "08-4-to-3",
+    "frames": 51,
+    "preClickIdleFrames": 2,
+    "screenshots": 8,
+    "reversalsAfterClick": 0,
+    "invalidSceneFrames": 0,
+    "errors": []
+  },
+  {
+    "name": "09-3-to-2",
+    "frames": 65,
+    "preClickIdleFrames": 2,
+    "screenshots": 10,
+    "reversalsAfterClick": 0,
+    "invalidSceneFrames": 0,
+    "errors": []
+  },
+  {
+    "name": "10-2-to-1",
+    "frames": 59,
+    "preClickIdleFrames": 2,
+    "screenshots": 9,
+    "reversalsAfterClick": 0,
+    "invalidSceneFrames": 0,
+    "errors": []
+  },
+  {
+    "name": "11-1-to-3",
+    "frames": 104,
+    "preClickIdleFrames": 2,
+    "screenshots": 17,
+    "reversalsAfterClick": 0,
+    "invalidSceneFrames": 0,
+    "errors": []
+  },
+  {
+    "name": "12-3-to-1",
+    "frames": 99,
+    "preClickIdleFrames": 2,
+    "screenshots": 16,
+    "reversalsAfterClick": 0,
+    "invalidSceneFrames": 0,
+    "errors": []
+  }
+]

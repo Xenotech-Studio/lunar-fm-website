@@ -13,6 +13,7 @@ test('WebGL、连续滚动、六幕导航与档案弹窗', async ({ page }, test
   await page.screenshot({ path: testInfo.outputPath('01-observe.png') })
   for (const [index, name] of ['arrival', 'terrain', 'surface', 'shadow', 'intelligence', 'horizon'].entries()) {
     await page.locator('[data-nav]').nth(index).click()
+    await expect(page.locator('html')).toHaveAttribute('data-navigation', 'idle', {timeout:60000})
     await expect(page.locator('html')).toHaveAttribute('data-chapter', String(index))
     await expect.poll(async () => page.evaluate(() => Number(getComputedStyle(document.documentElement).getPropertyValue('--journey')))).toBeCloseTo(chapters[index].position, 2)
     await expect(page.locator(`.chapter[data-chapter="${index}"]`)).toHaveAttribute('aria-hidden', 'false')
@@ -39,6 +40,7 @@ test('手机构图与减少动态效果', async ({ page }, testInfo) => {
   await page.evaluate(() => document.fonts.ready)
   for (const index of [0, 1, 2, 3, 4, 5]) {
     await page.locator('[data-nav]').nth(index).click()
+    await expect(page.locator('html')).toHaveAttribute('data-navigation', 'idle', {timeout:60000})
     await expect(page.locator('html')).toHaveAttribute('data-chapter', `${index}`)
     if(index === 2) { await expect(page.locator('canvas')).toHaveAttribute('data-surface','ready'); await page.waitForTimeout(800) }
     await page.screenshot({ path: testInfo.outputPath(`mobile-${index}.png`) })
@@ -61,6 +63,7 @@ test('WebGL不可用时仍能阅读和导航', async ({ page }) => {
   await page.goto('/')
   await expect(page.locator('.universe')).toHaveClass(/is-fallback/)
   await page.locator('[data-nav]').nth(5).click()
+  await expect(page.locator('html')).toHaveAttribute('data-navigation', 'idle', {timeout:60000})
   await expect(page.locator('html')).toHaveAttribute('data-chapter', '5')
   await expect(page.getByRole('link', { name: '查看模型档案' })).toBeVisible()
 })
@@ -147,6 +150,7 @@ test('档案悬停可逆，扫描随滚动推进，直达月面不落在下降�
  await page.goto('/')
  await expect(page.locator('.universe')).toHaveClass(/is-ready/)
  await page.getByRole('button',{name:'第2幕：月面档案'}).click()
+ await expect(page.locator('html')).toHaveAttribute('data-navigation','idle',{timeout:60000})
  const canvas=page.locator('canvas')
  await expect(canvas).toHaveAttribute('data-surface','ready')
  for(const p of [.33,.345,.365,.40,.365,.345,.33]){
@@ -160,6 +164,7 @@ test('档案悬停可逆，扫描随滚动推进，直达月面不落在下降�
   }
  }
  await page.getByRole('button',{name:'第3幕：立于月面'}).click()
+ await expect(page.locator('html')).toHaveAttribute('data-navigation','idle',{timeout:60000})
  await expect.poll(async()=>Number(await canvas.getAttribute('data-altitude'))).toBeCloseTo(2.1,1)
  await expect(canvas).toHaveAttribute('data-survey-weight','0')
  await page.screenshot({path:testInfo.outputPath('new-surface-anchor.png')})
