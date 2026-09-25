@@ -24,7 +24,7 @@ test('WebGL、连续滚动、六幕导航与档案弹窗', async ({ page }, test
   await expect.poll(async () => page.evaluate(() => Number(getComputedStyle(document.documentElement).getPropertyValue('--journey')))).toBeCloseTo(0.37, 2)
   await page.getByRole('button', { name: '任务档案' }).click()
   await expect(page.locator('dialog')).toBeVisible()
-  await expect(page.locator('dialog a')).toHaveCount(5)
+  await expect(page.locator('dialog a')).toHaveCount(6)
   await page.keyboard.press('Escape')
   await expect(page.locator('dialog')).toHaveCount(0)
   await expect(page.locator('footer')).toContainText('Image credit: NASA')
@@ -114,4 +114,29 @@ test('地表按需加载、连续高度、释放与重访', async ({ page }, tes
   await expect.poll(async()=>Number(await canvas.getAttribute('data-gpu-textures'))).toBeLessThanOrEqual(warmedBaseline)
   expect(errors).toEqual([])
   await testInfo.attach('resource-validation', { body:JSON.stringify({baseline,warmedBaseline,firstLoaded,errors}),contentType:'application/json' })
+})
+
+
+test('极区科学图层随滚动进入退出，仍为单一月面', async ({page},testInfo)=>{
+ const errors:string[]=[]
+ page.on('pageerror',e=>errors.push(e.message))
+ page.on('console',m=>{if(m.type()==='error')errors.push(m.text())})
+ await page.goto('/')
+ await expect(page.locator('.universe')).toHaveClass(/is-ready/)
+ for(const p of [.68,.705,.725,.755,.80,.84,.725]){
+  await page.evaluate(s=>scrollTo(0,(document.documentElement.scrollHeight-innerHeight)*s),storyToScroll(p))
+  await expect.poll(async()=>Number(await page.locator('canvas').getAttribute('data-flight-progress'))).toBeCloseTo(p,3)
+  await expect(page.locator('canvas')).toHaveAttribute('data-planet-count','1')
+  await expect(page.locator('canvas')).toHaveAttribute('data-scene-cameras','1')
+  await expect(page.locator('canvas')).toHaveAttribute('data-above-terrain','true')
+  await expect(page.locator('canvas')).toHaveAttribute('data-polar-layer','LOLA-PSR-area-over-1km2')
+  if(p===.725){
+   await expect(page.locator('.polar')).toBeVisible()
+   await expect(page.locator('.polar')).toContainText('永久阴影不等于实测水冰')
+   await expect.poll(async()=>Number(await page.locator('canvas').getAttribute('data-polar-weight'))).toBeGreaterThan(.99)
+   await page.screenshot({path:testInfo.outputPath('polar-psr.png')})
+  }
+  if(p===.84) await expect.poll(async()=>Number(await page.locator('canvas').getAttribute('data-polar-weight'))).toBeLessThan(.001)
+ }
+ expect(errors).toEqual([])
 })

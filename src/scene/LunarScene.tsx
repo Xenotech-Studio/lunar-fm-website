@@ -6,6 +6,7 @@ import { BlendFunction, ToneMappingMode } from 'postprocessing'
 import * as T from 'three'
 import colorUrl from '../assets/lroc-color-4k.webp'
 import heightUrl from '../assets/lola-height-rg.png'
+import polarUrl from '../assets/polar/south-psr.png'
 import { sample, orbitProgress, smooth } from '../timeline'
 import { globalElevation, planetGeometry, point, LANDING, LAT, LON, R, CENTER } from './geography'
 import { planetMaterial } from './planetMaterial'
@@ -15,31 +16,32 @@ import { loadMeasuredPlanet } from './SurfaceJourney'
 type Props={progress:RefObject<number>;reduced:boolean;onReady:()=>void;onFailure:()=>void}
 type Measured=Awaited<ReturnType<typeof loadMeasuredPlanet>>
 function Planet({progress,onReady}:Pick<Props,'progress'|'onReady'>){
- const [color,height]=useLoader(T.TextureLoader,[colorUrl,heightUrl])
+ const [color,height,polar]=useLoader(T.TextureLoader,[colorUrl,heightUrl,polarUrl])
  const {gl,size,camera}=useThree()
  const root=useRef<T.Group>(null),light=useRef<T.DirectionalLight>(null)
  const [active,setActive]=useState(false),wanted=useRef(false),loaded=useRef<Measured|null>(null)
  const base=useMemo(()=>globalElevation(height),[height])
  const geometry=useMemo(()=>planetGeometry(base,false),[base])
- const appearance=useMemo(()=>planetMaterial(color,null),[color])
+ const appearance=useMemo(()=>planetMaterial(color,null,polar),[color,polar])
  const planet=useMemo(()=>{const mesh=new T.Mesh(geometry,appearance.material);mesh.name='single-planet-mesh';mesh.receiveShadow=true;mesh.castShadow=true;return mesh},[geometry,appearance])
  const shadowTarget=useMemo(()=>new T.Object3D(),[])
  const ready=useRef(false),heightSafe=useRef(false)
  useEffect(()=>{
   color.colorSpace=T.SRGBColorSpace;color.wrapS=T.RepeatWrapping;color.anisotropy=Math.min(8,gl.capabilities.getMaxAnisotropy());color.needsUpdate=true
+  polar.colorSpace=T.NoColorSpace;polar.anisotropy=Math.min(8,gl.capabilities.getMaxAnisotropy());polar.needsUpdate=true
   return()=>{geometry.dispose();appearance.material.dispose()}
- },[color,gl,geometry,appearance])
+ },[color,polar,gl,geometry,appearance])
  useEffect(()=>{
   if(!active)return
   const abort=new AbortController();let disposed=false
   gl.domElement.dataset.surface='loading';delete document.documentElement.dataset.surfaceError
-  loadMeasuredPlanet(abort.signal,gl,color,base,size.width<760).then(world=>{
+  loadMeasuredPlanet(abort.signal,gl,color,base,size.width<760,polar).then(world=>{
    if(disposed){world.close();return}
    loaded.current=world;root.current?.add(world.group);planet.visible=false
    gl.domElement.dataset.surface='ready';gl.domElement.dataset.surfaceBytes=String(Math.round(world.bytes))
   }).catch(error=>{if(error.name!=='AbortError'){gl.domElement.dataset.surface='unavailable';document.documentElement.dataset.surfaceError='true'}})
   return()=>{disposed=true;abort.abort();const old=loaded.current;if(old){root.current?.remove(old.group);old.close()}loaded.current=null;planet.visible=true;if(light.current?.shadow.map){light.current.shadow.map.dispose();light.current.shadow.map=null}gl.domElement.dataset.surface='unloaded';gl.domElement.dataset.surfaceBytes='0'}
- },[active,base,color,gl,planet,size.width<760])
+ },[active,base,color,polar,gl,planet,size.width<760])
  useFrame((_,dt)=>{
   const p=progress.current,should=p>.18&&p<.695
   if(should!==wanted.current){wanted.current=should;setActive(should)}
@@ -60,7 +62,10 @@ function Planet({progress,onReady}:Pick<Props,'progress'|'onReady'>){
   if(world){world.stones.visible=pose.altitude<1600;world.earth.visible=true}
   const uniforms=world?.uniforms??appearance.uniforms
   uniforms.uScan.value=sample([0,.06,0,1,.15],orbitProgress(p))*(1-smooth((p-.2)/.1)*(1-smooth((p-.63)/.05)))
-  uniforms.uPolar.value=sample([0,0,1,0,0],orbitProgress(p))*smooth((p-.63)/.05)
+  uniforms.uStudy.value=smooth((p-.68)/.045)*(1-smooth((p-.755)/.085))
+  uniforms.uPolar.value=smooth((p-.63)/.05)*(1-smooth((p-.755)/.075))
+  uniforms.uScan.value*=1-smooth((p-.66)/.03)*(1-smooth((p-.77)/.07))
+  gl.domElement.dataset.polarLayer='LOLA-PSR-area-over-1km2';gl.domElement.dataset.polarWeight=String(uniforms.uPolar.value)
   gl.domElement.dataset.gpuTextures=String(gl.info.memory.textures)
   gl.domElement.dataset.altitude=pose.altitude.toFixed(3)
   gl.domElement.dataset.flightProgress=String(flightProgress)

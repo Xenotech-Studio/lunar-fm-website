@@ -94,9 +94,9 @@ export default function App() {
           <h2 id="title-shadow">INTO<br /><em>THE SHADOW.</em></h2>
           <p className="chinese-title">光照不到的地方，线索仍在。</p>
           <p className="body-copy">在月球极区，长久的阴影可能保存水冰。<br />把温度、坡度与地形放在一起，<br />寻找值得进一步探索的地方。</p>
-          <div className="polar-signal"><span className="signal-line" /><span>POLAR PROSPECTIVITY<br /><small>从环境线索，推测潜力</small></span></div>
-          <p className="micro-note">蓝色区域为艺术示意，并非冰分布或模型预测。<br />冰潜力评估不等同于实测冰含量。</p>
-          <div className="polar-coordinate">90° S <span>THE UNSEEN FRONTIER</span></div>
+          <div className="polar-signal"><span className="signal-line" /><span>PERMANENT SHADOW<br /><small>LOLA · 永久阴影区边界</small></span></div>
+          <p className="micro-note">青蓝边界：NASA LOLA 推导的永久阴影区（大于 1 km²）。<br />LOLA 模拟晕渲底图；配色 / 细线为艺术处理。<br />永久阴影不等于实测水冰，也不是模型预测。</p>
+          <div className="polar-coordinate">80–90° S <span>LOLA / PSR · SELECTED REGIONS</span></div>
         </article>
 
         <article className="chapter intelligence" data-chapter="4" aria-labelledby="title-intelligence" aria-hidden="true">
@@ -126,7 +126,7 @@ export default function App() {
       <div className="nav-items">{chapters.map((chapter, index) => <button key={chapter.id} data-nav data-active={index === 0} onClick={() => goToChapter(index, reduced)} aria-label={`第${index + 1}幕：${chapter.label}`}><span className="nav-number">0{index + 1}</span><span className="nav-label">{chapter.label}</span><span className="nav-track" /></button>)}</div>
     </nav>
     <div className="scroll-hint"><span className="scroll-line" /> SCROLL TO EXPLORE</div>
-    <footer className="footer"><span>Image credit: NASA <span className="footer-detail">/ Scientific Visualization Studio</span></span><span className="footer-art">独立艺术项目 · 辉光为光学艺术效果</span><button onClick={() => setSources(true)}>数据与说明 ↗</button></footer>
+    <footer className="footer"><span>Image credit: NASA <span className="footer-detail">/ Scientific Visualization Studio</span></span><span className="footer-art">PSR 边界：NASA LOLA · 配色 / 细线：艺术处理</span><button onClick={() => setSources(true)}>数据与说明 ↗</button></footer>
     <div className="progress" aria-hidden="true"><div className="progress-fill" /></div>
 
     {sources && <dialog id="sources-dialog" onCancel={() => setSources(false)} onClick={(event) => { if (event.target === event.currentTarget) setSources(false) }}>
@@ -138,7 +138,8 @@ export default function App() {
         <a href="https://science.nasa.gov/resource/blue-marble-2002/" target="_blank" rel="noreferrer"><span>03 / NASA Blue Marble<small>地球彩色影像 · 本地纹理</small></span><Arrow diagonal /></a>
         <a href={modelUrl} target="_blank" rel="noreferrer"><span>04 / NASA–IBM Lunar Foundation Model<small>开放模型与下游任务集合</small></span><Arrow diagonal /></a>
         <a href="https://arxiv.org/abs/2609.13283" target="_blank" rel="noreferrer"><span>05 / 技术报告<small>Multimodal-Multiresolution Foundation Model</small></span><Arrow diagonal /></a>
-        <p className="dialog-note">轨道高程适度夸张，地表段高程为真实米制；局部测量区之外使用平滑参考球面。地球视直径约 1.9°，方位经过艺术调整，并非该地点星历。近处碎石与微表面为程序化补充。边缘辉光为电影化光学效果，不代表月球拥有浓密大气。极区色彩、扫描线与经纬网为示意。画面坐标为设计标识，不是实时定位。Image credit: NASA / NASA’s Scientific Visualization Studio.</p>
+        <p className="polar-source"><a href="https://pgda.gsfc.nasa.gov/products/90" target="_blank" rel="noreferrer">极区 PSR 数据：NASA PGDA / LOLA · Barker et al. (2023) ↗</a></p>
+        <p className="dialog-note">轨道高程适度夸张，地表段高程为真实米制；局部测量区之外使用平滑参考球面。地球视直径约 1.9°，方位经过艺术调整，并非该地点星历。近处碎石与微表面为程序化补充。边缘辉光为电影化光学效果，不代表月球拥有浓密大气。极区边界来自 NASA PGDA / LOLA（Barker et al., 2023），仅显示面积大于 1 km² 的永久阴影区，不是水冰探测或模型输出；底图为同源 LOLA 模拟晕渲（太阳高度 / 方位各 45°），不是此刻的真实光照；青蓝配色、边界强调、扫描线与经纬网为艺术处理。画面坐标为设计标识，不是实时定位。Image credit: NASA / NASA’s Scientific Visualization Studio.</p>
       </div>
     </dialog>}
   </>

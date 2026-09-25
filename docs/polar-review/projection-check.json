@@ -1,0 +1,44 @@
+[
+  {
+    "lon": 0,
+    "lat": -90,
+    "x": 0.0,
+    "y": 0.0,
+    "shaderFormulaErrorMeters": 0.0
+  },
+  {
+    "lon": 0,
+    "lat": -85,
+    "x": 0.0,
+    "y": 151713.04441849753,
+    "shaderFormulaErrorMeters": 0.0
+  },
+  {
+    "lon": 90,
+    "lat": -85,
+    "x": 151713.04441849753,
+    "y": 9.289744711800661e-12,
+    "shaderFormulaErrorMeters": 0.0
+  },
+  {
+    "lon": -90,
+    "lat": -85,
+    "x": -151713.04441849753,
+    "y": 9.289744711800661e-12,
+    "shaderFormulaErrorMeters": 0.0
+  },
+  {
+    "lon": 180,
+    "lat": -80,
+    "x": 3.7229949478439185e-11,
+    "y": -304005.6080198807,
+    "shaderFormulaErrorMeters": 0.0
+  },
+  {
+    "lon": 30.37,
+    "lat": -82,
+    "x": 122847.18717410385,
+    "y": 209639.37703467056,
+    "shaderFormulaErrorMeters": 1.4551915228366852e-11
+  }
+]

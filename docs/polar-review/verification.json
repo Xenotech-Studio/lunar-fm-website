@@ -1,0 +1,29 @@
+{
+  "forward": {
+    "frames": 31,
+    "errors": [],
+    "singlePlanet": true,
+    "singleCamera": true,
+    "aboveTerrain": true
+  },
+  "reverse": {
+    "frames": 31,
+    "errors": [],
+    "singlePlanet": true,
+    "singleCamera": true,
+    "aboveTerrain": true
+  },
+  "surface": {
+    "frames": 1,
+    "errors": [],
+    "singlePlanet": true,
+    "singleCamera": true,
+    "aboveTerrain": true
+  },
+  "build": "passed",
+  "tests": {
+    "passed": 8,
+    "failed": 0
+  },
+  "visualReview": "All 62 polar frames viewed; surface 65% compared visually with pace-detail-review/forward/65.png; mobile 81% viewed."
+}

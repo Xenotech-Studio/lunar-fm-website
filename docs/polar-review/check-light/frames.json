@@ -1,0 +1,62 @@
+{
+  "frames": [
+    {
+      "progress": 81,
+      "mode": "scroll",
+      "scrollProgress": 0.81,
+      "engine": "three.js r186",
+      "polarLayer": "LOLA-PSR-area-over-1km2",
+      "polarWeight": "1",
+      "gpuTextures": "20",
+      "altitude": "1667835.676",
+      "flightProgress": "0.724466048259002",
+      "cameraPosition": "-366889.67404,-3422261.73926,2935160.58003",
+      "cameraQuaternion": "-0.31429628,0.31479316,-0.22153091,-0.86778291",
+      "geographicSite": "20.317965903575143,30.373863256808953",
+      "planetCount": "1",
+      "sceneCameras": "1",
+      "aboveTerrain": "true",
+      "surface": "unloaded",
+      "surfaceBytes": "0"
+    },
+    {
+      "progress": 82,
+      "mode": "scroll",
+      "scrollProgress": 0.82,
+      "engine": "three.js r186",
+      "polarLayer": "LOLA-PSR-area-over-1km2",
+      "polarWeight": "1",
+      "gpuTextures": "20",
+      "altitude": "1666750.226",
+      "flightProgress": "0.7388690218775986",
+      "cameraPosition": "-365954.57379,-3421367.18495,2934532.16485",
+      "cameraQuaternion": "-0.31440585,0.31465560,-0.22130100,-0.86785176",
+      "geographicSite": "20.317965903575143,30.373863256808953",
+      "planetCount": "1",
+      "sceneCameras": "1",
+      "aboveTerrain": "true",
+      "surface": "unloaded",
+      "surfaceBytes": "0"
+    },
+    {
+      "progress": 84,
+      "mode": "scroll",
+      "scrollProgress": 0.84,
+      "engine": "three.js r186",
+      "polarLayer": "LOLA-PSR-area-over-1km2",
+      "polarWeight": "0.9195450276119302",
+      "gpuTextures": "20",
+      "altitude": "1844520.165",
+      "flightProgress": "0.7680641721771515",
+      "cameraPosition": "-542927.98792,-3684384.46704,2955745.98471",
+      "cameraQuaternion": "-0.29019315,0.35394747,-0.25566478,-0.85155425",
+      "geographicSite": "20.317965903575143,30.373863256808953",
+      "planetCount": "1",
+      "sceneCameras": "1",
+      "aboveTerrain": "true",
+      "surface": "unloaded",
+      "surfaceBytes": "0"
+    }
+  ],
+  "errors": []
+}

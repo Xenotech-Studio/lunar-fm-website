@@ -75,3 +75,13 @@ CGI Moon Kit 的 27360×13680 全球图赤道采样约 399 m/px（2π × 1737400
 - `surface/appearance-manifest.json` 记录 NAC 高频处理及派生 SHA-256；原始影像仍保留。
 - 全局地理注册由 GeoTIFF equirectangular 参数反算。NAC 窗口中心约 20.31797° N、30.37386° E，当前视点位于窗口以南约 96 m、东西偏移 0 m，回到接近 04c35f5 的高精度测量区域。坐标注册不代表消除了各测绘产品的测量误差；边界高程融合是展示处理。
 - Image credit: NASA / GSFC / Arizona State University. GLD100: LROC / DLR.
+
+## 极区永久阴影区（本轮）
+
+- 数据：NASA PGDA / LOLA，Barker et al. (2023), *The Planetary Science Journal* 4, 183，https://doi.org/10.3847/PSJ/acf3e1 。数据集 DOI：https://doi.org/10.60903/gsfcpgda-lola-spole 。产品页：https://pgda.gsfc.nasa.gov/products/90 。按产品要求保留论文引用。
+- 采用 `LPSR_80S_20MPP_ADJ_1km2.SHP`：https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LPSR_80S_20MPP_ADJ_1km2.SHP ，1531 个面积大于 1 km² 的 PSR 多边形，是 LOLA 地形推导的永久阴影区，不是冰含量、冰稳定温度或 Lunar FM 输出；更小的 PSR 未展示。
+- 原坐标：南极立体投影，中央经线 0°、标准纬线 −90°、月球半径 1737400 m，MOON_ME / DE421。投影定义：https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LPSR_80S_20MPP_ADJ_1km2.PRJ 。运行时由全球球体的经纬度直接计算同一投影坐标。
+- 20 m 指源 DEM 像素间距，不代表网页边界精度。网页派生栅格 `polar/south-psr.png` 为 2048²，覆盖 ±310 km，显示像素约 303 m；先 2× 超采样，再面积平均，保留多边形内洞。不扩张科学覆盖区。
+- R 通道为 PSR 覆盖；G 为边界内侧强调，只是显示设计；颜色、边界亮度、经纬细线是艺术处理。阴影区不等于已经证实存在水冰。归档哈希及处理参数见 `polar/manifest.json`，重建脚本为 `scripts/prepare-polar.py`。
+- 参考解释：NASA SVS “LRO Peers into Permanent Shadows”，https://svs.gsfc.nasa.gov/4043/ 。
+- B 通道采用同产品的 LOLA 晕渲： https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_80MPP_ADJ_HILL.TIF 。源像素 80 m、南极立体投影；太阳高度 45°、方位 45° 的模拟地形图，不是实时受光或反照率。通过 COG 的 HTTP range / overview 读取重采样到同一 2048² 网格，没有把整幅 85 MB GeoTIFF 放进项目。`scripts/prepare-polar-relief.py` 保存投影、范围和派生哈希。极区幕将它作为明确标注的制图层平滑叠入，同一个球体的几何与月表照明逻辑不变。

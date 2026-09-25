@@ -1,0 +1,54 @@
+{
+  "sourcePage": "https://pgda.gsfc.nasa.gov/products/90",
+  "source": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LPSR_80S_20MPP_ADJ_1km2.SHP",
+  "paper": "https://doi.org/10.3847/PSJ/acf3e1",
+  "dataDOI": "https://doi.org/10.60903/gsfcpgda-lola-spole",
+  "sourceSHA256": "39a9906545188ea4d9b844d34f946de7a6721993f778076d85778650cbbfb741",
+  "polygons": 1531,
+  "selection": "Only PSRs with area > 1 km\u00b2; not all PSRs and not detected ice",
+  "sourceDEMSpacingMeters": 20,
+  "projection": "South polar stereographic, central meridian 0\u00b0, standard parallel -90\u00b0, R=1737400 m; MOON_ME / DE421",
+  "extentMeters": [
+    -310000.0,
+    -310000.0,
+    310000.0,
+    310000.0
+  ],
+  "displaySize": 2048,
+  "displayPixelMeters": 302.734375,
+  "channels": {
+    "R": "area coverage, supersampled 2\u00d7 and box reduced",
+    "G": "inner boundary display emphasis",
+    "B": "LOLA simulated hillshade (45\u00b0 altitude, 45\u00b0 azimuth)"
+  },
+  "outputSHA256": "db58efd39850236edf032394b7b98057ba1a4390b4091642e87c022b97c9e628",
+  "hillshade": {
+    "source": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_80MPP_ADJ_HILL.TIF",
+    "sourceBounds": [
+      -304000.0,
+      -304000.0,
+      304000.0,
+      304000.0
+    ],
+    "sourceTransform": [
+      80.0,
+      0.0,
+      -304000.0,
+      0.0,
+      -80.0,
+      304000.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "sourcePixelMeters": 80,
+    "sourceCRS": "PROJCS[\"Moon (2015) - Sphere / Ocentric / South Polar\",GEOGCS[\"Moon (2015) - Sphere / Ocentric\",DATUM[\"Moon (2015) - Sphere\",SPHEROID[\"Moon (2015) - Sphere\",1737400,0]],PRIMEM[\"Reference Meridian\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH]]",
+    "overviews": [
+      2,
+      4,
+      8,
+      16
+    ],
+    "displayMethod": "Bilinear COG overview sampled to same 620 km / 2048 grid; simulated hillshade at 45 deg altitude and azimuth, not current lighting"
+  }
+}

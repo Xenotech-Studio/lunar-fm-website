@@ -32,7 +32,7 @@ npm run preview
 | 0% | 启程 / Beyond the visible | 右侧完整月球、暖白斜照、左侧编辑式大标题 |
 | 12.4%（18%） | 月面档案 / Every scar | 相机推进，月面放大，掠射光强化 LOLA 地形细节 |
 | 65.1%（50%） | 立于月面 / So far. So home. | 新增 NAC 地表段，2.1 m 眼高回望地球 |
-| 77.9%（68%） | 阴影之下 / Into the shadow | 月球移向左侧并倾斜展示南极，光线转冷暗，极区示意覆盖出现 |
+| 77.9%（68%） | 阴影之下 / Into the shadow | 月球移向左侧并倾斜展示南极，连续靠近南极，LOLA 永久阴影区与地形晕渲显现 |
 | 89.0%（84%） | 连接线索 / Many signals | 镜头拉开，金色经纬网、扫描带与轨道线浮现 |
 | 100% | 新的地平线 / A new perspective | 月球回到中央远景，模型链接与重新启程按钮出现 |
 
@@ -71,7 +71,7 @@ Image credit: NASA / NASA’s Scientific Visualization Studio.
 - [NASA–IBM模型集合](https://huggingface.co/collections/nasa-ibm-ai4science/nasa-ibm-lunar-fm-and-downstream-models)
 - [技术报告](https://arxiv.org/abs/2609.13283)
 
-这是独立艺术项目，非NASA或IBM官方产品。极区蓝色覆盖、扫描线、经纬网与坐标为艺术示意，不是实测冰、模型预测或实时地理定位。模型的冰潜力任务回归专家潜力图，不能当作已发现冰资源。没有使用、下载或依赖2.4GB机器学习权重。实际地形来自 NASA 数据；碎石、微法线和示意覆盖是明确标注的艺术补充。
+这是独立艺术项目，非NASA或IBM官方产品。极区青蓝区域来自 NASA PGDA / LOLA 推导的永久阴影区（仅面积大于 1 km²），底图为 LOLA 模拟晕渲；不是实测冰或模型预测。配色、边界强调、扫描线、经纬细线为艺术处理。模型的冰潜力任务回归专家潜力图，不能当作已发现冰资源。没有使用、下载或依赖2.4GB机器学习权重。实际地形来自 NASA 数据；碎石、微法线和示意覆盖是明确标注的艺术补充。
 
 
 ## 地表段的滚动节奏与资源管理
@@ -103,3 +103,11 @@ Image credit: NASA / NASA’s Scientific Visualization Studio.
 贴地恢复到 NAC 高精度瓦片内部、接近 04c35f5 的测量区域；继续使用同一个地理世界与相机。保留受限高频影像而不恢复照片大块阴影；缩窄清晰度混合带，恢复带限微法线与颗粒，并让近处地面进入镜头。碎石、微法线仍为艺术补充，原始 0.6 m 影像 / 2 m 源高程精度没有变化。
 
 本轮测试使用独立端口：`LUNAR_TEST_PORT=4277 npm test`。逐帧复查使用自己启动的 `npm run preview -- --port 4276 --strictPort`，不会操作用户的 5173 服务。
+
+## 极区科学制图层
+
+[历史考证与本轮验证](docs/polar-review/REVIEW.md) · [逐帧查看](docs/polar-review/index.html)。原先 `9bb949d` / `04c35f5` 的极区由程序化斑块组成；`2401762` 重构材质时被简化成蓝色纬度极冠。本轮改用 NASA PGDA 产品 90 的 1531 个 PSR 多边形，以及同源 LOLA 晕渲。
+
+实际页面约 77.9–81% 从全球视角连续靠近南极，81–83.1% 观察边界，83.1–89% 回到原轨道与下一幕。仍是同一网格 / 相机。月表下降、落点和材质细节不变。详细引用、筛选阈值、显示精度和艺术处理见 `src/assets/SOURCES.md`。
+
+本轮使用生产预览 `npm run preview -- --port 4278 --strictPort`，测试 `LUNAR_TEST_PORT=4280 npm test`，不复用其他端口的服务。

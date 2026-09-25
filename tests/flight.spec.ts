@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test'
+import { Vector3 } from 'three'
 import { flight } from '../src/scene/flight'
 import { CENTER, R, point, geographic, PX, PY } from '../src/scene/geography'
 
@@ -11,12 +12,18 @@ test('同一地理坐标下，连续轨迹没有位置/视线跳变或穿地', (
   expect(PX).toBeLessThan(0); expect(PY).toBeGreaterThan(0)
   for (const mobile of [false, true]) {
     let previous = flight(.1999, mobile, height)
-    for (let i = 2000; i <= 6801; i++) {
+    for (let i = 2000; i <= 8401; i++) {
       const pose = flight(i / 10000, mobile, height)
       expect(pose.position.toArray().every(Number.isFinite)).toBe(true)
       expect(pose.position.distanceTo(CENTER)).toBeGreaterThanOrEqual(R + height() + 2.099)
       expect(pose.quaternion.angleTo(previous.quaternion), `orientation at ${i / 10000}, mobile=${mobile}`).toBeLessThan(.04)
       expect(pose.position.distanceTo(previous.position) / Math.max(previous.altitude, 100), `translation at ${i / 10000}, mobile=${mobile}`).toBeLessThan(.12)
+      if(i>=6800){
+        const toMoon=CENTER.clone().sub(pose.position)
+        const angle=new Vector3(0,0,-1).applyQuaternion(pose.quaternion).angleTo(toMoon)
+        // The disk must remain in the central viewing cone during the polar return.
+        expect(angle).toBeLessThan(Math.asin(R/toMoon.length())+.20)
+      }
       previous = pose
     }
   }

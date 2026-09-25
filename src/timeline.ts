@@ -63,7 +63,7 @@ export function useScrollDirector(reduced: boolean) {
       panels.forEach((panel, i) => {
         const span = p < chapters[i].position ? chapters[i].position - (chapters[i - 1]?.position ?? -0.18) : (chapters[i + 1]?.position ?? 1.18) - chapters[i].position
         const distance = (p - chapters[i].position) / span
-        const opacity = 1 - smooth((Math.abs(distance) - 0.20) / 0.29)
+        const opacity = i===3 && p>=.68 ? 1-smooth((p-.725)/.035) : 1 - smooth((Math.abs(distance) - 0.20) / 0.29)
         panel.style.opacity = `${opacity}`
         panel.style.transform = `translate3d(0, ${reduced ? 0 : -distance * 46}px, 0)`
         panel.style.visibility = opacity < 0.001 ? 'hidden' : 'visible'

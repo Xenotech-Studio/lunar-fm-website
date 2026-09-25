@@ -14,6 +14,30 @@ function orbit(progress:number,mobile:boolean){
  const position=camera.position.clone().sub(location).multiplyScalar(scale).applyQuaternion(q).add(CENTER)
  const quaternion=q.clone().multiply(camera.quaternion)
  const sun=new T.Vector3(sample([-4,-4,1.4,-2,-3],p),sample([1.8,1,1,2.3,1],p),sample([1.9,1.2,.1,3,2],p)).normalize().applyQuaternion(q)
+ // A reversible polar study move on the same world/camera, only after landing exit.
+ const focus=smooth((progress-.68)/.045)*(1-smooth((progress-.755)/.085))
+ if(focus>0){
+  const polarPoint=new T.Vector3(0,-R,0).applyQuaternion(LOCAL_ROTATION).add(CENTER)
+  const destination=new T.Vector3(-300000,-R-1600000,600000).applyQuaternion(LOCAL_ROTATION).add(CENTER)
+  const polarView=new T.PerspectiveCamera();polarView.position.copy(destination)
+  polarView.up.copy(new T.Vector3(1,0,0).applyQuaternion(LOCAL_ROTATION));polarView.lookAt(polarPoint)
+  const right=new T.Vector3(1,0,0).applyQuaternion(polarView.quaternion)
+  const up=new T.Vector3(0,1,0).applyQuaternion(polarView.quaternion)
+  const polarTarget=polarPoint.clone().addScaledVector(right,mobile?0:450000).addScaledVector(up,mobile?-350000:0)
+  polarView.lookAt(polarTarget)
+  const a=position.clone().sub(CENTER),b=destination.clone().sub(CENTER)
+  const radius=Math.exp(mix(Math.log(a.length()),Math.log(b.length()),focus))
+  const turn=new T.Quaternion().setFromUnitVectors(a.normalize(),b.normalize())
+  position.copy(a.applyQuaternion(new T.Quaternion().slerp(turn,focus)).multiplyScalar(radius).add(CENTER))
+  // Keep the lunar target in frame throughout the orbit, rather than slerping
+  // a free orientation independently of the camera's spherical position.
+  const orbitTarget=new T.Vector3(0,mobile?.25:0,0).sub(location).multiplyScalar(scale).applyQuaternion(q).add(CENTER)
+  const blendedUp=new T.Vector3(0,1,0).applyQuaternion(quaternion.clone().slerp(polarView.quaternion,focus))
+  const trackingView=new T.PerspectiveCamera();trackingView.position.copy(position);trackingView.up.copy(blendedUp)
+  trackingView.lookAt(orbitTarget.lerp(polarTarget,focus));quaternion.copy(trackingView.quaternion)
+  const polarSun=new T.Vector3(.8,-.35,.4).normalize().applyQuaternion(LOCAL_ROTATION)
+  sun.lerp(polarSun,focus).normalize()
+ }
  return {position,quaternion,sun,fov:38,altitude:position.distanceTo(CENTER)-R}
 }
 // Monotone Hermite interpolation in log altitude. No overshoot below the terrain,

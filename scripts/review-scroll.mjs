@@ -23,7 +23,7 @@ for(const n of (reverse?[...points].reverse():points)){
  await page.mouse.wheel(0,delta)
  await page.waitForFunction(n=>Math.abs(Number(getComputedStyle(document.documentElement).getPropertyValue('--scroll-progress'))-n)<.00025,destination)
  await page.waitForTimeout(120)
- if(destination>.18)await page.waitForFunction(()=>document.querySelector('canvas')?.dataset.surface==='ready')
+ await page.waitForFunction(()=>{const p=Number(getComputedStyle(document.documentElement).getPropertyValue('--journey'));return p<=.18||p>=.695||document.querySelector('canvas')?.dataset.surface==='ready'})
  await page.waitForFunction(()=>Math.abs(Number(document.querySelector('canvas')?.dataset.flightProgress)-Number(getComputedStyle(document.documentElement).getPropertyValue('--journey')))<.0003)
  await page.screenshot({path:`${folder}/${target}.png`})
  frames.push({progress:target,mode:storyMode?'story':'scroll',scrollProgress:destination,...await page.locator('canvas').evaluate(e=>({...e.dataset}))})
