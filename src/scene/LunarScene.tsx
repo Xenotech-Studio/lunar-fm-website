@@ -6,7 +6,8 @@ import { BlendFunction, ToneMappingMode } from 'postprocessing'
 import * as THREE from 'three'
 import colorUrl from '../assets/lroc-color-4k.webp'
 import heightUrl from '../assets/lola-height-rg.png'
-import { sample } from '../timeline'
+import { sample, orbitProgress, smooth } from '../timeline'
+import { SurfaceJourney } from './SurfaceJourney'
 import { haloFragment, haloVertex, moonFragment, moonVertex } from './shaders'
 
 type Props = { progress: RefObject<number>; reduced: boolean; onReady: () => void; onFailure: () => void }
@@ -41,7 +42,7 @@ function Moon({ progress, onReady }: Pick<Props, 'progress' | 'onReady'>) {
 
   const readySent = useRef(false)
   useFrame(({ camera }) => {
-    const p = progress.current
+    const p = orbitProgress(progress.current)
     const mobile = size.width < 760
     if (!group.current) return
     // All camera/light/overlay states are interpolated from the same playhead.
@@ -50,6 +51,12 @@ function Moon({ progress, onReady }: Pick<Props, 'progress' | 'onReady'>) {
     camera.position.set(sample([0, 0.3, -0.25, 0.15, 0], p), sample([0.1, 0.35, -0.2, 0.25, 0.15], p), sample(mobile ? [15.5, 13.5, 14.5, 15.8, 18] : [7.2, 5.5, 6.6, 7.4, 19.2], p))
     look.set(0, mobile ? 0.25 : 0, 0)
     camera.lookAt(look)
+    const dive = document.documentElement.dataset.surfaceError ? 0 : smooth((progress.current - .235) / .065) * (1 - smooth((progress.current - .61) / .035))
+    if (dive > 0) {
+      group.current.position.multiplyScalar(1 - dive)
+      camera.position.lerp(new THREE.Vector3(0, 0, 1.79), dive)
+      camera.lookAt(0, 0, 0)
+    }
     sun.set(sample([-4, -4, 1.4, -2, -3], p), sample([1.8, 1, 1, 2.3, 1], p), sample([1.9, 1.2, 0.1, 3, 2], p)).normalize()
     // Mutate the material's live uniforms; React's reconciler may copy the
     // original uniforms prop when the loading boundary settles.
@@ -106,7 +113,7 @@ function Orbits({ progress }: Pick<Props, 'progress'>) {
   const line = useMemo(() => new THREE.LineLoop(geometry, lineMaterial), [geometry, lineMaterial])
   useEffect(() => { material.current = lineMaterial; return () => { geometry.dispose(); lineMaterial.dispose() } }, [geometry, lineMaterial])
   useFrame(({ size }) => {
-    const p = progress.current
+    const p = orbitProgress(progress.current)
     if (group.current) {
       group.current.position.set(size.width < 760 ? 0.15 : 1.55, size.width < 760 ? 2.8 : 0, 0)
       group.current.rotation.set(1.18, 0.3, p * 1.1)
@@ -124,6 +131,7 @@ export default function LunarScene({ progress, reduced, onReady, onFailure }: Pr
   }} fallback={<span>浏览器不支持画布，月面叙事仍可阅读。</span>}>
     <Suspense fallback={null}><Moon progress={progress} onReady={onReady} /></Suspense>
     <Starfield progress={progress} />
+    <SurfaceJourney progress={progress} />
     <Orbits progress={progress} />
     <EffectComposer multisampling={0}>
       <Bloom intensity={0.42} luminanceThreshold={0.88} luminanceSmoothing={0.5} mipmapBlur />

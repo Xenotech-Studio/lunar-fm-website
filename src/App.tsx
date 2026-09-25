@@ -75,12 +75,22 @@ export default function App() {
           <p className="chinese-title">每一道痕迹，都是时间。</p>
           <p className="body-copy">没有风雨抹平过去。陨石坑、山脊与月海，<br className="desktop-break" />把数十亿年的历史留在表面。<br />让光掠过月面，地形开始显影。</p>
           <div className="data-pair"><div><strong>1 <small>m/px</small></strong><span>NAC 米级观测</span></div><div><strong>100 <small>m/px</small></strong><span>WAC 区域视野</span></div></div>
-          <p className="micro-note">模型训练的两种光学尺度 · 本场景使用全球 LRO 贴图</p>
+          <p className="micro-note">模型训练的两种光学尺度 · 继续滚动，进入亚米级 NAC 局部观测</p>
           <div className="terrain-marker"><span className="marker-ring" /><span>TOPOGRAPHIC MEMORY<br /><small>LOLA / ELEVATION FIELD</small></span></div>
         </article>
 
-        <article className="chapter polar right-aligned" data-chapter="2" aria-labelledby="title-shadow" aria-hidden="true">
-          <div className="eyebrow">03 — THE POLAR FRONTIER</div>
+        <article className="chapter surface-contact" data-chapter="2" aria-labelledby="title-surface" aria-hidden="true">
+          <div className="surface-heading"><div className="eyebrow">03 — TAURUS–LITTROW / SURFACE CONTACT</div>
+          <h2 id="title-surface">SO FAR.<br /><em>SO HOME.</em></h2>
+          <p className="chinese-title">站在另一个世界，回望我们的全部。</p></div>
+          <div className="surface-readout"><span className="surface-rule"/><div><strong>0.6 <small>m / px</small></strong><span>LROC NAC · 真实月面影像</span></div><div><strong>2 <small>m / post</small></strong><span>立体高程 · 独立测量</span></div></div>
+          <p className="surface-caption">TAURUS–LITTROW WESTERN TERRAIN<br/><span>月面低空漫游 · 滚动继续探索</span></p>
+          <p className="surface-error" role="status">局部月面数据暂不可用，继续欣赏轨道叙事。</p>
+          <p className="surface-disclosure">地球方位为艺术构图 · 碎石为程序化细节</p>
+        </article>
+
+        <article className="chapter polar right-aligned" data-chapter="3" aria-labelledby="title-shadow" aria-hidden="true">
+          <div className="eyebrow">04 — THE POLAR FRONTIER</div>
           <h2 id="title-shadow">INTO<br /><em>THE SHADOW.</em></h2>
           <p className="chinese-title">光照不到的地方，线索仍在。</p>
           <p className="body-copy">在月球极区，长久的阴影可能保存水冰。<br />把温度、坡度与地形放在一起，<br />寻找值得进一步探索的地方。</p>
@@ -89,8 +99,8 @@ export default function App() {
           <div className="polar-coordinate">90° S <span>THE UNSEEN FRONTIER</span></div>
         </article>
 
-        <article className="chapter intelligence" data-chapter="3" aria-labelledby="title-intelligence" aria-hidden="true">
-          <div className="eyebrow">04 — A SHARED REPRESENTATION</div>
+        <article className="chapter intelligence" data-chapter="4" aria-labelledby="title-intelligence" aria-hidden="true">
+          <div className="eyebrow">05 — A SHARED REPRESENTATION</div>
           <h2 id="title-intelligence">MANY SIGNALS.<br /><em>ONE MOON.</em></h2>
           <p className="chinese-title">让分散的观测，彼此理解。</p>
           <p className="body-copy">NASA–IBM Lunar Foundation Model<br />将多任务、多尺度的月球观测连接起来，<br />为陨石坑、火山地貌与极区研究提供共同起点。</p>
@@ -99,8 +109,8 @@ export default function App() {
           <div className="scan-label"><span /> CROSS-MODAL CORRELATION<br /><small>概念可视化 / 非实时推理</small></div>
         </article>
 
-        <article className="chapter finale" data-chapter="4" aria-labelledby="title-horizon" aria-hidden="true">
-          <div className="eyebrow">05 — THE NEXT HORIZON</div>
+        <article className="chapter finale" data-chapter="5" aria-labelledby="title-horizon" aria-hidden="true">
+          <div className="eyebrow">06 — THE NEXT HORIZON</div>
           <h2 id="title-horizon">A FAMILIAR MOON.<br /><em>A NEW PERSPECTIVE.</em></h2>
           <p className="chinese-title">同一轮月亮，新的看见。</p>
           <p className="body-copy">探索始于好奇，也始于开放。</p>
@@ -112,7 +122,7 @@ export default function App() {
 
     <aside className="telemetry" aria-label="场景状态"><span className="telemetry-dot" /><span>{failed ? 'STATIC EXPLORATION' : ready ? 'LRO SURFACE / LIVE RENDER' : 'LOADING LUNAR DATA'}</span><span className="telemetry-coord">23.4° N &nbsp; 45.0° E</span></aside>
     <nav className="chapter-nav" aria-label="章节导航">
-      <div className="nav-heading"><span>THE JOURNEY</span><span data-counter>01 / 05</span></div>
+      <div className="nav-heading"><span>THE JOURNEY</span><span data-counter>01 / 06</span></div>
       <div className="nav-items">{chapters.map((chapter, index) => <button key={chapter.id} data-nav data-active={index === 0} onClick={() => goToChapter(index, reduced)} aria-label={`第${index + 1}幕：${chapter.label}`}><span className="nav-number">0{index + 1}</span><span className="nav-label">{chapter.label}</span><span className="nav-track" /></button>)}</div>
     </nav>
     <div className="scroll-hint"><span className="scroll-line" /> SCROLL TO EXPLORE</div>
@@ -124,9 +134,11 @@ export default function App() {
         <h2>真实的数据。<br /><em>开放的视野。</em></h2>
         <p>本作品是围绕月球遥感与基础模型的独立艺术展示，非 NASA 或 IBM 官方网站。没有下载机器学习权重，也没有运行模型推理。</p>
         <a href="https://svs.gsfc.nasa.gov/4720/" target="_blank" rel="noreferrer"><span>01 / NASA CGI Moon Kit<small>LROC 彩色影像与 LOLA 高程 · 本地纹理</small></span><Arrow diagonal /></a>
-        <a href={modelUrl} target="_blank" rel="noreferrer"><span>02 / NASA–IBM Lunar Foundation Model<small>开放模型与下游任务集合</small></span><Arrow diagonal /></a>
-        <a href="https://arxiv.org/abs/2609.13283" target="_blank" rel="noreferrer"><span>03 / 技术报告<small>Multimodal-Multiresolution Foundation Model</small></span><Arrow diagonal /></a>
-        <p className="dialog-note">月面高程适度夸张以呈现地貌；边缘辉光为电影化光学效果，不代表月球拥有浓密大气。极区色彩、扫描线与经纬网为示意。画面坐标为设计标识，不是实时定位。Image credit: NASA / NASA’s Scientific Visualization Studio.</p>
+        <a href="https://data.lroc.im-ldi.com/lroc/view_rdr/NAC_DTM_APOLLO17_4" target="_blank" rel="noreferrer"><span>02 / LROC NAC 地表数据<small>0.6 米正射影像 / 2 米立体高程 · 局部瓦片</small></span><Arrow diagonal /></a>
+        <a href="https://science.nasa.gov/resource/blue-marble-2002/" target="_blank" rel="noreferrer"><span>03 / NASA Blue Marble<small>地球彩色影像 · 本地纹理</small></span><Arrow diagonal /></a>
+        <a href={modelUrl} target="_blank" rel="noreferrer"><span>04 / NASA–IBM Lunar Foundation Model<small>开放模型与下游任务集合</small></span><Arrow diagonal /></a>
+        <a href="https://arxiv.org/abs/2609.13283" target="_blank" rel="noreferrer"><span>05 / 技术报告<small>Multimodal-Multiresolution Foundation Model</small></span><Arrow diagonal /></a>
+        <p className="dialog-note">轨道高程适度夸张，地表段高程为真实米制；局部测量区之外使用平滑参考球面。地球视直径约 1.9°，方位经过艺术调整，并非该地点星历。近处碎石与微表面为程序化补充。边缘辉光为电影化光学效果，不代表月球拥有浓密大气。极区色彩、扫描线与经纬网为示意。画面坐标为设计标识，不是实时定位。Image credit: NASA / NASA’s Scientific Visualization Studio.</p>
       </div>
     </dialog>}
   </>

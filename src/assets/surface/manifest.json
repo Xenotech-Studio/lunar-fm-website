@@ -1,0 +1,80 @@
+{
+  "sourcePages": [
+    "https://data.lroc.im-ldi.com/lroc/view_rdr/NAC_DTM_APOLLO17_4",
+    "https://svs.gsfc.nasa.gov/4720/"
+  ],
+  "sources": {
+    "dem": "https://pds.lroc.im-ldi.com/data/LRO-L-LROC-5-RDR-V1.0/LROLRC_2001/DATA/SDP/NAC_DTM/APOLLO17_4/NAC_DTM_APOLLO17_4.TIF",
+    "ortho": "https://pds.lroc.im-ldi.com/data/LRO-L-LROC-5-RDR-V1.0/LROLRC_2001/EXTRAS/BROWSE/NAC_DTM/APOLLO17_4/NAC_DTM_APOLLO17_4_M150314689_60CM.TIF"
+  },
+  "rangeSHA256": {
+    "ortho": "67dc736813cb358d831e050f71074ad968d6f47ce3fc98870262dac39221e3eb",
+    "dem": "5f3888065a75807f7f4ac8cae896acc825f1e675ccb8ff83e5e6b97f0107ca5c"
+  },
+  "orthoCrop": [
+    1905,
+    20000,
+    4096,
+    4096
+  ],
+  "projectedTopLeft": [
+    -4264770.0000002,
+    617337.60000003
+  ],
+  "projection": "Equirectangular; center latitude 20, longitude 180; radius 1737400 m",
+  "widthMeters": 2457.6,
+  "heightGrid": 1025,
+  "sourceImageMetersPerPixel": 0.6,
+  "sourceDEMMetersPerPost": 2,
+  "runtimeHeightMetersPerPost": 2.4,
+  "heightRangeMeters": [
+    -2303.00830078125,
+    -1731.4139404296875
+  ],
+  "contextGrid": [
+    199,
+    501
+  ],
+  "contextVoidFraction": 0.07372800730747611,
+  "contextWorldBounds": [
+    -2371.8,
+    -5228.2,
+    2370.2,
+    6769.8
+  ],
+  "earthSource": "https://eoimages.gsfc.nasa.gov/images/imagerecords/57000/57730/land_ocean_ice_2048.png",
+  "derived": {
+    "nac-1-1.webp": {
+      "bytes": 318562,
+      "sha256": "6851dceb993ce3aad7119eecc2449add3570f26713c7acd7cb43f4b54ce95f63"
+    },
+    "terrain.f32": {
+      "bytes": 4202500,
+      "sha256": "45270b625b6b1d3f31563465e7ad4388646a00f1aa4853277ceaaebb198886eb"
+    },
+    "nac-1-0.webp": {
+      "bytes": 370910,
+      "sha256": "02c90cb5af05eb5fb863bc299f0579f05f34d57274fc5831e6d316fb3f95dd56"
+    },
+    "context.webp": {
+      "bytes": 359278,
+      "sha256": "4075515299baedfeb0f8b7a1fb2bb51d0543339c54bc8f18f69de007bd954cc5"
+    },
+    "earth-blue-marble.webp": {
+      "bytes": 374086,
+      "sha256": "8c90d4680c1cf127e0a55e026f0ef793881ebb26175bcef6193c29ed47c200ec"
+    },
+    "context-terrain.f32": {
+      "bytes": 398796,
+      "sha256": "c97063c4a91918fbc77308077610029587d5300b0f6411dea48570560e100809"
+    },
+    "nac-0-1.webp": {
+      "bytes": 315132,
+      "sha256": "fe34b37a9304ae99b7077107a752f7382a6f4859457beaafb168e9009ad2c8b1"
+    },
+    "nac-0-0.webp": {
+      "bytes": 350144,
+      "sha256": "25c48d87aa2c8c1db3a1596c9efa04543eefe3ba56558d43d69a28c2167ca44f"
+    }
+  }
+}
