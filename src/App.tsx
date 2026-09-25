@@ -120,7 +120,7 @@ export default function App() {
       </div>
     </main>
 
-    <aside className="telemetry" aria-label="场景状态"><span className="telemetry-dot" /><span>{failed ? 'STATIC EXPLORATION' : ready ? 'LRO SURFACE / LIVE RENDER' : 'LOADING LUNAR DATA'}</span><span className="telemetry-coord">23.4° N &nbsp; 45.0° E</span></aside>
+    <aside className="telemetry" aria-label="场景状态"><span className="telemetry-dot" /><span>{failed ? 'STATIC EXPLORATION' : ready ? 'LRO SURFACE / LIVE RENDER' : 'LOADING LUNAR DATA'}</span><span className="telemetry-coord">20.32° N &nbsp; 30.37° E</span></aside>
     <nav className="chapter-nav" aria-label="章节导航">
       <div className="nav-heading"><span>THE JOURNEY</span><span data-counter>01 / 06</span></div>
       <div className="nav-items">{chapters.map((chapter, index) => <button key={chapter.id} data-nav data-active={index === 0} onClick={() => goToChapter(index, reduced)} aria-label={`第${index + 1}幕：${chapter.label}`}><span className="nav-number">0{index + 1}</span><span className="nav-label">{chapter.label}</span><span className="nav-track" /></button>)}</div>

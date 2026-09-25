@@ -76,25 +76,27 @@ test('地表按需加载、连续高度、释放与重访', async ({ page }, tes
   await page.waitForTimeout(1000)
   expect(requests.some(u => /nac-0-0|terrain-.*f32|blue-marble/.test(u))).toBe(false)
   const baseline=Number(await canvas.getAttribute('data-gpu-textures'))
-  // Three r186 lazily creates a shared 16x16 RG16F DFG LUT on first PBR render.
-  // It is renderer-owned (1024 bytes), not a surface texture.
-  const warmedBaseline=baseline+1
+  // Orbit already uses PBR; the shared DFG LUT is included in the baseline.
+  const warmedBaseline=baseline
   async function scrub(p: number) {
     await page.evaluate(p => scrollTo(0,(document.documentElement.scrollHeight-innerHeight)*p),p)
     await expect.poll(async()=>page.evaluate(()=>Number(getComputedStyle(document.documentElement).getPropertyValue('--journey')))).toBeCloseTo(p,3)
   }
   await scrub(.35)
   await expect(canvas).toHaveAttribute('data-surface','ready')
-  await expect.poll(async()=>Number(await canvas.getAttribute('data-altitude'))).toBeCloseTo(600,0)
+  await expect.poll(async()=>Number(await canvas.getAttribute('data-altitude'))).toBeCloseTo(9000,-1)
   await page.screenshot({path:testInfo.outputPath('nac-craters-35.png')})
   await scrub(.39)
   await expect(canvas).toHaveAttribute('data-surface','ready')
-  await expect.poll(async()=>Number(await canvas.getAttribute('data-altitude'))).toBeCloseTo(65,0)
+  await expect.poll(async()=>Number(await canvas.getAttribute('data-altitude'))).toBeCloseTo(1000,0)
   await page.screenshot({path:testInfo.outputPath('nac-craters-39.png')})
   await scrub(.43)
-  await expect.poll(async()=>Number(await canvas.getAttribute('data-altitude'))).toBeCloseTo(18,0)
+  await expect.poll(async()=>Number(await canvas.getAttribute('data-altitude'))).toBeCloseTo(110,0)
   await scrub(.50)
   await expect.poll(async()=>Number(await canvas.getAttribute('data-altitude'))).toBeCloseTo(2.1,1)
+  await expect(canvas).toHaveAttribute('data-planet-count','1')
+  await expect(canvas).toHaveAttribute('data-above-terrain','true')
+  await expect(canvas).toHaveAttribute('data-scene-cameras','1')
   await page.screenshot({path:testInfo.outputPath('earth-from-surface-50.png')})
   const firstLoaded=Number(await canvas.getAttribute('data-gpu-textures'))
   expect(firstLoaded).toBeGreaterThan(baseline)

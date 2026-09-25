@@ -1,0 +1,30 @@
+{
+  "method": "bounded log high-pass; 18 px Gaussian; 0.2..0.8; not intrinsic albedo",
+  "derived": {
+    "context-detail.webp": {
+      "source": "context.webp",
+      "sha256": "caad1d6625069b0e165d8f6932410472ea176d8cd51b986ffafc88762573839e",
+      "bytes": 340934
+    },
+    "nac-0-0-detail.webp": {
+      "source": "nac-0-0.webp",
+      "sha256": "662d884affd5cd9234eadec88fa5b57c82f106a988640652068a3527209cea45",
+      "bytes": 243478
+    },
+    "nac-1-0-detail.webp": {
+      "source": "nac-1-0.webp",
+      "sha256": "7c977233548ad85c8d90ae4f1a9435a9e87ec5cbe5b185ca2431807b4438a9ab",
+      "bytes": 308006
+    },
+    "nac-0-1-detail.webp": {
+      "source": "nac-0-1.webp",
+      "sha256": "26a3e8c0293b6f529a05c8c045b3b56bf1c9f260b939697f4b1d52e638ff370b",
+      "bytes": 264694
+    },
+    "nac-1-1-detail.webp": {
+      "source": "nac-1-1.webp",
+      "sha256": "d51d13bc35819a83990ac8116e3d2b27f2e5cd187519e3daf9b05062063b725f",
+      "bytes": 248792
+    }
+  }
+}

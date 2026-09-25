@@ -1,0 +1,401 @@
+[
+  {
+    "progress": 20,
+    "engine": "three.js r186",
+    "gpuTextures": "19"
+  },
+  {
+    "progress": 21,
+    "engine": "three.js r186",
+    "gpuTextures": "19"
+  },
+  {
+    "progress": 22,
+    "engine": "three.js r186",
+    "gpuTextures": "19"
+  },
+  {
+    "progress": 23,
+    "engine": "three.js r186",
+    "gpuTextures": "19",
+    "surface": "ready",
+    "surfaceBytes": "43436804"
+  },
+  {
+    "progress": 24,
+    "engine": "three.js r186",
+    "gpuTextures": "19",
+    "surface": "ready",
+    "surfaceBytes": "43436804"
+  },
+  {
+    "progress": 25,
+    "engine": "three.js r186",
+    "gpuTextures": "19",
+    "surface": "ready",
+    "surfaceBytes": "43436804"
+  },
+  {
+    "progress": 26,
+    "engine": "three.js r186",
+    "gpuTextures": "19",
+    "surface": "ready",
+    "surfaceBytes": "43436804"
+  },
+  {
+    "progress": 27,
+    "engine": "three.js r186",
+    "gpuTextures": "19",
+    "surface": "ready",
+    "surfaceBytes": "43436804"
+  },
+  {
+    "progress": 28,
+    "engine": "three.js r186",
+    "gpuTextures": "19",
+    "surface": "ready",
+    "surfaceBytes": "43436804"
+  },
+  {
+    "progress": 29,
+    "engine": "three.js r186",
+    "gpuTextures": "26",
+    "surface": "ready",
+    "surfaceBytes": "43436804",
+    "altitude": "8500.00",
+    "surfaceGpuTextures": "26"
+  },
+  {
+    "progress": 30,
+    "engine": "three.js r186",
+    "gpuTextures": "26",
+    "surface": "ready",
+    "surfaceBytes": "43436804",
+    "altitude": "6992.00",
+    "surfaceGpuTextures": "26"
+  },
+  {
+    "progress": 31,
+    "engine": "three.js r186",
+    "gpuTextures": "26",
+    "surface": "ready",
+    "surfaceBytes": "43436804",
+    "altitude": "4282.34",
+    "surfaceGpuTextures": "26"
+  },
+  {
+    "progress": 32,
+    "engine": "three.js r186",
+    "gpuTextures": "26",
+    "surface": "ready",
+    "surfaceBytes": "43436804",
+    "altitude": "2262.64",
+    "surfaceGpuTextures": "26"
+  },
+  {
+    "progress": 33,
+    "engine": "three.js r186",
+    "gpuTextures": "26",
+    "surface": "ready",
+    "surfaceBytes": "43436804",
+    "altitude": "1195.00",
+    "surfaceGpuTextures": "26"
+  },
+  {
+    "progress": 34,
+    "engine": "three.js r186",
+    "gpuTextures": "26",
+    "surface": "ready",
+    "surfaceBytes": "43436804",
+    "altitude": "730.96",
+    "surfaceGpuTextures": "26"
+  },
+  {
+    "progress": 35,
+    "engine": "three.js r186",
+    "gpuTextures": "26",
+    "surface": "ready",
+    "surfaceBytes": "43436804",
+    "altitude": "600.00",
+    "surfaceGpuTextures": "26"
+  },
+  {
+    "progress": 36,
+    "engine": "three.js r186",
+    "gpuTextures": "26",
+    "surface": "ready",
+    "surfaceBytes": "43436804",
+    "altitude": "424.73",
+    "surfaceGpuTextures": "26"
+  },
+  {
+    "progress": 37,
+    "engine": "three.js r186",
+    "gpuTextures": "26",
+    "surface": "ready",
+    "surfaceBytes": "43436804",
+    "altitude": "197.96",
+    "surfaceGpuTextures": "26"
+  },
+  {
+    "progress": 38,
+    "engine": "three.js r186",
+    "gpuTextures": "26",
+    "surface": "ready",
+    "surfaceBytes": "43436804",
+    "altitude": "92.15",
+    "surfaceGpuTextures": "26"
+  },
+  {
+    "progress": 39,
+    "engine": "three.js r186",
+    "gpuTextures": "26",
+    "surface": "ready",
+    "surfaceBytes": "43436804",
+    "altitude": "65.00",
+    "surfaceGpuTextures": "26"
+  },
+  {
+    "progress": 40,
+    "engine": "three.js r186",
+    "gpuTextures": "26",
+    "surface": "ready",
+    "surfaceBytes": "43436804",
+    "altitude": "53.22",
+    "surfaceGpuTextures": "26"
+  },
+  {
+    "progress": 41,
+    "engine": "three.js r186",
+    "gpuTextures": "26",
+    "surface": "ready",
+    "surfaceBytes": "43436804",
+    "altitude": "34.25",
+    "surfaceGpuTextures": "26"
+  },
+  {
+    "progress": 42,
+    "engine": "three.js r186",
+    "gpuTextures": "26",
+    "surface": "ready",
+    "surfaceBytes": "43436804",
+    "altitude": "22.02",
+    "surfaceGpuTextures": "26"
+  },
+  {
+    "progress": 43,
+    "engine": "three.js r186",
+    "gpuTextures": "26",
+    "surface": "ready",
+    "surfaceBytes": "43436804",
+    "altitude": "18.00",
+    "surfaceGpuTextures": "26"
+  },
+  {
+    "progress": 44,
+    "engine": "three.js r186",
+    "gpuTextures": "26",
+    "surface": "ready",
+    "surfaceBytes": "43436804",
+    "altitude": "12.89",
+    "surfaceGpuTextures": "26"
+  },
+  {
+    "progress": 45,
+    "engine": "three.js r186",
+    "gpuTextures": "26",
+    "surface": "ready",
+    "surfaceBytes": "43436804",
+    "altitude": "6.16",
+    "surfaceGpuTextures": "26"
+  },
+  {
+    "progress": 46,
+    "engine": "three.js r186",
+    "gpuTextures": "27",
+    "surface": "ready",
+    "surfaceBytes": "43436804",
+    "altitude": "2.94",
+    "surfaceGpuTextures": "27"
+  },
+  {
+    "progress": 47,
+    "engine": "three.js r186",
+    "gpuTextures": "27",
+    "surface": "ready",
+    "surfaceBytes": "43436804",
+    "altitude": "2.10",
+    "surfaceGpuTextures": "27"
+  },
+  {
+    "progress": 48,
+    "engine": "three.js r186",
+    "gpuTextures": "27",
+    "surface": "ready",
+    "surfaceBytes": "43436804",
+    "altitude": "2.10",
+    "surfaceGpuTextures": "27"
+  },
+  {
+    "progress": 49,
+    "engine": "three.js r186",
+    "gpuTextures": "27",
+    "surface": "ready",
+    "surfaceBytes": "43436804",
+    "altitude": "2.10",
+    "surfaceGpuTextures": "27"
+  },
+  {
+    "progress": 50,
+    "engine": "three.js r186",
+    "gpuTextures": "27",
+    "surface": "ready",
+    "surfaceBytes": "43436804",
+    "altitude": "2.10",
+    "surfaceGpuTextures": "27"
+  },
+  {
+    "progress": 51,
+    "engine": "three.js r186",
+    "gpuTextures": "27",
+    "surface": "ready",
+    "surfaceBytes": "43436804",
+    "altitude": "2.10",
+    "surfaceGpuTextures": "27"
+  },
+  {
+    "progress": 52,
+    "engine": "three.js r186",
+    "gpuTextures": "27",
+    "surface": "ready",
+    "surfaceBytes": "43436804",
+    "altitude": "2.10",
+    "surfaceGpuTextures": "27"
+  },
+  {
+    "progress": 53,
+    "engine": "three.js r186",
+    "gpuTextures": "27",
+    "surface": "ready",
+    "surfaceBytes": "43436804",
+    "altitude": "2.10",
+    "surfaceGpuTextures": "27"
+  },
+  {
+    "progress": 54,
+    "engine": "three.js r186",
+    "gpuTextures": "27",
+    "surface": "ready",
+    "surfaceBytes": "43436804",
+    "altitude": "2.10",
+    "surfaceGpuTextures": "27"
+  },
+  {
+    "progress": 55,
+    "engine": "three.js r186",
+    "gpuTextures": "27",
+    "surface": "ready",
+    "surfaceBytes": "43436804",
+    "altitude": "2.10",
+    "surfaceGpuTextures": "27"
+  },
+  {
+    "progress": 56,
+    "engine": "three.js r186",
+    "gpuTextures": "27",
+    "surface": "ready",
+    "surfaceBytes": "43436804",
+    "altitude": "2.10",
+    "surfaceGpuTextures": "27"
+  },
+  {
+    "progress": 57,
+    "engine": "three.js r186",
+    "gpuTextures": "27",
+    "surface": "ready",
+    "surfaceBytes": "43436804",
+    "altitude": "2.40",
+    "surfaceGpuTextures": "27"
+  },
+  {
+    "progress": 58,
+    "engine": "three.js r186",
+    "gpuTextures": "27",
+    "surface": "ready",
+    "surfaceBytes": "43436804",
+    "altitude": "6.13",
+    "surfaceGpuTextures": "27"
+  },
+  {
+    "progress": 59,
+    "engine": "three.js r186",
+    "gpuTextures": "27",
+    "surface": "ready",
+    "surfaceBytes": "43436804",
+    "altitude": "28.87",
+    "surfaceGpuTextures": "27"
+  },
+  {
+    "progress": 60,
+    "engine": "three.js r186",
+    "gpuTextures": "27",
+    "surface": "ready",
+    "surfaceBytes": "43436804",
+    "altitude": "176.56",
+    "surfaceGpuTextures": "27"
+  },
+  {
+    "progress": 61,
+    "engine": "three.js r186",
+    "gpuTextures": "27",
+    "surface": "ready",
+    "surfaceBytes": "43436804",
+    "altitude": "990.76",
+    "surfaceGpuTextures": "27"
+  },
+  {
+    "progress": 62,
+    "engine": "three.js r186",
+    "gpuTextures": "27",
+    "surface": "ready",
+    "surfaceBytes": "43436804",
+    "altitude": "3603.52",
+    "surfaceGpuTextures": "27"
+  },
+  {
+    "progress": 63,
+    "engine": "three.js r186",
+    "gpuTextures": "27",
+    "surface": "ready",
+    "surfaceBytes": "43436804",
+    "altitude": "5999.95",
+    "surfaceGpuTextures": "27"
+  },
+  {
+    "progress": 64,
+    "engine": "three.js r186",
+    "gpuTextures": "27",
+    "surface": "ready",
+    "surfaceBytes": "43436804",
+    "altitude": "6000.00",
+    "surfaceGpuTextures": "27"
+  },
+  {
+    "progress": 65,
+    "engine": "three.js r186",
+    "gpuTextures": "27",
+    "surface": "ready",
+    "surfaceBytes": "43436804",
+    "altitude": "6000.00",
+    "surfaceGpuTextures": "27"
+  },
+  {
+    "progress": 66,
+    "engine": "three.js r186",
+    "gpuTextures": "20",
+    "surface": "unloaded",
+    "surfaceBytes": "0",
+    "altitude": "6000.00",
+    "surfaceGpuTextures": "27"
+  }
+]

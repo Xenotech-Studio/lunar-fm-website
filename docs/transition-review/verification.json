@@ -1,0 +1,26 @@
+{
+  "build": "passed",
+  "tests": {
+    "passed": 5,
+    "failed": 0
+  },
+  "assetHashesChecked": 16,
+  "capture": {
+    "after": {
+      "frames": 47,
+      "errors": [],
+      "visiblePlanets": [
+        1
+      ],
+      "maxProgressError": 4.4477224018679706e-05
+    },
+    "reverse": {
+      "frames": 47,
+      "errors": [],
+      "visiblePlanets": [
+        1
+      ],
+      "maxProgressError": 4.285811951398877e-05
+    }
+  }
+}

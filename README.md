@@ -2,7 +2,7 @@
 
 一个独立的月球艺术展示项目，以 NASA LRO 月面数据与 NASA–IBM Lunar Foundation Model 为叙事背景。React + Vite + TypeScript + react-three-fiber + three.js + postprocessing。
 
-![新增月面视角](docs/preview-surface.png)
+![修复后的月面视角](docs/transition-review/after/50.png)
 
 ## 本地运行
 
@@ -36,53 +36,31 @@ npm run preview
 | 84% | 连接线索 / Many signals | 镜头拉开，金色经纬网、扫描带与轨道线浮现 |
 | 100% | 新的地平线 / A new perspective | 月球回到中央远景，模型链接与重新启程按钮出现 |
 
-中间位置连续插值，相机、目标、月球变换、太阳方向、地形夸张度、数据网格与文案交叉淡入共用一个带帧率无关指数阻尼的滚动进度。支持反向滚动、直接跳转和尺寸变化。减少动态效果偏好下去掉阻尼、动效过渡与颗粒；保留用户主动滚动的场景变化。
+中间位置连续插值，相机、太阳方向、数据网格与文案交叉淡入共用一个带帧率无关指数阻尼的滚动进度。支持反向滚动、直接跳转和尺寸变化。减少动态效果偏好下去掉阻尼、动效过渡与颗粒；保留用户主动滚动的场景变化。
 
-## 图形实现
+## 图形实现与结构
 
-- **真实纹理**：NASA SVS CGI Moon Kit 的 LROC 4K 彩色地图与 LOLA 16-bit unsigned 高程。无机器学习权重，无模型推理。
-- **高程**：从 5760×2880 高程重采样到4096×2048，16位值打包到 PNG 的 R/G 通道。shader 解码为 `(R*65280 + G*255)*0.5 - 10000` 米，相对1737.4km基准球。保持无色彩空间处理、线性采样与禁用高程mipmap。
-- **自定义月面 shader**：顶点真实位移；高程中心差分构造切线空间法线；弱光学纹理细节；Lommel–Seeliger / Lambert混合反射；太阳方向控制晨昏线；适量冷色环境光。地形做约2–3.4倍艺术夸张。
-- **辉光**：外壳shader做12步视线积分，结合指数衰减密度与光照方向，产生薄层、有体积感的光学辉光。月球没有地球式浓密大气，本效果仅为艺术表现，网页已标注。
-- **后处理**：HDR渲染，Bloom → ACES Filmic → 颗粒与暗角；渲染器使用 NoToneMapping，ACES只在后处理做一次。
-- **性能**：桌面384×192球面分段、手机256×128；DPR上限1.6；确定性星空；每帧修改uniforms/ref，不以React状态逐帧重渲染。3D模块懒加载。轨道纹理约15.65MB；新地表资产约6.7MB、靠近新段才请求；使用真实独立高程而非将彩色图假当高程。
-- **可访问性**：原生页面滚动、可聚焦导航、当前章节aria-current、不可见章节inert、键盘可关闭的原生dialog、减少动态效果支持、WebGL失败时静态月面降级。字体本地托管，许可证保留。
+- 单一米制世界、单一相机、单一可见月面网格，没有局部场景 FBO、第二相机或两个球面的透明叠化。
+- `src/scene/geography.ts`：从 GeoTIFF 的投影坐标反算经纬度，半径 1737400 m；LOLA → GLD100 → NAC 共用地理坐标和高程基准，无垂直夸张。非重叠嵌套网格增加近景密度，边缘奇数顶点落在父网格边上。
+- `src/scene/flight.ts`：一条连续相机轨迹，对数高度的单调 Hermite 插值；近地面没有位置切换。沿程抬头看地球，再沿同一地理位置升空。
+- `src/scene/planetMaterial.ts`：共享太阳方向，PBR 粗糙表面，按空间尺度过滤高程法线，影像高频细节和带限的毫米级程序化微法线。轨道远景降低超出像素尺度的几何法线细节，避免欠采样条纹。
+- `src/scene/SurfaceJourney.tsx`：按需加载测量数据、地球与实例化碎石；统一深度缓冲、真实投影阴影。碎石是艺术补充，不能称为测量结果。
+- `src/scene/LunarScene.tsx`：渲染与资源生命周期、动态裁剪面、对数深度、4× MSAA、Bloom、ACES、颗粒和暗角。DPR 上限 1.5。月球没有虚构大气壳；地球有薄层辉光。
+- `src/timeline.ts`：原生滚动、帧率无关阻尼、DOM 文案与场景进度；支持反向滚动、键盘导航、减少动态效果和 WebGL 降级。
+- `src/assets/SOURCES.md`、各 manifest：来源、处理方法、空间精度、SHA-256。
 
-## 结构
-
-```text
-src/
-  App.tsx                 文案、章节、导航、来源档案、错误边界
-  timeline.ts             同步DOM与WebGL的滚动导演
-  styles.css              桌面/手机版式与交互
-  scene/
-    LunarScene.tsx        相机、月球、星空、轨道、后处理
-    SurfaceJourney.tsx   局部米制地形、瓦片生命周期、独立相机与合成
-    shaders.ts            位移、月面光照、法线、体积辉光、数据叠层
-  assets/
-    lroc-color-4k.webp    NASA彩色纹理
-    lola-height-rg.png    NASA 16位高程RG打包纹理
-    manifest.json         原始下载URL、文件大小与SHA-256
-    SOURCES.md            素材来源与转换说明
-    surface/             NAC 瓦片、Float32 高程、Blue Marble、来源清单
-    fonts/                本地字体及OFL许可
-scripts/prepare-assets.py 可选：重新下载与转换NASA素材
-scripts/requirements-assets.txt 可选素材工具的精确版本
-tests/journey.spec.ts     WebGL、滚动、导航、手机、降级验证
-playwright.config.ts     自动启停生产预览服务器
-```
-
-## 验证
+## 验证与逐帧证据
 
 ```sh
+npm run build
 npm test
+# 单独逐帧复查：先另开终端 npm run preview -- --port 4173
+node scripts/review-scroll.mjs docs/transition-review/after 1
 ```
 
-测试使用本机 Google Chrome (`channel: chrome`)，无需下载额外浏览器；在无Chrome机器上安装Chrome，或将配置改为已安装的Playwright Chromium。软件WebGL用于自动化功能验证，不代表真实GPU性能。测试自动启动并关闭4173端口的生产预览，截图写入被git忽略的 `test-results/`。
+测试使用本机 Chrome 的实际 WebGL（自动化使用 SwiftShader，不代表硬件 GPU 性能）。测试自动启停生产预览；不要同时占用 4173 端口。
 
-检查内容包括实际WebGL渲染（不允许偷偷降级）、shader/JS控制台错误、六幕导航、37%中间滚动位置、手机布局、减少动态效果、档案弹窗和NASA署名。本项目未做移动真机GPU性能基准。
-
-完成时验证：`npm install`成功（0 vulnerabilities）、`npm run build`成功、四项Playwright测试全部通过（含地表按需加载、连续高度、回收与重访）。桌面1440×1000与手机390×844逐幕截图已人工检查；截图示例保存在`docs/`。预览服务由测试结束时自动关闭。
+修复前和修复后均在 1200×800 的真实浏览器中，从 20% 到 66% 每 1% 截图一次。完整序列、相机/高度/资源诊断和错误列表保存在 [逐帧复查](docs/transition-review/index.html)，问题清单见 [复查记录](docs/transition-review/REVIEW.md)。手机布局、导航、弹窗、WebGL 降级、资源释放及重访另由 Playwright 覆盖。
 
 ## 科学表述与素材
 
@@ -92,24 +70,23 @@ Image credit: NASA / NASA’s Scientific Visualization Studio.
 - [NASA–IBM模型集合](https://huggingface.co/collections/nasa-ibm-ai4science/nasa-ibm-lunar-fm-and-downstream-models)
 - [技术报告](https://arxiv.org/abs/2609.13283)
 
-这是独立艺术项目，非NASA或IBM官方产品。极区蓝色覆盖、扫描线、经纬网与坐标为艺术示意，不是实测冰、模型预测或实时地理定位。模型的冰潜力任务回归专家潜力图，不能当作已发现冰资源。没有使用、下载或依赖2.4GB机器学习权重。两种NASA纹理均成功获取，没有程序化替代纹理；程序化内容仅为星空、示意覆盖和光学特效。
+这是独立艺术项目，非NASA或IBM官方产品。极区蓝色覆盖、扫描线、经纬网与坐标为艺术示意，不是实测冰、模型预测或实时地理定位。模型的冰潜力任务回归专家潜力图，不能当作已发现冰资源。没有使用、下载或依赖2.4GB机器学习权重。实际地形来自 NASA 数据；碎石、微法线和示意覆盖是明确标注的艺术补充。
 
 
 ## 地表段的滚动节奏与资源管理
 
-- **22%**：预取固定飞行走廊资源；不是首屏下载，也不加载机器学习权重。
-- **23.5–32%**：轨道镜头推进，29–32% 与独立米制场景作短暂连续合成。
-- **29–39%**：从 8.5 km 急速降到 65 m，辨认 NAC 影像中的单个陨石坑与坡面纹理。
-- **39–47%**：65 m → 18 m → 2.1 m，相机从俯视抬向地平线。
-- **47–56.5%**：地表高光段。地球、山坡与近景碎石同时出现，少量前行继续由滚动驱动。导航第 3 幕直达 50%。
-- **56.5–64%**：升空、回到轨道；**65.5%** 后卸载。反向滚动可重新进入。
+| 滚动进度 | 观察内容 |
+| --- | --- |
+| 18–20% | 预取局部数据，轨道中替换为同位置的高精度网格；任意时刻仅一张月面可见 |
+| 20–31% | 连续飞向约 20.30° N、30.37° E 的固定位置，31% 高约 80 km |
+| 31–39% | 80 km → 9 km → 1 km；GLD100 区域地形逐渐过渡到 NAC 小撞击坑 |
+| 39–50% | 1 km → 110 m → 9 m → 2.1 m；俯视连续抬向坡面地平线 |
+| 50–56% | 坑缘驻足，看向地球；细小碎石和接触阴影 |
+| 56–68% | 连续升空，恢复轨道构图；没有两个球面交叉淡化 |
+| 69.5% 之后 / 18% 之前 | 卸载局部资源；反向进入重新加载 |
 
-四块 1024² 有效像素 NAC 瓦片覆盖固定镜头走廊，外圈使用低分辨率影像与约 24 m DEM；不是全球在线瓦片地图。相邻瓦片有 1 px gutter，法线使用统一高程中心差分，内外网格互补以避免叠面；细节区外沿 55 m 混合粗细纹理，避免突兀的清晰度边界。详见 [来源与精度取舍](src/assets/SOURCES.md)。
+局部影像覆盖固定走廊，并非全球在线 NAC 瓦片服务。新增 153.6 km 见方的 100 m WAC / GLD100 区域桥接层，四块 NAC 瓦片带 1 px gutter。高程与材质边界在同一地理坐标下平滑融合；全球网格在精细网格区域挖空，避免双层表面。
 
-`SurfaceJourney` 自主管理 fetch / AbortController、ImageBitmap、纹理、几何、材质、实例缓冲与 HDR render target；不使用会永久缓存纹理的 useLoader。退出范围关闭 bitmap、dispose GPU 对象、清除引用。HTTP 缓存可保留压缩下载用于重访，但不会保留已解码 GPU 资源。下载失败保留轨道叙事，不会令整个页面崩溃。
+加载慢时，相机暂留高轨道，资源就绪后连续追上滚动位置；不会跳到空白地面。离开时取消请求、关闭 ImageBitmap、释放纹理/材质/几何/实例和局部阴影贴图，保留浏览器正常 HTTP 缓存。没有额外全屏 HDR 场景合成缓冲。手机 NAC 纹理解码为 512²；地形保持相同的实测高程基准。显存数字是对象与尺寸预算，不是驱动实际显存实测。
 
-桌面地表贴图 GPU 估算约 37.4 MiB，CPU 主高程约 4 MiB；另有约 27 MB 几何和随视口变化的 HDR 合成缓冲。1440×1000 下合成分辨率上限 1.4 DPR / 约 300 万像素，缓冲约 34 MB；这些是预算估算，非驱动显存实测。手机纹理解码降档至 512²，网格分段减半，合成 DPR 上限 1.15。资源测试使用 renderer 的纹理对象计数验证退出回到预热基线、重访不增长。Three r186 首次使用 PBR 材质会生成一个共享 16×16 RG16F DFG LUT（1024 bytes），因此首次退出比冷启动多一个渲染器内部纹理；测试明确容许这一个已核实的缓存，而不是容许地表纹理泄漏。
-
-新增脚本 `scripts/prepare-surface.py` 从源 GeoTIFF 条带派生资源；其依赖仅用于可选素材重建，正常 npm 安装与运行不需要 Python。未下载 27k 整图：它约 400 m/px 的全球采样远低于局部 0.6 m NAC。近景碎石/微法线是艺术补充，地球方位经过构图调整，不能当作着陆模拟器。
-
-截图：`docs/preview-surface.png`、`docs/preview-descent.png`、`docs/preview-surface-mobile.png`。
+重建资源的可选 Python 工具在 `scripts/prepare-surface.py`、`prepare-regional.py` 和 `prepare-appearance.py`。未下载 27k 全球图或机器学习权重：27k 约 399 m/px，不能替代局部 0.6 m 影像和 2 m 源高程。影像高频提取只是艺术再光照方法，不是科学反照率反演。

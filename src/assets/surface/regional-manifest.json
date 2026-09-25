@@ -1,0 +1,44 @@
+{
+  "imageSource": "https://pds.lroc.im-ldi.com/data/LRO-L-LROC-5-RDR-V1.0/LROLRC_2001/EXTRAS/BROWSE/WAC_GLOBAL/WAC_GLOBAL_E300N0450_100M.TIF",
+  "demSource": "https://pds.lroc.im-ldi.com/data/LRO-L-LROC-5-RDR-V1.0/LROLRC_2001/DATA/SDP/WAC_GLD100/WAC_GLD100_E300N0450_100M.IMG",
+  "sourcePages": [
+    "https://data.lroc.im-ldi.com/lroc/view_rdr_product/WAC_GLOBAL_E300N0450_100M",
+    "https://data.lroc.im-ldi.com/lroc/view_rdr_product/WAC_GLD100_E300N0450_100M"
+  ],
+  "crop": [
+    8442,
+    11264,
+    1536,
+    1536
+  ],
+  "radius": 1737400,
+  "centerLatitude": 0,
+  "centerLongitude": 0,
+  "pixelMeters": 100,
+  "topLeftPixelCenter": [
+    844250,
+    692950
+  ],
+  "heightRange": [
+    -3781,
+    802
+  ],
+  "rangeHashes": {
+    "image": "cb1975b698e4004a8c345a62156b238c308be6b2013712d1c2fd89ef53931f29",
+    "dem": "0f202daba476e6f725c81981ed04b6d035c366210888d443ea97f23c93c0341e"
+  },
+  "derived": {
+    "wac-regional.webp": {
+      "bytes": 435042,
+      "sha256": "3238a447b8f7b802ff00c1489c1707d1c02d73613c239e802c31d424ccd45a14"
+    },
+    "wac-regional.i16": {
+      "bytes": 4718592,
+      "sha256": "1f41c20b417086df2a74a7f16309667f50628833d6316bde81d88da84612b215"
+    },
+    "wac-regional-detail.webp": {
+      "bytes": 526396,
+      "sha256": "78cec1b891f0eeefb6103e98cf2a17ec588115d9b18a1c711d2f4b95894dc33c"
+    }
+  }
+}

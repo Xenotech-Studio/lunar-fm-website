@@ -1,0 +1,20 @@
+
+> lunar-fm-website@1.0.0 test
+> playwright test
+
+(node:78717) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:78736) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 5 tests using 1 worker
+
+(node:78737) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/flight.spec.ts:5:1 › 同一地理坐标下，连续轨迹没有位置/视线跳变或穿地 (16.9s)
+  ✓  2 tests/journey.spec.ts:3:1 › WebGL、连续滚动、六幕导航与档案弹窗 (1.5m)
+  ✓  3 tests/journey.spec.ts:33:1 › 手机构图与减少动态效果 (28.9s)
+  ✓  4 tests/journey.spec.ts:52:1 › WebGL不可用时仍能阅读和导航 (3.0s)
+  ✓  5 tests/journey.spec.ts:68:1 › 地表按需加载、连续高度、释放与重访 (1.5m)
+
+  5 passed (3.9m)
