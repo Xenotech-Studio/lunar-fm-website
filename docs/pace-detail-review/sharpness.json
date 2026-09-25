@@ -1,0 +1,534 @@
+{
+  "warning": "Screen contrast proxy only; not physical spatial resolution. Positions/framing differ. Top 10% residuals removed to reduce rock/edge bias.",
+  "rois": {
+    "left": [
+      120,
+      420,
+      420,
+      520
+    ],
+    "middle": [
+      420,
+      460,
+      780,
+      550
+    ],
+    "lower": [
+      300,
+      610,
+      850,
+      660
+    ]
+  },
+  "medianTrimmedRMS": {
+    "04c35f5": 1.2991450179936719,
+    "2401762": 0.3873868700738632,
+    "final": 2.22652361483264
+  },
+  "frames": [
+    {
+      "frame": 50,
+      "version": "04c35f5",
+      "roi": "left",
+      "mean": 68.3664,
+      "trimmedHighFrequencyRMS": 1.581302791535675,
+      "p90Absolute": 4.0
+    },
+    {
+      "frame": 50,
+      "version": "04c35f5",
+      "roi": "middle",
+      "mean": 77.39617283950618,
+      "trimmedHighFrequencyRMS": 1.4247951264176104,
+      "p90Absolute": 3.0
+    },
+    {
+      "frame": 50,
+      "version": "04c35f5",
+      "roi": "lower",
+      "mean": 52.51512727272727,
+      "trimmedHighFrequencyRMS": 1.4192756724271132,
+      "p90Absolute": 3.0
+    },
+    {
+      "frame": 50,
+      "version": "2401762",
+      "roi": "left",
+      "mean": 68.42793333333333,
+      "trimmedHighFrequencyRMS": 0.5062571444397563,
+      "p90Absolute": 2.0
+    },
+    {
+      "frame": 50,
+      "version": "2401762",
+      "roi": "middle",
+      "mean": 70.12608024691357,
+      "trimmedHighFrequencyRMS": 0.385834566566037,
+      "p90Absolute": 1.0
+    },
+    {
+      "frame": 50,
+      "version": "2401762",
+      "roi": "lower",
+      "mean": 65.18781818181819,
+      "trimmedHighFrequencyRMS": 0.2183501034503251,
+      "p90Absolute": 1.0
+    },
+    {
+      "frame": 50,
+      "version": "final",
+      "roi": "left",
+      "mean": 59.2676,
+      "trimmedHighFrequencyRMS": 2.7839220934182447,
+      "p90Absolute": 6.0
+    },
+    {
+      "frame": 50,
+      "version": "final",
+      "roi": "middle",
+      "mean": 62.23746913580247,
+      "trimmedHighFrequencyRMS": 2.228809680657501,
+      "p90Absolute": 5.0
+    },
+    {
+      "frame": 50,
+      "version": "final",
+      "roi": "lower",
+      "mean": 48.08603636363636,
+      "trimmedHighFrequencyRMS": 2.1108952574390774,
+      "p90Absolute": 5.0
+    },
+    {
+      "frame": 51,
+      "version": "04c35f5",
+      "roi": "left",
+      "mean": 65.01613333333333,
+      "trimmedHighFrequencyRMS": 1.5326568556063151,
+      "p90Absolute": 4.0
+    },
+    {
+      "frame": 51,
+      "version": "04c35f5",
+      "roi": "middle",
+      "mean": 77.23808641975309,
+      "trimmedHighFrequencyRMS": 1.4179672074387837,
+      "p90Absolute": 3.0
+    },
+    {
+      "frame": 51,
+      "version": "04c35f5",
+      "roi": "lower",
+      "mean": 40.18516363636363,
+      "trimmedHighFrequencyRMS": 1.226673254264261,
+      "p90Absolute": 3.0
+    },
+    {
+      "frame": 51,
+      "version": "2401762",
+      "roi": "left",
+      "mean": 68.4272,
+      "trimmedHighFrequencyRMS": 0.5038003719875709,
+      "p90Absolute": 2.0
+    },
+    {
+      "frame": 51,
+      "version": "2401762",
+      "roi": "middle",
+      "mean": 70.12845679012345,
+      "trimmedHighFrequencyRMS": 0.3872983346207417,
+      "p90Absolute": 1.0
+    },
+    {
+      "frame": 51,
+      "version": "2401762",
+      "roi": "lower",
+      "mean": 64.95701818181819,
+      "trimmedHighFrequencyRMS": 0.21014665393866294,
+      "p90Absolute": 1.0
+    },
+    {
+      "frame": 51,
+      "version": "final",
+      "roi": "left",
+      "mean": 59.271766666666664,
+      "trimmedHighFrequencyRMS": 2.78615625309613,
+      "p90Absolute": 6.0
+    },
+    {
+      "frame": 51,
+      "version": "final",
+      "roi": "middle",
+      "mean": 62.233456790123455,
+      "trimmedHighFrequencyRMS": 2.227447560268222,
+      "p90Absolute": 5.0
+    },
+    {
+      "frame": 51,
+      "version": "final",
+      "roi": "lower",
+      "mean": 47.800763636363634,
+      "trimmedHighFrequencyRMS": 2.0867160416270916,
+      "p90Absolute": 5.0
+    },
+    {
+      "frame": 52,
+      "version": "04c35f5",
+      "roi": "left",
+      "mean": 60.26573333333333,
+      "trimmedHighFrequencyRMS": 1.4987772794292464,
+      "p90Absolute": 4.0
+    },
+    {
+      "frame": 52,
+      "version": "04c35f5",
+      "roi": "middle",
+      "mean": 70.59521604938271,
+      "trimmedHighFrequencyRMS": 1.3649668240389665,
+      "p90Absolute": 3.0
+    },
+    {
+      "frame": 52,
+      "version": "04c35f5",
+      "roi": "lower",
+      "mean": 37.6592,
+      "trimmedHighFrequencyRMS": 1.0884888978800293,
+      "p90Absolute": 3.0
+    },
+    {
+      "frame": 52,
+      "version": "2401762",
+      "roi": "left",
+      "mean": 68.424,
+      "trimmedHighFrequencyRMS": 0.5028805910838963,
+      "p90Absolute": 2.0
+    },
+    {
+      "frame": 52,
+      "version": "2401762",
+      "roi": "middle",
+      "mean": 70.12737654320988,
+      "trimmedHighFrequencyRMS": 0.3873868700738632,
+      "p90Absolute": 1.0
+    },
+    {
+      "frame": 52,
+      "version": "2401762",
+      "roi": "lower",
+      "mean": 64.84665454545454,
+      "trimmedHighFrequencyRMS": 0.19164360862620158,
+      "p90Absolute": 1.0
+    },
+    {
+      "frame": 52,
+      "version": "final",
+      "roi": "left",
+      "mean": 59.2697,
+      "trimmedHighFrequencyRMS": 2.7862758896658697,
+      "p90Absolute": 6.0
+    },
+    {
+      "frame": 52,
+      "version": "final",
+      "roi": "middle",
+      "mean": 62.23274691358025,
+      "trimmedHighFrequencyRMS": 2.2242506174727357,
+      "p90Absolute": 5.0
+    },
+    {
+      "frame": 52,
+      "version": "final",
+      "roi": "lower",
+      "mean": 47.68036363636364,
+      "trimmedHighFrequencyRMS": 2.0756111428111037,
+      "p90Absolute": 5.0
+    },
+    {
+      "frame": 53,
+      "version": "04c35f5",
+      "roi": "left",
+      "mean": 53.74956666666667,
+      "trimmedHighFrequencyRMS": 1.3767379588750386,
+      "p90Absolute": 3.0
+    },
+    {
+      "frame": 53,
+      "version": "04c35f5",
+      "roi": "middle",
+      "mean": 63.49,
+      "trimmedHighFrequencyRMS": 1.2174992922991665,
+      "p90Absolute": 3.0
+    },
+    {
+      "frame": 53,
+      "version": "04c35f5",
+      "roi": "lower",
+      "mean": 39.38043636363636,
+      "trimmedHighFrequencyRMS": 1.1122458851759844,
+      "p90Absolute": 3.0
+    },
+    {
+      "frame": 53,
+      "version": "2401762",
+      "roi": "left",
+      "mean": 68.4237,
+      "trimmedHighFrequencyRMS": 0.502327914149048,
+      "p90Absolute": 2.0
+    },
+    {
+      "frame": 53,
+      "version": "2401762",
+      "roi": "middle",
+      "mean": 70.12546296296296,
+      "trimmedHighFrequencyRMS": 0.38618992889470616,
+      "p90Absolute": 1.0
+    },
+    {
+      "frame": 53,
+      "version": "2401762",
+      "roi": "lower",
+      "mean": 64.84814545454546,
+      "trimmedHighFrequencyRMS": 0.20685231153622333,
+      "p90Absolute": 1.0
+    },
+    {
+      "frame": 53,
+      "version": "final",
+      "roi": "left",
+      "mean": 59.269933333333334,
+      "trimmedHighFrequencyRMS": 2.7842081126982614,
+      "p90Absolute": 6.0
+    },
+    {
+      "frame": 53,
+      "version": "final",
+      "roi": "middle",
+      "mean": 62.236728395061725,
+      "trimmedHighFrequencyRMS": 2.2300095037535774,
+      "p90Absolute": 5.0
+    },
+    {
+      "frame": 53,
+      "version": "final",
+      "roi": "lower",
+      "mean": 47.680181818181815,
+      "trimmedHighFrequencyRMS": 2.0694604771936733,
+      "p90Absolute": 5.0
+    },
+    {
+      "frame": 54,
+      "version": "04c35f5",
+      "roi": "left",
+      "mean": 52.4549,
+      "trimmedHighFrequencyRMS": 1.3201430898875235,
+      "p90Absolute": 3.0
+    },
+    {
+      "frame": 54,
+      "version": "04c35f5",
+      "roi": "middle",
+      "mean": 60.97817901234568,
+      "trimmedHighFrequencyRMS": 1.083910893841718,
+      "p90Absolute": 3.0
+    },
+    {
+      "frame": 54,
+      "version": "04c35f5",
+      "roi": "lower",
+      "mean": 40.37309090909091,
+      "trimmedHighFrequencyRMS": 1.1087712736961295,
+      "p90Absolute": 3.0
+    },
+    {
+      "frame": 54,
+      "version": "2401762",
+      "roi": "left",
+      "mean": 68.42393333333334,
+      "trimmedHighFrequencyRMS": 0.5009250701711044,
+      "p90Absolute": 2.0
+    },
+    {
+      "frame": 54,
+      "version": "2401762",
+      "roi": "middle",
+      "mean": 70.1270061728395,
+      "trimmedHighFrequencyRMS": 0.38941762997452933,
+      "p90Absolute": 1.0
+    },
+    {
+      "frame": 54,
+      "version": "2401762",
+      "roi": "lower",
+      "mean": 64.84472727272727,
+      "trimmedHighFrequencyRMS": 0.19259000257258707,
+      "p90Absolute": 1.0
+    },
+    {
+      "frame": 54,
+      "version": "final",
+      "roi": "left",
+      "mean": 59.2683,
+      "trimmedHighFrequencyRMS": 2.7836094340768214,
+      "p90Absolute": 6.0
+    },
+    {
+      "frame": 54,
+      "version": "final",
+      "roi": "middle",
+      "mean": 62.23854938271605,
+      "trimmedHighFrequencyRMS": 2.2235258521914045,
+      "p90Absolute": 5.0
+    },
+    {
+      "frame": 54,
+      "version": "final",
+      "roi": "lower",
+      "mean": 47.6816,
+      "trimmedHighFrequencyRMS": 2.069909479307067,
+      "p90Absolute": 5.0
+    },
+    {
+      "frame": 55,
+      "version": "04c35f5",
+      "roi": "left",
+      "mean": 52.8935,
+      "trimmedHighFrequencyRMS": 1.2991450179936719,
+      "p90Absolute": 3.0
+    },
+    {
+      "frame": 55,
+      "version": "04c35f5",
+      "roi": "middle",
+      "mean": 60.563086419753084,
+      "trimmedHighFrequencyRMS": 1.0422159045848165,
+      "p90Absolute": 3.0
+    },
+    {
+      "frame": 55,
+      "version": "04c35f5",
+      "roi": "lower",
+      "mean": 40.4516,
+      "trimmedHighFrequencyRMS": 1.0446980134919084,
+      "p90Absolute": 2.0
+    },
+    {
+      "frame": 55,
+      "version": "2401762",
+      "roi": "left",
+      "mean": 68.4274,
+      "trimmedHighFrequencyRMS": 0.502438498171114,
+      "p90Absolute": 2.0
+    },
+    {
+      "frame": 55,
+      "version": "2401762",
+      "roi": "middle",
+      "mean": 70.12666666666667,
+      "trimmedHighFrequencyRMS": 0.388800695466984,
+      "p90Absolute": 1.0
+    },
+    {
+      "frame": 55,
+      "version": "2401762",
+      "roi": "lower",
+      "mean": 64.84334545454546,
+      "trimmedHighFrequencyRMS": 0.19878418326202796,
+      "p90Absolute": 1.0
+    },
+    {
+      "frame": 55,
+      "version": "final",
+      "roi": "left",
+      "mean": 59.2702,
+      "trimmedHighFrequencyRMS": 2.7853385990057133,
+      "p90Absolute": 6.0
+    },
+    {
+      "frame": 55,
+      "version": "final",
+      "roi": "middle",
+      "mean": 62.234907407407405,
+      "trimmedHighFrequencyRMS": 2.22652361483264,
+      "p90Absolute": 5.0
+    },
+    {
+      "frame": 55,
+      "version": "final",
+      "roi": "lower",
+      "mean": 47.679854545454546,
+      "trimmedHighFrequencyRMS": 2.069001613524667,
+      "p90Absolute": 5.0
+    },
+    {
+      "frame": 56,
+      "version": "04c35f5",
+      "roi": "left",
+      "mean": 52.9739,
+      "trimmedHighFrequencyRMS": 1.313984610090832,
+      "p90Absolute": 3.0
+    },
+    {
+      "frame": 56,
+      "version": "04c35f5",
+      "roi": "middle",
+      "mean": 60.62891975308642,
+      "trimmedHighFrequencyRMS": 1.030751453877598,
+      "p90Absolute": 3.0
+    },
+    {
+      "frame": 56,
+      "version": "04c35f5",
+      "roi": "lower",
+      "mean": 40.34061818181818,
+      "trimmedHighFrequencyRMS": 1.039288801114114,
+      "p90Absolute": 2.0
+    },
+    {
+      "frame": 56,
+      "version": "2401762",
+      "roi": "left",
+      "mean": 68.42703333333333,
+      "trimmedHighFrequencyRMS": 0.5049018973285068,
+      "p90Absolute": 2.0
+    },
+    {
+      "frame": 56,
+      "version": "2401762",
+      "roi": "middle",
+      "mean": 70.1270987654321,
+      "trimmedHighFrequencyRMS": 0.3874311302134048,
+      "p90Absolute": 1.0
+    },
+    {
+      "frame": 56,
+      "version": "2401762",
+      "roi": "lower",
+      "mean": 64.84647272727273,
+      "trimmedHighFrequencyRMS": 0.2004036331048321,
+      "p90Absolute": 1.0
+    },
+    {
+      "frame": 56,
+      "version": "final",
+      "roi": "left",
+      "mean": 59.27,
+      "trimmedHighFrequencyRMS": 2.7831303984568914,
+      "p90Absolute": 6.0
+    },
+    {
+      "frame": 56,
+      "version": "final",
+      "roi": "middle",
+      "mean": 62.234907407407405,
+      "trimmedHighFrequencyRMS": 2.224782475765188,
+      "p90Absolute": 5.0
+    },
+    {
+      "frame": 56,
+      "version": "final",
+      "roi": "lower",
+      "mean": 47.68098181818182,
+      "trimmedHighFrequencyRMS": 2.069684990426311,
+      "p90Absolute": 5.0
+    }
+  ]
+}

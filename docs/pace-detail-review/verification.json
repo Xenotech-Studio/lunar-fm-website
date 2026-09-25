@@ -1,0 +1,23 @@
+{
+  "matched": {
+    "frames": 19,
+    "errors": [],
+    "singlePlanet": true,
+    "singleCamera": true,
+    "aboveTerrain": true
+  },
+  "forward": {
+    "frames": 65,
+    "errors": [],
+    "singlePlanet": true,
+    "singleCamera": true,
+    "aboveTerrain": true
+  },
+  "reverse": {
+    "frames": 65,
+    "errors": [],
+    "singlePlanet": true,
+    "singleCamera": true,
+    "aboveTerrain": true
+  }
+}

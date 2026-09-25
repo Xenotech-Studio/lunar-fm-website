@@ -67,7 +67,7 @@ export async function loadMeasuredPlanet(signal:AbortSignal,gl:T.WebGLRenderer,c
   }
   // Earth shares the world, lighting and depth buffer. The composition direction
   // is disclosed; distance/radius preserve a 1.9-degree apparent diameter.
-  const earth=new T.Group();earth.position.copy(new T.Vector3(6500,12000,-22000).normalize().multiplyScalar(384400000))
+  const earth=new T.Group();earth.position.copy(new T.Vector3(6500,8500,-22000).normalize().multiplyScalar(384400000))
   const earthGeometry=new T.SphereGeometry(6371000,64,48);geometries.push(earthGeometry)
   const earthMaterial=new T.MeshStandardMaterial({map:earthMap,roughness:1});materials.push(earthMaterial)
   const globe=new T.Mesh(earthGeometry,earthMaterial);globe.rotation.set(.18,2.8,-.25);earth.add(globe)

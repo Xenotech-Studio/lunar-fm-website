@@ -73,5 +73,5 @@ CGI Moon Kit 的 27360×13680 全球图赤道采样约 399 m/px（2π × 1737400
 - HTTP Range 原始条带约 41.92 MB + 83.84 MB；没有下载完整约 0.5 GB / 1 GB 源文件。运行时区域 DEM 约 4.72 MB，区域细节 WebP 约 0.53 MB。
 - `surface/regional-manifest.json` 记录 URL、裁剪像素、像元中心投影坐标、源条带及派生文件 SHA-256；`prepare-regional.py` 可重建。
 - `surface/appearance-manifest.json` 记录 NAC 高频处理及派生 SHA-256；原始影像仍保留。
-- 全局地理注册由 GeoTIFF equirectangular 参数反算。NAC 窗口中心约 20.31797° N、30.37386° E，当前坑缘视点在窗口以南约 585 m、以西约 235 m。坐标注册不代表消除了各测绘产品的测量误差；边界高程融合是展示处理。
+- 全局地理注册由 GeoTIFF equirectangular 参数反算。NAC 窗口中心约 20.31797° N、30.37386° E，当前视点位于窗口以南约 96 m、东西偏移 0 m，回到接近 04c35f5 的高精度测量区域。坐标注册不代表消除了各测绘产品的测量误差；边界高程融合是展示处理。
 - Image credit: NASA / GSFC / Arizona State University. GLD100: LROC / DLR.

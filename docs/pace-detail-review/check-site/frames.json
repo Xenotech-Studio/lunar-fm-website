@@ -1,0 +1,22 @@
+{
+  "frames": [
+    {
+      "progress": 50,
+      "mode": "story",
+      "scrollProgress": 0.6512931034482758,
+      "engine": "three.js r186",
+      "gpuTextures": "28",
+      "altitude": "2.100",
+      "flightProgress": "0.49995963250381936",
+      "cameraPosition": "0.00000,-31.24298,95.88200",
+      "cameraQuaternion": "0.03894227,-0.09846211,0.00385608,0.99437108",
+      "geographicSite": "20.317965903575143,30.373863256808953",
+      "planetCount": "1",
+      "sceneCameras": "1",
+      "aboveTerrain": "true",
+      "surface": "ready",
+      "surfaceBytes": "61137104"
+    }
+  ],
+  "errors": []
+}

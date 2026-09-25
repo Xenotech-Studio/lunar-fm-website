@@ -25,19 +25,21 @@ export function planetMaterial(color:T.Texture,appearance:Appearance|null){
    if(vSurfaceCoord.y<0.){if(vSurfaceCoord.x<0.)fine=texture2D(u00,tileUV).r;else fine=texture2D(u10,tileUV).r;}
    else {if(vSurfaceCoord.x<0.)fine=texture2D(u01,tileUV).r;else fine=texture2D(u11,tileUV).r;}
    float fineEdge=614.4-max(abs(vSurfaceCoord.x),abs(vSurfaceCoord.y));
-   detail=mix(detail,fine,smoothstep(0.,80.,fineEdge));
+   detail=mix(detail,fine,smoothstep(0.,12.,fineEdge));
    float range=distance(cameraPosition,vSurfacePosition);
-   // Source pixels are not stretched into metre-wide dark stains at eye height.
-   float photo=smoothstep(20.,160.,range);
+   // Keep bounded high frequencies at eye height; never restore broad baked shadows.
+   float photo=mix(.65,1.,smoothstep(10.,120.,range));
    vec2 regionalUV=(vSurfaceCoord-uRegion.xy)/uRegion.zw;
    float regionalEdge=min(min(regionalUV.x,1.-regionalUV.x)*uRegion.z,min(regionalUV.y,1.-regionalUV.y)*uRegion.w);
    float regionalWeight=smoothstep(0.,24000.,regionalEdge)*uMeasured*(1.-smoothstep(50000.,200000.,range));
    float medium=texture2D(uRegional,vec2(regionalUV.x,1.-regionalUV.y)).r;
-   float appearanceFactor=1.+(medium-.5)*1.5*regionalWeight*(1.-footprintWeight)+(detail-.5)*2.0*footprintWeight*photo;
+   float appearanceFactor=1.+(medium-.5)*1.5*regionalWeight*(1.-footprintWeight)+(detail-.5)*2.6*footprintWeight*photo;
    float nearField=(1.-smoothstep(30.,160.,range))*footprintWeight;
-   float sediment=regolithNoise(vec3(vSurfaceCoord*.8,0.))*.5+regolithNoise(vec3(vSurfaceCoord*3.7,7.))*.5;
+   float footprint=max(length(dFdx(vSurfacePosition)),length(dFdy(vSurfacePosition)));
+   float sediment=regolithNoise(vSurfacePosition*18.)*.5+regolithNoise(vSurfacePosition*63.)*.3+regolithNoise(vSurfacePosition*180.)*.2;
+   sediment=mix(sediment,.5,smoothstep(.02,.15,footprint));
    globalColor=mix(globalColor,vec3(.075),regionalWeight);
-   diffuseColor.rgb*=globalColor*appearanceFactor*mix(1.,.87+sediment*.22,nearField);
+   diffuseColor.rgb*=globalColor*appearanceFactor*mix(1.,.86+sediment*.28,nearField);
   `)
   shader.fragmentShader=shader.fragmentShader.replace('#include <normal_fragment_maps>',`
    #include <normal_fragment_maps>
@@ -45,12 +47,12 @@ export function planetMaterial(color:T.Texture,appearance:Appearance|null){
    vec3 radialNormal=normalize(mat3(viewMatrix)*(vSurfacePosition-vec3(0.,${CENTER.y.toFixed(5)},0.)));
    normal=normalize(mix(normal,radialNormal,smoothstep(30000.,150000.,dist)));
    float pixel=max(length(dFdx(vSurfacePosition)),length(dFdy(vSurfacePosition)));
-   float micro=regolithNoise(vSurfacePosition*21.)*.65+regolithNoise(vSurfacePosition*64.)*.35;
-   float band=(1.-smoothstep(.02,.09,pixel))*(1.-smoothstep(20.,100.,dist));
+   float micro=regolithNoise(vSurfacePosition*28.)*.65+regolithNoise(vSurfacePosition*85.)*.35;
+   float band=(1.-smoothstep(.02,.15,pixel))*(1.-smoothstep(30.,140.,dist));
    vec3 dp1=dFdx(vViewPosition),dp2=dFdy(vViewPosition);
    vec3 r1=cross(dp2,normal),r2=cross(normal,dp1);float determinant=dot(dp1,r1);
    vec3 perturb=(r1*dFdx(micro)+r2*dFdy(micro))*sign(determinant)/max(abs(determinant),.000001);
-   normal=normalize(normal+perturb*.0018*band);
+   normal=normalize(normal+perturb*.006*band);
   `)
   shader.fragmentShader=shader.fragmentShader.replace('#include <opaque_fragment>',`
    vec2 cell=vMapUv*vec2(48.,24.);vec2 line=abs(fract(cell-.5)-.5)/max(fwidth(cell),vec2(.0001));
@@ -59,6 +61,6 @@ export function planetMaterial(color:T.Texture,appearance:Appearance|null){
    #include <opaque_fragment>
   `)
  }
- material.customProgramCacheKey=()=> 'single-geographic-planet-v1'
+ material.customProgramCacheKey=()=> 'single-geographic-planet-v2'
  return {material,uniforms}
 }

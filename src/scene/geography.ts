@@ -18,7 +18,7 @@ export const LOCAL_ROTATION = new T.Quaternion().setFromRotationMatrix(TO_LOCAL)
 export const CENTER = new T.Vector3(0, -R-DATUM, 0)
 export const SUN = new T.Vector3(-.75, .28, .6).normalize()
 export const REGIONAL = new T.Vector4((regional.topLeftPixelCenter[0]-LON*R)*cos20,PY-regional.topLeftPixelCenter[1],153500*cos20,153500)
-export const LANDING = new T.Vector2(-235, 585)
+export const LANDING = new T.Vector2(0, 96)
 const clamp = (n:number,a=0,b=1)=>Math.max(a,Math.min(b,n))
 const fade = (n:number)=>{const x=clamp(n);return x*x*(3-2*x)}
 const lerp=(a:number,b:number,t:number)=>a+(b-a)*t

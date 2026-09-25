@@ -1,0 +1,39 @@
+{
+  "frames": [
+    {
+      "progress": 50,
+      "mode": "story",
+      "scrollProgress": 0.6512931034482758,
+      "engine": "three.js r186",
+      "gpuTextures": "28",
+      "altitude": "2.100",
+      "flightProgress": "0.4999638084291529",
+      "cameraPosition": "-234.25087,-118.57069,584.24572",
+      "cameraQuaternion": "0.03894234,-0.09846211,0.00385608,0.99437108",
+      "geographicSite": "20.317965903575143,30.373863256808953",
+      "planetCount": "1",
+      "sceneCameras": "1",
+      "aboveTerrain": "true",
+      "surface": "ready",
+      "surfaceBytes": "61137104"
+    },
+    {
+      "progress": 53,
+      "mode": "story",
+      "scrollProgress": 0.6758620689655173,
+      "engine": "three.js r186",
+      "gpuTextures": "28",
+      "altitude": "2.100",
+      "flightProgress": "0.5299594843909438",
+      "cameraPosition": "-234.25087,-118.57069,584.24572",
+      "cameraQuaternion": "0.03894262,-0.09846214,0.00385608,0.99437106",
+      "geographicSite": "20.317965903575143,30.373863256808953",
+      "planetCount": "1",
+      "sceneCameras": "1",
+      "aboveTerrain": "true",
+      "surface": "ready",
+      "surfaceBytes": "61137104"
+    }
+  ],
+  "errors": []
+}

@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test'
+import { storyToScroll } from '../src/timeline'
 
 test('WebGL、连续滚动、六幕导航与档案弹窗', async ({ page }, testInfo) => {
   const errors: string[] = []
@@ -19,7 +20,7 @@ test('WebGL、连续滚动、六幕导航与档案弹窗', async ({ page }, test
     await page.screenshot({ path: testInfo.outputPath(`chapter-${name}.png`) })
   }
   // Verify a position between chapter anchors exists instead of snapping.
-  await page.evaluate(() => scrollTo(0, (document.documentElement.scrollHeight - innerHeight) * 0.37))
+  await page.evaluate(p => scrollTo(0, (document.documentElement.scrollHeight - innerHeight) * p), storyToScroll(.37))
   await expect.poll(async () => page.evaluate(() => Number(getComputedStyle(document.documentElement).getPropertyValue('--journey')))).toBeCloseTo(0.37, 2)
   await page.getByRole('button', { name: '任务档案' }).click()
   await expect(page.locator('dialog')).toBeVisible()
@@ -79,7 +80,7 @@ test('地表按需加载、连续高度、释放与重访', async ({ page }, tes
   // Orbit already uses PBR; the shared DFG LUT is included in the baseline.
   const warmedBaseline=baseline
   async function scrub(p: number) {
-    await page.evaluate(p => scrollTo(0,(document.documentElement.scrollHeight-innerHeight)*p),p)
+    await page.evaluate(p => scrollTo(0,(document.documentElement.scrollHeight-innerHeight)*p),storyToScroll(p))
     await expect.poll(async()=>page.evaluate(()=>Number(getComputedStyle(document.documentElement).getPropertyValue('--journey')))).toBeCloseTo(p,3)
   }
   await scrub(.35)

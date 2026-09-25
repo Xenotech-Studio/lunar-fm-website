@@ -34,15 +34,15 @@ export function flight(progress:number,mobile:boolean,height:Elevation){
  const qIn=new T.Quaternion().setFromUnitVectors(from,radial)
  const direction=from.clone().applyQuaternion(new T.Quaternion().slerp(qIn,smooth((progress-.20)/.10)))
  if(progress>.63)direction.copy(radial).applyQuaternion(new T.Quaternion().slerp(new T.Quaternion().setFromUnitVectors(radial,to),smooth((progress-.63)/.05)))
- const times=[.20,.27,.31,.35,.39,.43,.47,.50,.56,.59,.62,.65,.68]
- const heights=[start.altitude-h,600000,80000,9000,1000,110,9,2.1,2.1,110,9000,600000,end.altitude-h]
+ const times=[.20,.27,.31,.35,.39,.43,.46,.475,.485,.50,.56,.59,.62,.65,.68]
+ const heights=[start.altitude-h,600000,80000,9000,1000,110,9,4.2,2.5,2.1,2.1,110,9000,600000,end.altitude-h]
  const altitude=Math.exp(curve(times,heights.map(Math.log),progress))
  const position=direction.multiplyScalar(R+h+altitude).add(CENTER)
  const view=new T.PerspectiveCamera();view.position.copy(position);view.up.set(0,0,-1)
  // Looking just north of nadir removes the singularity of a vertical lookAt.
  view.lookAt(landing.clone().add(new T.Vector3(.2,0,-1).multiplyScalar(.1)))
  const down=view.quaternion.clone()
- view.up.set(0,1,0);view.lookAt(position.clone().add(new T.Vector3(.20,.26,-1).normalize()))
+ view.up.set(0,1,0);view.lookAt(position.clone().add(new T.Vector3(.20,.18,-1).normalize()))
  const onGround=smooth((progress-.395)/.105)*(1-smooth((progress-.56)/.045))
  const quaternion=down.clone().slerp(view.quaternion,onGround)
  if(progress<.285)quaternion.copy(start.quaternion).slerp(down,smooth((progress-.20)/.085))

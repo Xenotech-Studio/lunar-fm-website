@@ -19,7 +19,7 @@ dialog{padding:0;border:1px solid #bba27b40;background:#101516;color:#e9e6df;wid
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}.chapter{will-change:auto}}
 
 /* A quiet interlude: the frame belongs to the landscape. */
-.journey{height:900svh}
+.journey{height:1260svh}
 .surface-contact{padding:18vh 8.5% 150px}
 .surface-contact h2{font-size:clamp(50px,5vw,82px);margin:20px 0}
 .surface-contact .chinese-title{font-size:13px;color:#acb4b6;letter-spacing:.12em}

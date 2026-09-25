@@ -17,9 +17,26 @@ export function sample(values: number[], p: number) {
   const i = Math.min(Math.floor(t), values.length - 2)
   return mix(values[i], values[i + 1], smooth(t - i))
 }
+// Integral of a smooth window: ramps at 18–22% and 48–52% story progress.
+// Outside that window physical travel per story unit stays exactly as before.
+export const SCROLL_SCALE = 1.45
+function extraTravel(p:number) {
+ const F=(t:number)=>t*t*t-.5*t*t*t*t
+ if(p<=.18)return 0
+ if(p<.22)return .04*F((p-.18)/.04)
+ if(p<=.48)return .02+p-.22
+ if(p<.52){const t=(p-.48)/.04;return .28+.04*(t-F(t))}
+ return .30
+}
+export const storyToScroll=(p:number)=>(clamp(p)+1.5*extraTravel(clamp(p)))/SCROLL_SCALE
+export function scrollToStory(p:number) {
+ let lo=0,hi=1
+ for(let i=0;i<30;i++){const mid=(lo+hi)/2;if(storyToScroll(mid)<p)lo=mid;else hi=mid}
+ return (lo+hi)/2
+}
 export function goToChapter(index: number, reduced: boolean) {
   const range = document.documentElement.scrollHeight - innerHeight
-  window.scrollTo({ top: range * chapters[index].position, behavior: reduced ? 'instant' : 'smooth' })
+  window.scrollTo({ top: range * storyToScroll(chapters[index].position), behavior: reduced ? 'instant' : 'smooth' })
 }
 
 // Native page scrolling stays accessible. Only the visual playhead is damped.
@@ -29,7 +46,7 @@ export function useScrollDirector(reduced: boolean) {
   useEffect(() => {
     let target = 0, frame = 0, previous = performance.now()
     const read = () => {
-      target = clamp(scrollY / Math.max(1, document.documentElement.scrollHeight - innerHeight))
+      target = scrollToStory(clamp(scrollY / Math.max(1, document.documentElement.scrollHeight - innerHeight)))
     }
     read()
     progress.current = target
@@ -61,6 +78,7 @@ export function useScrollDirector(reduced: boolean) {
       if (bar) bar.style.transform = `scaleX(${p})`
       if (counter) counter.textContent = `0${nearest + 1} / 06`
       document.documentElement.style.setProperty('--journey', `${p}`)
+      document.documentElement.style.setProperty('--scroll-progress', `${storyToScroll(p)}`)
       document.documentElement.dataset.chapter = `${nearest}`
       frame = requestAnimationFrame(tick)
     }
