@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test'
-import { storyToScroll } from '../src/timeline'
+import { storyToScroll, chapters } from '../src/timeline'
 
 test('WebGL、连续滚动、六幕导航与档案弹窗', async ({ page }, testInfo) => {
   const errors: string[] = []
@@ -14,7 +14,7 @@ test('WebGL、连续滚动、六幕导航与档案弹窗', async ({ page }, test
   for (const [index, name] of ['arrival', 'terrain', 'surface', 'shadow', 'intelligence', 'horizon'].entries()) {
     await page.locator('[data-nav]').nth(index).click()
     await expect(page.locator('html')).toHaveAttribute('data-chapter', String(index))
-    await expect.poll(async () => page.evaluate(() => Number(getComputedStyle(document.documentElement).getPropertyValue('--journey')))).toBeCloseTo([0, .18, .5, .68, .84, 1][index], 2)
+    await expect.poll(async () => page.evaluate(() => Number(getComputedStyle(document.documentElement).getPropertyValue('--journey')))).toBeCloseTo(chapters[index].position, 2)
     await expect(page.locator(`.chapter[data-chapter="${index}"]`)).toHaveAttribute('aria-hidden', 'false')
     if(index === 2) { await expect(page.locator('canvas')).toHaveAttribute('data-surface','ready'); await page.waitForTimeout(800) }
     await page.screenshot({ path: testInfo.outputPath(`chapter-${name}.png`) })
@@ -37,7 +37,7 @@ test('手机构图与减少动态效果', async ({ page }, testInfo) => {
   await page.goto('/')
   await expect(page.locator('.universe')).toHaveClass(/is-ready/)
   await page.evaluate(() => document.fonts.ready)
-  for (const index of [0, 2, 3, 4, 5]) {
+  for (const index of [0, 1, 2, 3, 4, 5]) {
     await page.locator('[data-nav]').nth(index).click()
     await expect(page.locator('html')).toHaveAttribute('data-chapter', `${index}`)
     if(index === 2) { await expect(page.locator('canvas')).toHaveAttribute('data-surface','ready'); await page.waitForTimeout(800) }
@@ -85,15 +85,15 @@ test('地表按需加载、连续高度、释放与重访', async ({ page }, tes
   }
   await scrub(.35)
   await expect(canvas).toHaveAttribute('data-surface','ready')
-  await expect.poll(async()=>Number(await canvas.getAttribute('data-altitude'))).toBeCloseTo(9000,-1)
+  await expect.poll(async()=>Number(await canvas.getAttribute('data-altitude'))).toBeCloseTo(20000,-1)
   await page.screenshot({path:testInfo.outputPath('nac-craters-35.png')})
-  await scrub(.39)
+  await scrub(.41)
   await expect(canvas).toHaveAttribute('data-surface','ready')
   await expect.poll(async()=>Number(await canvas.getAttribute('data-altitude'))).toBeCloseTo(1000,0)
   await page.screenshot({path:testInfo.outputPath('nac-craters-39.png')})
-  await scrub(.43)
+  await scrub(.44)
   await expect.poll(async()=>Number(await canvas.getAttribute('data-altitude'))).toBeCloseTo(110,0)
-  await scrub(.50)
+  await scrub(.535)
   await expect.poll(async()=>Number(await canvas.getAttribute('data-altitude'))).toBeCloseTo(2.1,1)
   await expect(canvas).toHaveAttribute('data-planet-count','1')
   await expect(canvas).toHaveAttribute('data-above-terrain','true')
@@ -105,7 +105,7 @@ test('地表按需加载、连续高度、释放与重访', async ({ page }, tes
   await expect(canvas).toHaveAttribute('data-surface','unloaded')
   await expect(canvas).toHaveAttribute('data-surface-bytes','0')
   await expect.poll(async()=>Number(await canvas.getAttribute('data-gpu-textures'))).toBeLessThanOrEqual(warmedBaseline)
-  await scrub(.50)
+  await scrub(.535)
   await expect(canvas).toHaveAttribute('data-surface','ready')
   await page.waitForTimeout(800)
   expect(Number(await canvas.getAttribute('data-gpu-textures'))).toBeLessThanOrEqual(firstLoaded)
@@ -138,5 +138,30 @@ test('极区科学图层随滚动进入退出，仍为单一月面', async ({pag
   }
   if(p===.84) await expect.poll(async()=>Number(await page.locator('canvas').getAttribute('data-polar-weight'))).toBeLessThan(.001)
  }
+ expect(errors).toEqual([])
+})
+
+test('档案悬停可逆，扫描随滚动推进，直达月面不落在下降途中',async({page},testInfo)=>{
+ const errors:string[]=[]
+ page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text())})
+ await page.goto('/')
+ await expect(page.locator('.universe')).toHaveClass(/is-ready/)
+ await page.getByRole('button',{name:'第2幕：月面档案'}).click()
+ const canvas=page.locator('canvas')
+ await expect(canvas).toHaveAttribute('data-surface','ready')
+ for(const p of [.33,.345,.365,.40,.365,.345,.33]){
+  await page.evaluate(s=>scrollTo(0,(document.documentElement.scrollHeight-innerHeight)*s),storyToScroll(p))
+  await expect.poll(async()=>Number(await canvas.getAttribute('data-flight-progress'))).toBeCloseTo(p,3)
+  await expect(canvas).toHaveAttribute('data-planet-count','1')
+  if(p<=.365){
+   await expect.poll(async()=>Number(await canvas.getAttribute('data-altitude'))).toBeCloseTo(20000,0)
+   await expect(page.locator('.terrain')).toContainText('先读懂这片地形')
+   await expect.poll(async()=>Number(await canvas.getAttribute('data-survey-weight'))).toBeGreaterThan(.99)
+  }
+ }
+ await page.getByRole('button',{name:'第3幕：立于月面'}).click()
+ await expect.poll(async()=>Number(await canvas.getAttribute('data-altitude'))).toBeCloseTo(2.1,1)
+ await expect(canvas).toHaveAttribute('data-survey-weight','0')
+ await page.screenshot({path:testInfo.outputPath('new-surface-anchor.png')})
  expect(errors).toEqual([])
 })

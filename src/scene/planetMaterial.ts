@@ -2,14 +2,14 @@ import * as T from 'three'
 import { REGIONAL, CENTER } from './geography'
 export type Appearance = { context:T.Texture; tiles:T.Texture[];regional:T.Texture }
 export function planetMaterial(color:T.Texture,appearance:Appearance|null,polar:T.Texture){
- const uniforms={uStudy:{value:0},uPSR:{value:polar},uRegional:{value:appearance?.regional??color},uRegion:{value:REGIONAL},uContext:{value:appearance?.context??color},u00:{value:appearance?.tiles[0]??color},u10:{value:appearance?.tiles[1]??color},u01:{value:appearance?.tiles[2]??color},u11:{value:appearance?.tiles[3]??color},uMeasured:{value:appearance?1:0},uScan:{value:0},uPolar:{value:0}}
+ const uniforms={uSurvey:{value:0},uSweep:{value:0},uStudy:{value:0},uPSR:{value:polar},uRegional:{value:appearance?.regional??color},uRegion:{value:REGIONAL},uContext:{value:appearance?.context??color},u00:{value:appearance?.tiles[0]??color},u10:{value:appearance?.tiles[1]??color},u01:{value:appearance?.tiles[2]??color},u11:{value:appearance?.tiles[3]??color},uMeasured:{value:appearance?1:0},uScan:{value:0},uPolar:{value:0}}
  const material=new T.MeshStandardMaterial({map:color,color:'#ffffff',roughness:1,metalness:0})
  material.onBeforeCompile=shader=>{
   Object.assign(shader.uniforms,uniforms)
   shader.vertexShader='attribute vec2 surfaceCoord; varying vec2 vSurfaceCoord; varying vec3 vSurfacePosition;\n'+shader.vertexShader
   shader.vertexShader=shader.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\nvSurfaceCoord=surfaceCoord;vSurfacePosition=position;')
   shader.fragmentShader=`varying vec2 vSurfaceCoord;varying vec3 vSurfacePosition;
-  uniform float uStudy;uniform sampler2D uPSR;uniform sampler2D uRegional;uniform vec4 uRegion;uniform sampler2D uContext;uniform sampler2D u00;uniform sampler2D u10;uniform sampler2D u01;uniform sampler2D u11;uniform float uMeasured;uniform float uScan;uniform float uPolar;
+  uniform float uSurvey;uniform float uSweep;uniform float uStudy;uniform sampler2D uPSR;uniform sampler2D uRegional;uniform vec4 uRegion;uniform sampler2D uContext;uniform sampler2D u00;uniform sampler2D u10;uniform sampler2D u01;uniform sampler2D u11;uniform float uMeasured;uniform float uScan;uniform float uPolar;
   float regolithHash(vec3 p){p=fract(p*.1031);p+=dot(p,p.yzx+33.33);return fract((p.x+p.y)*p.z);}
   float regolithNoise(vec3 p){vec3 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(mix(regolithHash(i),regolithHash(i+vec3(1,0,0)),f.x),mix(regolithHash(i+vec3(0,1,0)),regolithHash(i+vec3(1,1,0)),f.x),f.y),mix(mix(regolithHash(i+vec3(0,0,1)),regolithHash(i+vec3(1,0,1)),f.x),mix(regolithHash(i+vec3(0,1,1)),regolithHash(i+vec3(1,1,1)),f.x),f.y),f.z);}
   `+shader.fragmentShader
@@ -57,6 +57,17 @@ export function planetMaterial(color:T.Texture,appearance:Appearance|null,polar:
   shader.fragmentShader=shader.fragmentShader.replace('#include <opaque_fragment>',`
    vec2 cell=vMapUv*vec2(48.,24.);vec2 line=abs(fract(cell-.5)-.5)/max(fwidth(cell),vec2(.0001));
    outgoingLight+=vec3(.12,.07,.025)*(1.-smoothstep(.4,1.2,min(line.x,line.y)))*uScan;
+   // Survey annotations use the same map coordinates as the measured terrain.
+   vec2 corridor=(vSurfaceCoord-vec2(-.8,770.8))/vec2(2371.,5999.);
+   float inside=step(max(abs(corridor.x),abs(corridor.y)),1.);
+   vec2 boundary=abs(abs(corridor)-1.)/max(fwidth(corridor),vec2(.00001));
+   float outline=(1.-smoothstep(.65,1.6,min(boundary.x,boundary.y)))*step(max(abs(corridor.x),abs(corridor.y)),1.004);
+   vec2 km=vSurfaceCoord/1000.;
+   vec2 ticks=abs(fract(km+.5)-.5)/max(fwidth(km),vec2(.00001));
+   float localGrid=(1.-smoothstep(.3,1.,min(ticks.x,ticks.y)))*inside;
+   float sweep=exp(-pow((corridor.y-mix(-1.,1.,uSweep))/.055,2.))*inside;
+   float target=abs(length(vSurfaceCoord-vec2(0.,96.))-400.)/max(fwidth(length(vSurfaceCoord-vec2(0.,96.))),1.);
+   outgoingLight+=vec3(.19,.12,.048)*uSurvey*(outline*.85+localGrid*.20+sweep*.30+(1.-smoothstep(.4,1.5,target))*.6);
    // South polar stereographic, central meridian 0, standard parallel -90.
    // R contains actual PSR coverage; G only emphasizes the inner boundary.
    float latitude=(vMapUv.y-.5)*3.14159265359;
@@ -84,6 +95,6 @@ export function planetMaterial(color:T.Texture,appearance:Appearance|null,polar:
    #include <opaque_fragment>
   `)
  }
- material.customProgramCacheKey=()=> 'single-geographic-planet-psr-v1'
+ material.customProgramCacheKey=()=> 'single-geographic-planet-survey-v1'
  return {material,uniforms}
 }

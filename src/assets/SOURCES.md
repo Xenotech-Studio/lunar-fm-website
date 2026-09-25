@@ -85,3 +85,6 @@ CGI Moon Kit 的 27360×13680 全球图赤道采样约 399 m/px（2π × 1737400
 - R 通道为 PSR 覆盖；G 为边界内侧强调，只是显示设计；颜色、边界亮度、经纬细线是艺术处理。阴影区不等于已经证实存在水冰。归档哈希及处理参数见 `polar/manifest.json`，重建脚本为 `scripts/prepare-polar.py`。
 - 参考解释：NASA SVS “LRO Peers into Permanent Shadows”，https://svs.gsfc.nasa.gov/4043/ 。
 - B 通道采用同产品的 LOLA 晕渲： https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_80MPP_ADJ_HILL.TIF 。源像素 80 m、南极立体投影；太阳高度 45°、方位 45° 的模拟地形图，不是实时受光或反照率。通过 COG 的 HTTP range / overview 读取重采样到同一 2048² 网格，没有把整幅 85 MB GeoTIFF 放进项目。`scripts/prepare-polar-relief.py` 保存投影、范围和派生哈希。极区幕将它作为明确标注的制图层平滑叠入，同一个球体的几何与月表照明逻辑不变。
+
+### 中间态读图标记
+第 02 幕的约 4.7 × 12 km 框对应 `geography.ts` 中已载入 NAC context 高程的外包范围（x: −2371.8…2370.2 m，z: −5228.2…6769.8 m）。框内并非每个像素都使用亚米级照片：仍按原有区域 WAC、中心 NAC 与地形采样层级显示。公里网格、落点环、扫描带是艺术辅助标记，非遥测、地形等高线或模型输出。20 km 指相对于落点高程的叙事悬停高度。没有新增数据下载或调整原影像再光照流程。

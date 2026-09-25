@@ -70,13 +70,13 @@ export default function App() {
         </article>
 
         <article className="chapter terrain" data-chapter="1" aria-labelledby="title-terrain" aria-hidden="true">
-          <div className="eyebrow">02 — THE LUNAR ARCHIVE</div>
-          <h2 id="title-terrain">EVERY SCAR.<br /><em>A STORY.</em></h2>
-          <p className="chinese-title">每一道痕迹，都是时间。</p>
-          <p className="body-copy">没有风雨抹平过去。陨石坑、山脊与月海，<br className="desktop-break" />把数十亿年的历史留在表面。<br />让光掠过月面，地形开始显影。</p>
-          <div className="data-pair"><div><strong>1 <small>m/px</small></strong><span>NAC 米级观测</span></div><div><strong>100 <small>m/px</small></strong><span>WAC 区域视野</span></div></div>
-          <p className="micro-note">模型训练的两种光学尺度 · 继续滚动，进入亚米级 NAC 局部观测</p>
-          <div className="terrain-marker"><span className="marker-ring" /><span>TOPOGRAPHIC MEMORY<br /><small>LOLA / ELEVATION FIELD</small></span></div>
+          <div className="eyebrow">02 — THE LUNAR ARCHIVE / SURVEY HOLD</div>
+          <h2 id="title-terrain">READ THE LAND.<br /><em>THEN DESCEND.</em></h2>
+          <p className="chinese-title">先读懂这片地形，再走进它。</p>
+          <p className="body-copy">在月面上方，停留片刻。<br />让视线沿着高程走廊，辨认坑缘与坡地。<br />再收起标记，走向月球的地平线。</p>
+          <div className="data-pair"><div><strong>20 <small>km</small></strong><span>相对落点高度 · 悬停观察</span></div><div><strong>4.7 × 12 <small>km</small></strong><span>NAC 高程走廊范围</span></div></div>
+          <p className="micro-note">地形：LROC NAC / WAC · 金色范围框、公里网格与扫描为辅助示意，非实时遥测。继续滚动，完成下降。</p>
+          <div className="terrain-marker"><span className="marker-ring" /><span>TAURUS–LITTROW<br /><small>NAC / TERRAIN CORRIDOR</small></span></div>
         </article>
 
         <article className="chapter surface-contact" data-chapter="2" aria-labelledby="title-surface" aria-hidden="true">

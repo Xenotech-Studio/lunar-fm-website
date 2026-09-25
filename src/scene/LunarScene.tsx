@@ -7,7 +7,7 @@ import * as T from 'three'
 import colorUrl from '../assets/lroc-color-4k.webp'
 import heightUrl from '../assets/lola-height-rg.png'
 import polarUrl from '../assets/polar/south-psr.png'
-import { sample, orbitProgress, smooth } from '../timeline'
+import { sample, orbitProgress, smooth, surveyWeight, clamp } from '../timeline'
 import { globalElevation, planetGeometry, point, LANDING, LAT, LON, R, CENTER } from './geography'
 import { planetMaterial } from './planetMaterial'
 import { flight } from './flight'
@@ -62,6 +62,9 @@ function Planet({progress,onReady}:Pick<Props,'progress'|'onReady'>){
   if(world){world.stones.visible=pose.altitude<1600;world.earth.visible=true}
   const uniforms=world?.uniforms??appearance.uniforms
   uniforms.uScan.value=sample([0,.06,0,1,.15],orbitProgress(p))*(1-smooth((p-.2)/.1)*(1-smooth((p-.63)/.05)))
+  uniforms.uSurvey.value=surveyWeight(flightProgress)
+  uniforms.uSweep.value=clamp((flightProgress-.33)/.035)
+  gl.domElement.dataset.surveyWeight=String(uniforms.uSurvey.value)
   uniforms.uStudy.value=smooth((p-.68)/.045)*(1-smooth((p-.755)/.085))
   uniforms.uPolar.value=smooth((p-.63)/.05)*(1-smooth((p-.755)/.075))
   uniforms.uScan.value*=1-smooth((p-.66)/.03)*(1-smooth((p-.77)/.07))

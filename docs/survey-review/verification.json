@@ -1,0 +1,34 @@
+{
+  "build": "passed",
+  "tests": {
+    "total": 10,
+    "fullRunPassed": 9,
+    "fullRunTimeouts": 1,
+    "unchangedAssertionRetryPassed": 1,
+    "unresolvedFailures": 0,
+    "note": "Polar convergence timed out under concurrent SwiftShader captures (0.67897699 vs 0.68, 20 seconds). Same test passed with screenshots finished; no timeout/assertion changes."
+  },
+  "visualReview": {
+    "forward": 89,
+    "reverse": 89,
+    "allFramesViewed": true,
+    "mobileSurveyViewed": true,
+    "errors": []
+  },
+  "ports": {
+    "preview": 4291,
+    "tests": 4292
+  },
+  "forward": {
+    "singlePlanet": true,
+    "singleCamera": true,
+    "aboveTerrain": true,
+    "layoutRecapturedFrames": 15
+  },
+  "reverse": {
+    "singlePlanet": true,
+    "singleCamera": true,
+    "aboveTerrain": true,
+    "layoutRecapturedFrames": 15
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "frames": [
+    {
+      "progress": 34.5,
+      "mode": "story",
+      "scrollProgress": 0.39545454545454545,
+      "engine": "three.js r186",
+      "surveyWeight": "1",
+      "polarLayer": "LOLA-PSR-area-over-1km2",
+      "polarWeight": "0",
+      "gpuTextures": "26",
+      "altitude": "20000.000",
+      "flightProgress": "0.34499339699629633",
+      "cameraPosition": "0.00000,19966.65699,96.98699",
+      "cameraQuaternion": "-0.82805267,-0.00000041,0.00000028,0.56065032",
+      "geographicSite": "20.317965903575143,30.373863256808953",
+      "planetCount": "1",
+      "sceneCameras": "1",
+      "aboveTerrain": "true",
+      "surface": "ready",
+      "surfaceBytes": "44272421"
+    }
+  ],
+  "errors": []
+}

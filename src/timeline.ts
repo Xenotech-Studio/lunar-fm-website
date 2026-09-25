@@ -2,8 +2,8 @@ import { useEffect, useRef } from 'react'
 
 export const chapters = [
   { id: 'arrival', position: 0, label: '启程', code: '01 / OBSERVE' },
-  { id: 'terrain', position: 0.18, label: '月面档案', code: '02 / TOPOGRAPHY' },
-  { id: 'surface', position: 0.50, label: '立于月面', code: '03 / SURFACE CONTACT' },
+  { id: 'terrain', position: 0.345, label: '月面档案', code: '02 / TOPOGRAPHY' },
+  { id: 'surface', position: 0.535, label: '立于月面', code: '03 / SURFACE CONTACT' },
   { id: 'shadow', position: 0.68, label: '阴影之下', code: '04 / POLAR FRONTIER' },
   { id: 'intelligence', position: 0.84, label: '连接线索', code: '05 / FOUNDATION MODEL' },
   { id: 'horizon', position: 1, label: '新的地平线', code: '06 / DISCOVER' },
@@ -19,7 +19,7 @@ export function sample(values: number[], p: number) {
 }
 // Integral of a smooth window: ramps at 18–22% and 48–52% story progress.
 // Outside that window physical travel per story unit stays exactly as before.
-export const SCROLL_SCALE = 1.45
+export const SCROLL_SCALE = 1.65
 function extraTravel(p:number) {
  const F=(t:number)=>t*t*t-.5*t*t*t*t
  if(p<=.18)return 0
@@ -28,7 +28,17 @@ function extraTravel(p:number) {
  if(p<.52){const t=(p-.48)/.04;return .28+.04*(t-F(t))}
  return .30
 }
-export const storyToScroll=(p:number)=>(clamp(p)+1.5*extraTravel(clamp(p)))/SCROLL_SCALE
+// Add 160 svh around the survey; all other physical scroll budgets stay intact.
+function surveyTravel(p:number){
+ const F=(t:number)=>t*t*t-.5*t*t*t*t
+ if(p<=.29)return 0
+ if(p<.31)return .02*F((p-.29)/.02)
+ if(p<=.39)return .01+p-.31
+ if(p<.41){const t=(p-.39)/.02;return .09+.02*(t-F(t))}
+ return .10
+}
+export const surveyWeight=(p:number)=>smooth((p-.30)/.03)*(1-smooth((p-.37)/.035))
+export const storyToScroll=(p:number)=>(clamp(p)+1.5*extraTravel(clamp(p))+2*surveyTravel(clamp(p)))/SCROLL_SCALE
 export function scrollToStory(p:number) {
  let lo=0,hi=1
  for(let i=0;i<30;i++){const mid=(lo+hi)/2;if(storyToScroll(mid)<p)lo=mid;else hi=mid}
@@ -63,7 +73,7 @@ export function useScrollDirector(reduced: boolean) {
       panels.forEach((panel, i) => {
         const span = p < chapters[i].position ? chapters[i].position - (chapters[i - 1]?.position ?? -0.18) : (chapters[i + 1]?.position ?? 1.18) - chapters[i].position
         const distance = (p - chapters[i].position) / span
-        const opacity = i===3 && p>=.68 ? 1-smooth((p-.725)/.035) : 1 - smooth((Math.abs(distance) - 0.20) / 0.29)
+        const opacity = i===1 ? smooth((p-.295)/.035)*(1-smooth((p-.375)/.035)) : i===3 && p>=.68 ? 1-smooth((p-.725)/.035) : 1 - smooth((Math.abs(distance) - 0.20) / 0.29)
         panel.style.opacity = `${opacity}`
         panel.style.transform = `translate3d(0, ${reduced ? 0 : -distance * 46}px, 0)`
         panel.style.visibility = opacity < 0.001 ? 'hidden' : 'visible'

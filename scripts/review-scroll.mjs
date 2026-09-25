@@ -1,5 +1,6 @@
 import { chromium } from '@playwright/test'
 import fs from 'node:fs/promises'
+import { storyToScroll } from '../src/timeline.ts'
 const folder=process.argv[2] ?? 'docs/pace-detail-review/forward'
 const step=Number(process.argv[3]??1)
 const start=Number(process.env.REVIEW_START??20),end=Number(process.env.REVIEW_END??66)
@@ -9,16 +10,13 @@ const points=selected??Array.from({length:Math.floor((end-start)/step)+1},(_,i)=
 const reverse=process.argv.includes('--reverse')
 await fs.mkdir(folder,{recursive:true})
 const browser=await chromium.launch({channel:'chrome',args:['--enable-webgl','--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']})
-const page=await browser.newPage({viewport:{width:1200,height:800}})
+const page=await browser.newPage({viewport:process.env.REVIEW_MOBILE?{width:390,height:844}:{width:1200,height:800}})
 const errors=[];page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text())})
-await page.goto(process.env.LUNAR_REVIEW_URL??'http://127.0.0.1:4276');await page.waitForTimeout(2000)
+await page.goto(process.env.LUNAR_REVIEW_URL??'http://127.0.0.1:4276');await page.locator('.universe.is-ready:not(.is-fallback)').waitFor();await page.evaluate(()=>document.fonts.ready);await page.waitForTimeout(2000)
 const frames=[]
 for(const n of (reverse?[...points].reverse():points)){
  const target=Number(n.toFixed(2))
- const destination=await page.evaluate(({target,storyMode})=>{
-  const extra=(p)=>{const F=(t)=>t*t*t-.5*t*t*t*t;if(p<=.18)return 0;if(p<.22)return .04*F((p-.18)/.04);if(p<=.48)return .02+p-.22;if(p<.52){const t=(p-.48)/.04;return .28+.04*(t-F(t))}return .30}
-  return storyMode?(target/100+1.5*extra(target/100))/1.45:target/100
- },{target,storyMode})
+ const destination=storyMode?storyToScroll(target/100):target/100
  const delta=await page.evaluate(n=>(document.documentElement.scrollHeight-innerHeight)*n-scrollY,destination)
  await page.mouse.wheel(0,delta)
  await page.waitForFunction(n=>Math.abs(Number(getComputedStyle(document.documentElement).getPropertyValue('--scroll-progress'))-n)<.00025,destination)
