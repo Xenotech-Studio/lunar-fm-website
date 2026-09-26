@@ -23,7 +23,7 @@ test('WebGL、连续滚动、六幕导航与档案弹窗', async ({ page }, test
   // Verify a position between chapter anchors exists instead of snapping.
   await page.evaluate(p => scrollTo(0, (document.documentElement.scrollHeight - innerHeight) * p), storyToScroll(.37))
   await expect.poll(async () => page.evaluate(() => Number(getComputedStyle(document.documentElement).getPropertyValue('--journey')))).toBeCloseTo(0.37, 2)
-  await page.getByRole('button', { name: '观测档案' }).click()
+  await page.getByRole('button', { name: 'Field notes' }).click()
   await expect(page.locator('dialog')).toBeVisible()
   await expect(page.locator('dialog a')).toHaveCount(6)
   await page.keyboard.press('Escape')
@@ -65,7 +65,7 @@ test('WebGL不可用时仍能阅读和导航', async ({ page }) => {
   await page.locator('[data-nav]').nth(5).click()
   await expect(page.locator('html')).toHaveAttribute('data-navigation', 'idle', {timeout:60000})
   await expect(page.locator('html')).toHaveAttribute('data-chapter', '5')
-  await expect(page.getByRole('link', { name: '查看模型档案' })).toBeVisible()
+  await expect(page.getByRole('link', { name: 'Explore the model' })).toBeVisible()
 })
 
 
@@ -135,7 +135,7 @@ test('极区科学图层随滚动进入退出，仍为单一月面', async ({pag
   await expect(page.locator('canvas')).toHaveAttribute('data-polar-layer','LOLA-PSR-area-over-1km2')
   if(p===.725){
    await expect(page.locator('.polar')).toBeVisible()
-   await expect(page.locator('.polar')).toContainText('永久阴影不等于实测水冰')
+   await expect(page.locator('.polar')).toContainText('Permanent shadow is not confirmed ice')
    await expect.poll(async()=>Number(await page.locator('canvas').getAttribute('data-polar-weight'))).toBeGreaterThan(.99)
    await page.screenshot({path:testInfo.outputPath('polar-psr.png')})
   }
@@ -149,7 +149,7 @@ test('档案悬停可逆，扫描随滚动推进，直达月面不落在下降�
  page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text())})
  await page.goto('/')
  await expect(page.locator('.universe')).toHaveClass(/is-ready/)
- await page.getByRole('button',{name:'第2幕：月面档案'}).click()
+ await page.getByRole('button',{name:'Chapter 2: Survey'}).click()
  await expect(page.locator('html')).toHaveAttribute('data-navigation','idle',{timeout:60000})
  const canvas=page.locator('canvas')
  await expect(canvas).toHaveAttribute('data-surface','ready')
@@ -159,11 +159,11 @@ test('档案悬停可逆，扫描随滚动推进，直达月面不落在下降�
   await expect(canvas).toHaveAttribute('data-planet-count','1')
   if(p<=.365){
    await expect.poll(async()=>Number(await canvas.getAttribute('data-altitude'))).toBeCloseTo(20000,0)
-   await expect(page.locator('.terrain')).toContainText('一道坑缘，叠着另一道。')
+   await expect(page.locator('.terrain')).toContainText('The ground keeps a record.')
    await expect.poll(async()=>Number(await canvas.getAttribute('data-survey-weight'))).toBeGreaterThan(.99)
   }
  }
- await page.getByRole('button',{name:'第3幕：立于月面'}).click()
+ await page.getByRole('button',{name:'Chapter 3: Surface'}).click()
  await expect(page.locator('html')).toHaveAttribute('data-navigation','idle',{timeout:60000})
  await expect.poll(async()=>Number(await canvas.getAttribute('data-altitude'))).toBeCloseTo(2.1,1)
  await expect(canvas).toHaveAttribute('data-survey-weight','0')

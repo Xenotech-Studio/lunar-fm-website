@@ -99,7 +99,7 @@ export default function LunarScene({progress,reduced,onReady,onFailure}:Props){
  return <Canvas shadows camera={{position:[0,0,8000000],fov:38,near:10,far:1000000000}} dpr={[1,1.5]} gl={{antialias:false,alpha:false,powerPreference:'high-performance',logarithmicDepthBuffer:true}} onCreated={({gl})=>{
   gl.setClearColor('#030508');gl.toneMapping=T.NoToneMapping;gl.shadowMap.type=T.PCFSoftShadowMap
   gl.domElement.addEventListener('webglcontextlost',event=>{event.preventDefault();onFailure()},{once:true})
- }} fallback={<span>浏览器不支持画布，月面叙事仍可阅读。</span>}>
+ }} fallback={<span>Canvas is unavailable. You can still read the lunar journey.</span>}>
   <Suspense fallback={null}><Planet progress={progress} onReady={onReady}/></Suspense>
   <Orbits progress={progress}/>
   <EffectComposer multisampling={4}><Bloom intensity={.12} luminanceThreshold={1.15} luminanceSmoothing={.4} mipmapBlur/><ToneMapping mode={ToneMappingMode.ACES_FILMIC}/><Noise opacity={reduced?0:.009} blendFunction={BlendFunction.SOFT_LIGHT}/><Vignette offset={.25} darkness={.3} eskil={false}/></EffectComposer>

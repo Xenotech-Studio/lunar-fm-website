@@ -2,12 +2,12 @@ import { useEffect, useRef } from 'react'
 import { navigationPlan, navigationSample } from './navigation.ts'
 
 export const chapters = [
-  { id: 'arrival', position: 0, label: '遥望', code: '01 / OBSERVE' },
-  { id: 'terrain', position: 0.345, label: '月面档案', code: '02 / TOPOGRAPHY' },
-  { id: 'surface', position: 0.535, label: '立于月面', code: '03 / SURFACE CONTACT' },
-  { id: 'shadow', position: 0.68, label: '永久阴影', code: '04 / POLAR FRONTIER' },
-  { id: 'intelligence', position: 0.84, label: '观测交汇', code: '05 / FOUNDATION MODEL' },
-  { id: 'horizon', position: 1, label: '回望月光', code: '06 / DISCOVER' },
+  { id: 'arrival', position: 0, label: 'Orbit', code: '01 / OBSERVE' },
+  { id: 'terrain', position: 0.345, label: 'Survey', code: '02 / TOPOGRAPHY' },
+  { id: 'surface', position: 0.535, label: 'Surface', code: '03 / SURFACE CONTACT' },
+  { id: 'shadow', position: 0.68, label: 'Shadow', code: '04 / POLAR FRONTIER' },
+  { id: 'intelligence', position: 0.84, label: 'Model', code: '05 / FOUNDATION MODEL' },
+  { id: 'horizon', position: 1, label: 'Future', code: '06 / DISCOVER' },
 ] as const
 
 export const clamp = (x: number, lo = 0, hi = 1) => Math.max(lo, Math.min(hi, x))
