@@ -27,7 +27,7 @@ Image credit: NASA / NASA’s Scientific Visualization Studio.
 - 高程（相对1737400米基准）=`uint16 * 0.5 - 10000`米。
 - 这是NASA高程的派生浏览器资产，不是程序化生成。
 - 未采用27360×13680全球彩色镶嵌（约399米/像素）：全局网格的可见多边形密度约每1°一环（赤道约30公里/环），4096×2048（约2.7公里/像素）已远超该网格实际能表达的几何细节，更高的高程纹理分辨率不会带来任何可见几何变化，因此把预算优先给了彩色贴图分辨率与更真实的高程数据源，而不是单纯堆纹理像素。
-- 重建：`python3 scripts/prepare-global.py`；原始TIFF（约580MB）不进入仓库，缓存在仓库外固定目录（默认`/home/ubuntu/lunar-fm-assets/raw`，可用`ASSET_CACHE`环境变量覆盖），已存在则跳过下载。
+- 重建：`python3 scripts/prepare-global.py`；原始TIFF（约580MB）不进入仓库，缓存在仓库外固定目录（用`ASSET_CACHE`环境变量指定），已存在则跳过下载。
 
 原始和派生文件的SHA-256与大小见`manifest.json`。原始TIFF未重复存入git，项目内资产可直接使用，重建脚本可重新取得原始文件。
 

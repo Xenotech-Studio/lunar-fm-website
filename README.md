@@ -9,7 +9,8 @@
 要求 Node.js **22.12 或更高版本**。
 
 ```sh
-cd /Users/steven/Projects/lunar-fm-website
+git clone https://github.com/Xenotech-Studio/lunar-fm-website.git
+cd lunar-fm-website
 npm install
 npm run dev
 ```
@@ -130,6 +131,6 @@ Image credit: NASA / NASA’s Scientific Visualization Studio.
 - 未采用 27360×13680 全球彩色镶嵌：全局网格的可见多边形密度约每 1° 一环（赤道约 30 km/环），当前 8192×4096（约 1.33 km/px）已经超过该网格能表达的几何细节，27k 在轨道视角下不会带来可见差别，却会把首屏体积推高数倍。
 - 只替换全局场景贴图；App 里 WebGL 就绪前的模糊占位圆与 WebGL 失败回退仍用独立的 4096×2048 占位图（同一数据集），不受此次分辨率变化影响，保护最早的首屏渲染。
 - 首屏阻塞资源（全局彩色 + 全局高程 + 极区制图层）体积由约 18.8 MB 变为约 21.4 MB；`dist/` 总体积由 31 MB 增至 36 MB。局部 NAC/WAC/地球等资源仍按原有的按需加载机制在滚动到对应区间时才请求，未改变加载时机。
-- 重建：`python3 scripts/prepare-global.py`；原始 TIFF（约 580 MB）缓存在仓库外固定目录（默认 `/home/ubuntu/lunar-fm-assets/raw`，可用 `ASSET_CACHE` 环境变量覆盖），已存在则跳过下载，不进入仓库。来源、许可、比对方法与真实性边界见 `src/assets/SOURCES.md`。
+- 重建：`python3 scripts/prepare-global.py`；原始 TIFF（约 580 MB）缓存在仓库外固定目录（用 `ASSET_CACHE` 环境变量指定），已存在则跳过下载，不进入仓库。来源、许可、比对方法与真实性边界见 `src/assets/SOURCES.md`。
 
 [验证记录与逐帧截图](docs/global-upgrade-review/REVIEW.md)。geometry、shader、flight、timeline 均未改动，只替换了两张贴图的数据来源与编码格式。
