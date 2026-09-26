@@ -134,3 +134,8 @@ Image credit: NASA / NASA’s Scientific Visualization Studio.
 - 重建：`python3 scripts/prepare-global.py`；原始 TIFF（约 580 MB）缓存在仓库外固定目录（用 `ASSET_CACHE` 环境变量指定），已存在则跳过下载，不进入仓库。来源、许可、比对方法与真实性边界见 `src/assets/SOURCES.md`。
 
 [验证记录与逐帧截图](docs/global-upgrade-review/REVIEW.md)。geometry、shader、flight、timeline 均未改动，只替换了两张贴图的数据来源与编码格式。
+
+## 许可
+
+本仓库的代码与文档以 MIT 许可发布，见 [LICENSE](LICENSE)。其中来自 NASA 的月面影像与高程数据属公有领域（具体来源与派生方式见 `src/assets/SOURCES.md`，使用时请按 NASA 媒体使用指引标注 NASA）。站点文案与叙事为本项目原创，转载或复用请注明来源。
+
