@@ -11,6 +11,7 @@ const reverse=process.argv.includes('--reverse')
 await fs.mkdir(folder,{recursive:true})
 const browser=await chromium.launch({channel:'chrome',args:['--enable-webgl','--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']})
 const page=await browser.newPage({viewport:process.env.REVIEW_MOBILE?{width:390,height:844}:{width:1200,height:800}})
+page.setDefaultTimeout(Number(process.env.REVIEW_TIMEOUT??30000))
 const errors=[];page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text())})
 await page.goto(process.env.LUNAR_REVIEW_URL??'http://127.0.0.1:4276');await page.locator('.universe.is-ready:not(.is-fallback)').waitFor();await page.evaluate(()=>document.fonts.ready);await page.waitForTimeout(2000)
 const frames=[]

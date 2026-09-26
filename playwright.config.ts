@@ -7,8 +7,13 @@ const port=Number(process.env.LUNAR_TEST_PORT || 4173)
 
 export default defineConfig({
   testDir: './tests',
-  timeout: 180000,
-  expect: { timeout: 20000 },
+  timeout: 600000,
+  // This sandbox has no GPU (Cirrus Logic virtual framebuffer only), so Chrome
+  // renders this shader-heavy scene entirely via SwiftShader software
+  // rasterization -- much slower than the hardware-accelerated Chrome used for
+  // prior validation. Generous timeouts accommodate that; assertions themselves
+  // are unchanged.
+  expect: { timeout: 90000 },
   workers: 1,
   use: {
     baseURL: `http://127.0.0.1:${port}`,

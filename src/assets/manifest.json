@@ -1,18 +1,35 @@
 [
   {
+    "role": "placeholder-and-fallback-color",
     "source": "https://svs.gsfc.nasa.gov/vis/a000000/a004700/a004720/lroc_color_poles_4k.tif",
     "sourceBytes": 13095388,
     "sourceSha256": "918649a7f8ed2f1329b2cd95bb0d25483befdcb60ae1a66db681a637cc21344f",
     "asset": "lroc-color-4k.webp",
     "assetBytes": 2464000,
-    "assetSha256": "bba58fca0d93b58db7c6f35bf361c6cd2b14f2e035eadd9154c17cfab2ea8615"
+    "assetSha256": "bba58fca0d93b58db7c6f35bf361c6cd2b14f2e035eadd9154c17cfab2ea8615",
+    "resolution": "4096x2048"
   },
   {
-    "source": "https://svs.gsfc.nasa.gov/vis/a000000/a004700/a004720/ldem_16_uint.tif",
-    "sourceBytes": 33201026,
-    "sourceSha256": "45a2b32d56e81ed30db07fead8abc842b249b6511219d9ca2c53f81bc2dc5d62",
-    "asset": "lola-height-rg.png",
-    "assetBytes": 13181930,
-    "assetSha256": "8e5cb619e3626d3a3b77f140011f503cfbe499d668e9164366f290e7765617d4"
+    "role": "global-scene-color",
+    "source": "https://svs.gsfc.nasa.gov/vis/a000000/a004700/a004720/lroc_color_poles_8k.tif",
+    "sourceBytes": 50641970,
+    "sourceSha256": "4af8b0cd4d50c30851359d98e7e72040240dd8d03256b58b345b5b76e9edb4ef",
+    "asset": "lroc-color-8k.webp",
+    "assetBytes": 8061976,
+    "assetSha256": "fe4703439a0778f0724dbc0d53f37b30762a9f48237c95d43523c0a27d72f96a",
+    "resolution": "8192x4096"
+  },
+  {
+    "role": "global-scene-elevation",
+    "source": "https://svs.gsfc.nasa.gov/vis/a000000/a004700/a004720/ldem_64_uint.tif",
+    "sourceBytes": 530934146,
+    "sourceSha256": "0f40bce8b42864deddb6943a38474879e691d5b20647aa5e54c2612b23106499",
+    "asset": "lola-height-rg.webp",
+    "assetBytes": 10185462,
+    "assetSha256": "901ed15e8164c0a84e50240cd84d8728a1d76d8759d183aa22620207aeb38e72",
+    "resolution": "4096x2048",
+    "sourceResolution": "23040x11520 (64 px/degree)",
+    "resample": "box filter",
+    "heightFormula": "meters = (R*256 + G) * 0.5 - 10000, radius 1737400 m"
   }
 ]
