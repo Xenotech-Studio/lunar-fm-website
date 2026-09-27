@@ -1,6 +1,7 @@
 import * as T from 'three'
 import manifest from '../assets/surface/manifest.json' with { type: 'json' }
 import regional from '../assets/surface/regional-manifest.json' with { type: 'json' }
+import descentReliefManifest from '../assets/surface/descent-relief-manifest.json' with { type: 'json' }
 
 export const R = 1737400
 export const WIDTH = manifest.widthMeters
@@ -43,6 +44,27 @@ export function globalElevation(texture:T.Texture):Elevation {
  for(let i=0;i<a.length;i++)a[i]=(rgba[i*4]*256+rgba[i*4+1])*.5-10000
  const poles=[0,0];for(let i=0;i<im.width;i++){poles[0]+=a[i]/im.width;poles[1]+=a[(im.height-1)*im.width+i]/im.width}
  return (x,z)=>{const [u,v]=mapUV(x,z);const h=bilinear(a,im.width,im.height,((u%1)+1)%1,1-v);return lerp(h,poles[v>.5?0:1],fade((Math.abs(v-.5)-.49)/.01))}
+}
+// Real, native ~474 m/px LOLA resample around the Taurus-Littrow point of
+// interest (scripts/prepare-descent-relief.py), feeding the orbital mesh's
+// existing 768 m nested rings during descent, before the NAC corridor's own
+// higher-precision data is ready. Same point of interest as LANDING; kept as
+// a standalone data source (not folded into globalElevation) so a future
+// point-of-interest list can add more of these without touching the global
+// texture pipeline.
+export const DESCENT_RELIEF_GRID = descentReliefManifest.grid
+export const DESCENT_RELIEF_BOUNDS = descentReliefManifest.worldBounds as [number, number, number, number]
+export function descentRelief(base:Elevation,patch:Float32Array):Elevation{
+ const [x0,z0,x1,z1]=DESCENT_RELIEF_BOUNDS,w=x1-x0,h=z1-z0
+ return (x,z)=>{
+  let height=base(x,z)
+  const u=(x-x0)/w,v=(z-z0)/h
+  const edge=Math.min(u,1-u)*w
+  const edgeZ=Math.min(v,1-v)*h
+  const e=Math.min(edge,edgeZ)
+  if(e>0)height=lerp(height,bilinear(patch,DESCENT_RELIEF_GRID,DESCENT_RELIEF_GRID,u,v),fade(e/16000))
+  return height
+ }
 }
 export function measuredElevation(base:Elevation,fine:Float32Array,far:Float32Array,regional:Int16Array):Elevation{
  return(x,z)=>{

@@ -31,5 +31,18 @@
     "sourceResolution": "23040x11520 (64 px/degree)",
     "resample": "box filter",
     "heightFormula": "meters = (R*256 + G) * 0.5 - 10000, radius 1737400 m"
+  },
+  {
+    "role": "global-relief-normal",
+    "source": "https://svs.gsfc.nasa.gov/vis/a000000/a004700/a004720/ldem_64_uint.tif",
+    "sourceBytes": 530934146,
+    "sourceSha256": "0f40bce8b42864deddb6943a38474879e691d5b20647aa5e54c2612b23106499",
+    "asset": "lunar-relief-normal.webp",
+    "assetBytes": 6533544,
+    "assetSha256": "32a3f6aaf45d8c97f81630041a345c18368d30ce83158f2b81083489dc07ab61",
+    "resolution": "8192x4096",
+    "sourceResolution": "23040x11520 (64 px/degree)",
+    "method": "finite-difference slope from real LOLA heights -> world-space unit normal, vector-averaged (not height-averaged) down to delivery resolution, renormalized",
+    "encoding": "RGB8 lossy WEBP q90, channel = normal_component*0.5+0.5, same equirectangular UV as color/elevation"
   }
 ]

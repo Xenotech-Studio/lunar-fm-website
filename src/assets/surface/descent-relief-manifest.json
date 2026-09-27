@@ -1,0 +1,24 @@
+{
+  "role": "point-of-interest-descent-elevation",
+  "description": "Native ~474 m/px LOLA elevation patch centred on the Taurus-Littrow point of interest, feeding the orbital mesh's existing 768 m nested rings (see planetGeometry in geography.ts) so real terrain shape is visible during descent before the NAC corridor data loads.",
+  "source": "https://svs.gsfc.nasa.gov/vis/a000000/a004700/a004720/ldem_64_uint.tif",
+  "sourceBytes": 530934146,
+  "sourceSha256": "0f40bce8b42864deddb6943a38474879e691d5b20647aa5e54c2612b23106499",
+  "sourceResolution": "23040x11520 (64 px/degree, ~474 m/px at this latitude)",
+  "asset": "descent-relief.f32",
+  "assetBytes": 293764,
+  "assetSha256": "2939794ca1578574767b0ffc68d3207d77a3422b2653d2f2433964a734141c4a",
+  "grid": 271,
+  "worldBounds": [
+    -64000.0,
+    -63904.0,
+    64000.0,
+    64096.0
+  ],
+  "metersPerSample": 474.0740740740741,
+  "heightRangeMeters": [
+    -3767.171142578125,
+    570.5238647460938
+  ],
+  "resample": "bilinear, no smoothing or exaggeration beyond the source raster's own resolution"
+}

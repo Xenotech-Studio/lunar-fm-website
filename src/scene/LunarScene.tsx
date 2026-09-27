@@ -7,8 +7,10 @@ import * as T from 'three'
 import colorUrl from '../assets/lroc-color-8k.webp'
 import heightUrl from '../assets/lola-height-rg.webp'
 import polarUrl from '../assets/polar/south-psr.png'
+import reliefUrl from '../assets/lunar-relief-normal.webp'
+import descentReliefUrl from '../assets/surface/descent-relief.f32?url'
 import { sample, orbitProgress, smooth, surveyWeight, clamp } from '../timeline'
-import { globalElevation, planetGeometry, point, LANDING, LAT, LON, R, CENTER } from './geography'
+import { globalElevation, descentRelief, planetGeometry, point, LANDING, LAT, LON, R, CENTER } from './geography'
 import { planetMaterial } from './planetMaterial'
 import { flight } from './flight'
 import { loadMeasuredPlanet } from './SurfaceJourney'
@@ -16,32 +18,42 @@ import { loadMeasuredPlanet } from './SurfaceJourney'
 type Props={progress:RefObject<number>;reduced:boolean;onReady:()=>void;onFailure:()=>void}
 type Measured=Awaited<ReturnType<typeof loadMeasuredPlanet>>
 function Planet({progress,onReady}:Pick<Props,'progress'|'onReady'>){
- const [color,height,polar]=useLoader(T.TextureLoader,[colorUrl,heightUrl,polarUrl])
+ const [color,height,polar,relief]=useLoader(T.TextureLoader,[colorUrl,heightUrl,polarUrl,reliefUrl])
+ const [descentReliefBuffer]=useLoader(T.FileLoader,[descentReliefUrl],loader=>loader.setResponseType('arraybuffer'))
  const {gl,size,camera}=useThree()
  const root=useRef<T.Group>(null),light=useRef<T.DirectionalLight>(null)
  const [active,setActive]=useState(false),wanted=useRef(false),loaded=useRef<Measured|null>(null)
- const base=useMemo(()=>globalElevation(height),[height])
+ const descentReliefPatch=useMemo(()=>new Float32Array(descentReliefBuffer as ArrayBuffer),[descentReliefBuffer])
+ const descentReliefStats=useMemo(()=>{
+  let min=Infinity,max=-Infinity,sum=0
+  for(const v of descentReliefPatch){if(v<min)min=v;if(v>max)max=v;sum+=v}
+  const mean=sum/descentReliefPatch.length
+  let variance=0;for(const v of descentReliefPatch)variance+=(v-mean)**2
+  return {min,max,stddev:Math.sqrt(variance/descentReliefPatch.length)}
+ },[descentReliefPatch])
+ const base=useMemo(()=>descentRelief(globalElevation(height),descentReliefPatch),[height,descentReliefPatch])
  const geometry=useMemo(()=>planetGeometry(base,false),[base])
- const appearance=useMemo(()=>planetMaterial(color,null,polar),[color,polar])
+ const appearance=useMemo(()=>planetMaterial(color,null,polar,relief),[color,polar,relief])
  const planet=useMemo(()=>{const mesh=new T.Mesh(geometry,appearance.material);mesh.name='single-planet-mesh';mesh.receiveShadow=true;mesh.castShadow=true;return mesh},[geometry,appearance])
  const shadowTarget=useMemo(()=>new T.Object3D(),[])
  const ready=useRef(false),heightSafe=useRef(false)
  useEffect(()=>{
   color.colorSpace=T.SRGBColorSpace;color.wrapS=T.RepeatWrapping;color.anisotropy=Math.min(8,gl.capabilities.getMaxAnisotropy());color.needsUpdate=true
   polar.colorSpace=T.NoColorSpace;polar.anisotropy=Math.min(8,gl.capabilities.getMaxAnisotropy());polar.needsUpdate=true
+  relief.colorSpace=T.NoColorSpace;relief.wrapS=T.RepeatWrapping;relief.anisotropy=Math.min(8,gl.capabilities.getMaxAnisotropy());relief.needsUpdate=true
   return()=>{geometry.dispose();appearance.material.dispose()}
- },[color,polar,gl,geometry,appearance])
+ },[color,polar,relief,gl,geometry,appearance])
  useEffect(()=>{
   if(!active)return
   const abort=new AbortController();let disposed=false
   gl.domElement.dataset.surface='loading';delete document.documentElement.dataset.surfaceError
-  loadMeasuredPlanet(abort.signal,gl,color,base,size.width<760,polar).then(world=>{
+  loadMeasuredPlanet(abort.signal,gl,color,base,size.width<760,polar,relief).then(world=>{
    if(disposed){world.close();return}
    loaded.current=world;root.current?.add(world.group);planet.visible=false
    gl.domElement.dataset.surface='ready';gl.domElement.dataset.surfaceBytes=String(Math.round(world.bytes))
   }).catch(error=>{if(error.name!=='AbortError'){gl.domElement.dataset.surface='unavailable';document.documentElement.dataset.surfaceError='true'}})
   return()=>{disposed=true;abort.abort();const old=loaded.current;if(old){root.current?.remove(old.group);old.close()}loaded.current=null;planet.visible=true;if(light.current?.shadow.map){light.current.shadow.map.dispose();light.current.shadow.map=null}gl.domElement.dataset.surface='unloaded';gl.domElement.dataset.surfaceBytes='0'}
- },[active,base,color,polar,gl,planet,size.width<760])
+ },[active,base,color,polar,relief,gl,planet,size.width<760])
  useFrame((_,dt)=>{
   const p=progress.current,should=p>.18&&p<.695
   if(should!==wanted.current){wanted.current=should;setActive(should)}
@@ -70,6 +82,9 @@ function Planet({progress,onReady}:Pick<Props,'progress'|'onReady'>){
   uniforms.uScan.value*=1-smooth((p-.66)/.03)*(1-smooth((p-.77)/.07))
   gl.domElement.dataset.polarLayer='LOLA-PSR-area-over-1km2';gl.domElement.dataset.polarWeight=String(uniforms.uPolar.value)
   gl.domElement.dataset.gpuTextures=String(gl.info.memory.textures)
+  gl.domElement.dataset.reliefResolution=`${(relief.image as HTMLImageElement)?.width??0}x${(relief.image as HTMLImageElement)?.height??0}`
+  gl.domElement.dataset.descentReliefSamples=String(descentReliefPatch.length)
+  gl.domElement.dataset.descentReliefRange=`${descentReliefStats.min.toFixed(1)},${descentReliefStats.max.toFixed(1)},${descentReliefStats.stddev.toFixed(1)}`
   gl.domElement.dataset.altitude=pose.altitude.toFixed(3)
   gl.domElement.dataset.flightProgress=String(flightProgress)
   gl.domElement.dataset.cameraPosition=camera.position.toArray().map(n=>n.toFixed(5)).join(',')

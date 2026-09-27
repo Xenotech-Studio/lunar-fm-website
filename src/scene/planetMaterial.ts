@@ -1,15 +1,15 @@
 import * as T from 'three'
-import { REGIONAL, CENTER } from './geography'
+import { REGIONAL } from './geography'
 export type Appearance = { context:T.Texture; tiles:T.Texture[];regional:T.Texture }
-export function planetMaterial(color:T.Texture,appearance:Appearance|null,polar:T.Texture){
- const uniforms={uSurvey:{value:0},uSweep:{value:0},uStudy:{value:0},uPSR:{value:polar},uRegional:{value:appearance?.regional??color},uRegion:{value:REGIONAL},uContext:{value:appearance?.context??color},u00:{value:appearance?.tiles[0]??color},u10:{value:appearance?.tiles[1]??color},u01:{value:appearance?.tiles[2]??color},u11:{value:appearance?.tiles[3]??color},uMeasured:{value:appearance?1:0},uScan:{value:0},uPolar:{value:0}}
+export function planetMaterial(color:T.Texture,appearance:Appearance|null,polar:T.Texture,relief:T.Texture){
+ const uniforms={uSurvey:{value:0},uSweep:{value:0},uStudy:{value:0},uPSR:{value:polar},uReliefNormal:{value:relief},uRegional:{value:appearance?.regional??color},uRegion:{value:REGIONAL},uContext:{value:appearance?.context??color},u00:{value:appearance?.tiles[0]??color},u10:{value:appearance?.tiles[1]??color},u01:{value:appearance?.tiles[2]??color},u11:{value:appearance?.tiles[3]??color},uMeasured:{value:appearance?1:0},uScan:{value:0},uPolar:{value:0}}
  const material=new T.MeshStandardMaterial({map:color,color:'#ffffff',roughness:1,metalness:0})
  material.onBeforeCompile=shader=>{
   Object.assign(shader.uniforms,uniforms)
   shader.vertexShader='attribute vec2 surfaceCoord; varying vec2 vSurfaceCoord; varying vec3 vSurfacePosition;\n'+shader.vertexShader
   shader.vertexShader=shader.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\nvSurfaceCoord=surfaceCoord;vSurfacePosition=position;')
   shader.fragmentShader=`varying vec2 vSurfaceCoord;varying vec3 vSurfacePosition;
-  uniform float uSurvey;uniform float uSweep;uniform float uStudy;uniform sampler2D uPSR;uniform sampler2D uRegional;uniform vec4 uRegion;uniform sampler2D uContext;uniform sampler2D u00;uniform sampler2D u10;uniform sampler2D u01;uniform sampler2D u11;uniform float uMeasured;uniform float uScan;uniform float uPolar;
+  uniform float uSurvey;uniform float uSweep;uniform float uStudy;uniform sampler2D uPSR;uniform sampler2D uReliefNormal;uniform sampler2D uRegional;uniform vec4 uRegion;uniform sampler2D uContext;uniform sampler2D u00;uniform sampler2D u10;uniform sampler2D u01;uniform sampler2D u11;uniform float uMeasured;uniform float uScan;uniform float uPolar;
   float regolithHash(vec3 p){p=fract(p*.1031);p+=dot(p,p.yzx+33.33);return fract((p.x+p.y)*p.z);}
   float regolithNoise(vec3 p){vec3 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(mix(regolithHash(i),regolithHash(i+vec3(1,0,0)),f.x),mix(regolithHash(i+vec3(0,1,0)),regolithHash(i+vec3(1,1,0)),f.x),f.y),mix(mix(regolithHash(i+vec3(0,0,1)),regolithHash(i+vec3(1,0,1)),f.x),mix(regolithHash(i+vec3(0,1,1)),regolithHash(i+vec3(1,1,1)),f.x),f.y),f.z);}
   `+shader.fragmentShader
@@ -44,8 +44,13 @@ export function planetMaterial(color:T.Texture,appearance:Appearance|null,polar:
   shader.fragmentShader=shader.fragmentShader.replace('#include <normal_fragment_maps>',`
    #include <normal_fragment_maps>
    float dist=distance(cameraPosition,vSurfacePosition);
-   vec3 radialNormal=normalize(mat3(viewMatrix)*(vSurfacePosition-vec3(0.,${CENTER.y.toFixed(5)},0.)));
-   normal=normalize(mix(normal,radialNormal,smoothstep(30000.,150000.,dist)));
+   // Real LOLA-derived relief normal (see scripts/prepare-global-relief.py), already
+   // baked in the same world-space frame as vNormal -- no tangent basis needed.
+   // Replaces the old perfect-sphere fallback so ridges and crater rims still
+   // catch light from orbit instead of flattening into a blurred disc.
+   vec3 reliefObjectNormal=normalize(texture2D(uReliefNormal,vMapUv).xyz*2.-1.);
+   vec3 demNormal=normalize(mat3(viewMatrix)*reliefObjectNormal);
+   normal=normalize(mix(normal,demNormal,smoothstep(30000.,150000.,dist)));
    float pixel=max(length(dFdx(vSurfacePosition)),length(dFdy(vSurfacePosition)));
    float micro=regolithNoise(vSurfacePosition*28.)*.65+regolithNoise(vSurfacePosition*85.)*.35;
    float band=(1.-smoothstep(.02,.15,pixel))*(1.-smoothstep(30.,140.,dist));
@@ -95,6 +100,6 @@ export function planetMaterial(color:T.Texture,appearance:Appearance|null,polar:
    #include <opaque_fragment>
   `)
  }
- material.customProgramCacheKey=()=> 'single-geographic-planet-survey-v1'
+ material.customProgramCacheKey=()=> 'single-geographic-planet-survey-v2-relief'
  return {material,uniforms}
 }

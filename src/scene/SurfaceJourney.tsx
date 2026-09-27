@@ -14,7 +14,7 @@ import tile01 from '../assets/surface/nac-0-1-detail.webp'
 import tile11 from '../assets/surface/nac-1-1-detail.webp'
 import earthUrl from '../assets/surface/earth-blue-marble.webp'
 
-export async function loadMeasuredPlanet(signal:AbortSignal,gl:T.WebGLRenderer,color:T.Texture,base:Elevation,mobile:boolean,polar:T.Texture){
+export async function loadMeasuredPlanet(signal:AbortSignal,gl:T.WebGLRenderer,color:T.Texture,base:Elevation,mobile:boolean,polar:T.Texture,relief:T.Texture){
  const textures:T.Texture[]=[],geometries:T.BufferGeometry[]=[],materials:T.Material[]=[],instances:T.InstancedMesh[]=[]
  const group=new T.Group();group.name='georegistered-lunar-surface'
  let bytes=0
@@ -38,7 +38,7 @@ export async function loadMeasuredPlanet(signal:AbortSignal,gl:T.WebGLRenderer,c
   const earthMap=await raster(earthUrl,true)
   const elevation=measuredElevation(base,fine,far,regionalHeights)
   const geometry=planetGeometry(elevation,true);geometries.push(geometry)
-  const appearance=planetMaterial(color,{context,tiles,regional},polar);materials.push(appearance.material)
+  const appearance=planetMaterial(color,{context,tiles,regional},polar,relief);materials.push(appearance.material)
   const planet=new T.Mesh(geometry,appearance.material);planet.name='single-planet-mesh';planet.receiveShadow=true;planet.castShadow=true;group.add(planet)
   const stones=new T.Group();group.add(stones)
   let seed=371731
